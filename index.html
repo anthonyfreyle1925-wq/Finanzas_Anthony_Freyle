@@ -3,14 +3,10 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-  <title>Finanzas OS 2026 | Anthony Freyle Aroca</title>
-  <!-- Tailwind CSS CDN -->
+  <title>Pulso | Inteligencia Financiera • Anthony Freyle</title>
   <script src="https://cdn.tailwindcss.com"></script>
-  <!-- Chart.js CDN -->
   <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
-  <!-- Lucide Icons CDN -->
   <script src="https://unpkg.com/lucide@latest"></script>
-  <!-- PDF.js CDN para lectura local de Roles FARMCORP -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
   <script>
     tailwind.config = {
@@ -18,12 +14,10 @@
       theme: {
         extend: {
           colors: {
-            bgMain: '#070913',
-            bgCard: 'rgba(17, 24, 39, 0.72)',
+            bgMain: '#060811',
             neonCyan: '#00f2fe',
             neonMagenta: '#ff0844',
-            neonPurple: '#7c3aed',
-            neonEmerald: '#10b981'
+            neonPurple: '#7c3aed'
           }
         }
       }
@@ -33,10 +27,10 @@
     @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;600;700&display=swap');
     body {
       font-family: 'Inter', sans-serif;
-      background-color: #070913;
+      background-color: #060811;
       background-image:
         radial-gradient(at 10% 10%, rgba(124, 58, 237, 0.16) 0px, transparent 50%),
-        radial-gradient(at 90% 20%, rgba(0, 242, 254, 0.12) 0px, transparent 50%),
+        radial-gradient(at 90% 15%, rgba(0, 242, 254, 0.14) 0px, transparent 50%),
         radial-gradient(at 50% 90%, rgba(255, 8, 68, 0.10) 0px, transparent 50%);
       color: #f3f4f6;
       min-height: 100vh;
@@ -49,43 +43,40 @@
       border: 1px solid rgba(255, 255, 255, 0.08);
     }
     .glass-cyan {
-      background: linear-gradient(135deg, rgba(0, 242, 254, 0.12), rgba(17, 24, 39, 0.8));
-      border: 1px solid rgba(0, 242, 254, 0.28);
+      background: linear-gradient(135deg, rgba(0, 242, 254, 0.12), rgba(17, 24, 39, 0.84));
+      border: 1px solid rgba(0, 242, 254, 0.30);
     }
     .glass-magenta {
-      background: linear-gradient(135deg, rgba(255, 8, 68, 0.12), rgba(17, 24, 39, 0.8));
-      border: 1px solid rgba(255, 8, 68, 0.28);
+      background: linear-gradient(135deg, rgba(255, 8, 68, 0.12), rgba(17, 24, 39, 0.84));
+      border: 1px solid rgba(255, 8, 68, 0.30);
     }
     .glass-purple {
-      background: linear-gradient(135deg, rgba(124, 58, 237, 0.15), rgba(17, 24, 39, 0.8));
+      background: linear-gradient(135deg, rgba(124, 58, 237, 0.16), rgba(17, 24, 39, 0.84));
       border: 1px solid rgba(124, 58, 237, 0.32);
     }
     .touch-target { min-height: 44px; min-width: 44px; }
-    ::-webkit-scrollbar { width: 6px; height: 6px; }
-    ::-webkit-scrollbar-track { background: #070913; }
-    ::-webkit-scrollbar-thumb { background: #1f2937; border-radius: 3px; }
   </style>
 </head>
-<body class="pb-24 md:pb-10 selection:bg-cyan-500 selection:text-black">
+<body class="pb-24 md:pb-10 selection:bg-cyan-400 selection:text-black">
 
   <!-- ==================================================================== -->
-  <!-- 1. PANTALLA DE BLOQUEO POR PIN (993008)                              -->
+  <!-- 1. PANTALLA DE BLOQUEO POR PIN (993008) — PULSO                      -->
   <!-- ==================================================================== -->
-  <div id="pinLockModal" class="fixed inset-0 z-50 flex items-center justify-center bg-[#05070f]/95 backdrop-blur-2xl p-4">
+  <div id="pinLockModal" class="fixed inset-0 z-50 flex items-center justify-center bg-[#04060c]/95 backdrop-blur-2xl p-4">
     <div class="glass max-w-sm w-full rounded-3xl p-8 text-center shadow-2xl border border-cyan-500/30">
-      <div class="w-16 h-16 mx-auto mb-4 rounded-2xl glass-cyan flex items-center justify-center text-cyan-400 shadow-lg shadow-cyan-500/20">
-        <i data-lucide="shield-check" class="w-8 h-8"></i>
+      <div class="w-16 h-16 mx-auto mb-3 rounded-2xl glass-cyan flex items-center justify-center text-cyan-400 shadow-lg shadow-cyan-500/20">
+        <i data-lucide="activity" class="w-8 h-8"></i>
       </div>
-      <h1 class="text-xl font-bold tracking-tight text-white">Finanzas OS 2026</h1>
-      <p class="text-xs text-slate-400 mt-1">Anthony Joel Freyle Aroca • Ingresa tu PIN</p>
+      <h1 class="text-2xl font-extrabold tracking-tight text-white">PULSO</h1>
+      <p class="text-xs text-slate-400 mt-0.5">Anthony Joel Freyle Aroca • Ingresa tu PIN</p>
 
-      <div class="my-6">
+      <div class="my-5">
         <input id="pinInput" type="password" inputmode="numeric" maxlength="6" placeholder="••••••"
           class="w-full text-center text-2xl tracking-[0.5em] mono font-bold py-3 px-4 rounded-2xl bg-slate-900/90 border border-slate-700 text-cyan-400 focus:outline-none focus:border-cyan-400" />
-        <p id="pinError" class="text-xs text-rose-400 mt-2 hidden">PIN incorrecto. Verifica e intenta de nuevo.</p>
+        <p id="pinError" class="text-xs text-rose-400 mt-2 hidden">PIN incorrecto. Intenta nuevamente.</p>
       </div>
 
-      <div class="grid grid-cols-3 gap-2.5 mb-5">
+      <div class="grid grid-cols-3 gap-2.5">
         <button onclick="appendPin('1')" class="touch-target py-3 rounded-xl glass hover:bg-slate-800 font-semibold text-lg">1</button>
         <button onclick="appendPin('2')" class="touch-target py-3 rounded-xl glass hover:bg-slate-800 font-semibold text-lg">2</button>
         <button onclick="appendPin('3')" class="touch-target py-3 rounded-xl glass hover:bg-slate-800 font-semibold text-lg">3</button>
@@ -95,39 +86,38 @@
         <button onclick="appendPin('7')" class="touch-target py-3 rounded-xl glass hover:bg-slate-800 font-semibold text-lg">7</button>
         <button onclick="appendPin('8')" class="touch-target py-3 rounded-xl glass hover:bg-slate-800 font-semibold text-lg">8</button>
         <button onclick="appendPin('9')" class="touch-target py-3 rounded-xl glass hover:bg-slate-800 font-semibold text-lg">9</button>
-        <button onclick="clearPin()" class="touch-target py-3 rounded-xl glass hover:bg-rose-950/50 text-xs text-rose-400 font-medium">Borrar</button>
+        <button onclick="clearPin()" class="touch-target py-3 rounded-xl glass hover:bg-rose-950/50 text-xs text-rose-400 font-semibold">Borrar</button>
         <button onclick="appendPin('0')" class="touch-target py-3 rounded-xl glass hover:bg-slate-800 font-semibold text-lg">0</button>
-        <button onclick="validatePin()" class="touch-target py-3 rounded-xl bg-cyan-500 hover:bg-cyan-400 text-slate-950 font-bold text-sm">Entrar</button>
+        <button onclick="validatePin()" class="touch-target py-3 rounded-xl bg-cyan-400 hover:bg-cyan-300 text-slate-950 font-bold text-sm">Entrar</button>
       </div>
     </div>
   </div>
 
   <!-- ==================================================================== -->
-  <!-- 2. BARRA SUPERIOR EJECUTIVA                                          -->
+  <!-- 2. HEADER DE NAVEGACIÓN — PULSO                                      -->
   <!-- ==================================================================== -->
-  <header class="sticky top-0 z-30 glass border-b border-white/10 px-4 lg:px-8 py-3.5">
+  <header class="sticky top-0 z-30 glass border-b border-white/10 px-4 lg:px-8 py-3">
     <div class="max-w-7xl mx-auto flex flex-wrap items-center justify-between gap-3">
       <div class="flex items-center gap-3">
-        <div class="w-10 h-10 rounded-xl glass-cyan flex items-center justify-center text-cyan-400 font-bold">
-          AF
+        <div class="w-10 h-10 rounded-xl glass-cyan flex items-center justify-center text-cyan-400 shadow-md shadow-cyan-500/10">
+          <i data-lucide="activity" class="w-5 h-5"></i>
         </div>
         <div>
           <div class="flex items-center gap-2">
-            <h1 class="font-bold text-base sm:text-lg text-white tracking-tight">Finanzas Personales OS</h1>
-            <span id="connectionBadge" class="text-[11px] px-2 py-0.5 rounded-full bg-emerald-500/20 text-emerald-300 border border-emerald-500/30 font-medium">
-              Datos 2026 Activos
+            <h1 class="font-extrabold text-lg text-white tracking-tight">PULSO</h1>
+            <span id="connectionBadge" class="text-[11px] px-2.5 py-0.5 rounded-full bg-emerald-500/20 text-emerald-300 border border-emerald-500/30 font-medium">
+              Unificado 2026
             </span>
           </div>
-          <p class="text-xs text-slate-400">Anthony Joel Freyle Aroca • FARMCORP S.A. (Cód. 1327)</p>
+          <p class="text-xs text-slate-400">Anthony Freyle Aroca • FARMCORP & Proyecto Autonomy</p>
         </div>
       </div>
 
-      <!-- Controles Globales: Mes, Sincronizar Gmail, Configurar API -->
       <div class="flex items-center gap-2">
         <select id="globalPeriodFilter" onchange="renderAll()"
-          class="bg-slate-900/90 border border-slate-700 text-xs sm:text-sm rounded-xl px-3 py-2 text-cyan-300 font-medium focus:outline-none focus:border-cyan-400">
-          <option value="ALL">Todo 2026 (Ene - Oct)</option>
-          <option value="2026-10" selected>Octubre 2026</option>
+          class="bg-slate-900/90 border border-slate-700 text-xs sm:text-sm rounded-xl px-3 py-2 text-cyan-300 font-semibold focus:outline-none focus:border-cyan-400">
+          <option value="2026-11" selected>Noviembre 2026 (Actual)</option>
+          <option value="2026-10">Octubre 2026</option>
           <option value="2026-09">Septiembre 2026</option>
           <option value="2026-08">Agosto 2026</option>
           <option value="2026-07">Julio 2026</option>
@@ -137,39 +127,44 @@
           <option value="2026-03">Marzo 2026</option>
           <option value="2026-02">Febrero 2026</option>
           <option value="2026-01">Enero 2026</option>
+          <option value="ALL">Consolidado 2026</option>
         </select>
 
-        <button onclick="triggerGmailSync()" title="Leer notificaciones bancarias de Gmail"
+        <button onclick="triggerGmailSync()" title="Leer notificaciones de Gmail y motivos de transferencia"
           class="touch-target flex items-center gap-1.5 px-3 py-2 rounded-xl glass-cyan hover:bg-cyan-500/20 text-cyan-300 text-xs font-semibold transition">
           <i data-lucide="refresh-cw" id="syncIcon" class="w-4 h-4"></i>
           <span class="hidden sm:inline">Sync Gmail</span>
         </button>
 
-        <button onclick="openApiModal()" title="Conectar Google Apps Script Web App"
+        <button onclick="openApiModal()" title="Conectar URL de Apps Script"
           class="touch-target p-2 rounded-xl glass hover:bg-slate-800 text-slate-300">
           <i data-lucide="settings" class="w-4 h-4"></i>
         </button>
 
-        <button onclick="lockApp()" title="Bloquear sesión"
+        <button onclick="lockApp()" title="Bloquear Pulso"
           class="touch-target p-2 rounded-xl glass hover:bg-rose-950/60 text-rose-400">
           <i data-lucide="lock" class="w-4 h-4"></i>
         </button>
       </div>
     </div>
 
-    <!-- Navegación Desktop (Modelo Mental Nubank: Resumen, Movimientos, Nómina FARMCORP, Planeamiento) -->
+    <!-- Pestañas Desktop -->
     <nav class="max-w-7xl mx-auto hidden md:flex items-center gap-2 mt-3 pt-2 border-t border-white/5">
-      <button onclick="switchTab('dashboard')" id="tabBtn-dashboard" class="tab-btn px-4 py-2 rounded-xl text-xs font-semibold bg-cyan-500/20 text-cyan-300 border border-cyan-500/30 flex items-center gap-2">
-        <i data-lucide="layout-dashboard" class="w-4 h-4"></i> Dashboard & Cuentas
+      <button onclick="switchTab('dashboard')" id="tabBtn-dashboard" class="px-4 py-2 rounded-xl text-xs font-semibold bg-cyan-500/20 text-cyan-300 border border-cyan-500/30 flex items-center gap-2">
+        <i data-lucide="layout-dashboard" class="w-4 h-4"></i> Pulso Mensual & Cuentas
       </button>
-      <button onclick="switchTab('transactions')" id="tabBtn-transactions" class="tab-btn px-4 py-2 rounded-xl text-xs font-semibold text-slate-400 hover:text-white flex items-center gap-2">
-        <i data-lucide="arrow-left-right" class="w-4 h-4"></i> Transacciones & Titanium
+      <button onclick="switchTab('reclassify')" id="tabBtn-reclassify" class="px-4 py-2 rounded-xl text-xs font-semibold text-slate-400 hover:text-white flex items-center gap-2">
+        <i data-lucide="sparkles" class="w-4 h-4 text-rose-400"></i> Clasificar "Otros"
+        <span id="navOtrosBadge" class="px-2 py-0.5 rounded-full bg-rose-500/30 text-rose-200 mono text-[10px]">0</span>
       </button>
-      <button onclick="switchTab('payroll')" id="tabBtn-payroll" class="tab-btn px-4 py-2 rounded-xl text-xs font-semibold text-slate-400 hover:text-white flex items-center gap-2">
-        <i data-lucide="file-Spreadsheet" class="w-4 h-4"></i> Roles FARMCORP 2026 & Décimos
+      <button onclick="switchTab('transactions')" id="tabBtn-transactions" class="px-4 py-2 rounded-xl text-xs font-semibold text-slate-400 hover:text-white flex items-center gap-2">
+        <i data-lucide="arrow-left-right" class="w-4 h-4"></i> Movimientos & Motivos
       </button>
-      <button onclick="switchTab('planning')" id="tabBtn-planning" class="tab-btn px-4 py-2 rounded-xl text-xs font-semibold text-slate-400 hover:text-white flex items-center gap-2">
-        <i data-lucide="target" class="w-4 h-4"></i> Presupuesto 50/30/20 & Reglas Gmail
+      <button onclick="switchTab('payroll')" id="tabBtn-payroll" class="px-4 py-2 rounded-xl text-xs font-semibold text-slate-400 hover:text-white flex items-center gap-2">
+        <i data-lucide="file-spreadsheet" class="w-4 h-4"></i> Roles FARMCORP & Autonomy
+      </button>
+      <button onclick="switchTab('planning')" id="tabBtn-planning" class="px-4 py-2 rounded-xl text-xs font-semibold text-slate-400 hover:text-white flex items-center gap-2">
+        <i data-lucide="target" class="w-4 h-4"></i> Presupuesto & Reglas Gmail
       </button>
     </nav>
   </header>
@@ -179,37 +174,25 @@
   <!-- ==================================================================== -->
   <main class="max-w-7xl mx-auto px-4 lg:px-8 pt-6 space-y-6">
 
-    <!-- BANDEJA RÁPIDA DE MOVIMIENTOS IMPORTADOS DE GMAIL POR CONFIRMAR -->
-    <section id="pendingGmailSection" class="hidden glass-magenta rounded-2xl p-4">
-      <div class="flex items-center justify-between mb-3">
-        <div class="flex items-center gap-2">
-          <i data-lucide="mail-warning" class="w-5 h-5 text-rose-400"></i>
-          <h2 class="text-sm font-bold text-white">Movimientos de Gmail pendientes de confirmar (1-Toque)</h2>
-        </div>
-        <span id="pendingCountBadge" class="text-xs px-2.5 py-0.5 rounded-full bg-rose-500/30 text-rose-200 mono font-bold">0</span>
-      </div>
-      <div id="pendingGmailList" class="grid grid-cols-1 md:grid-cols-2 gap-3"></div>
-    </section>
-
     <!-- ================================================================== -->
-    <!-- VISTA 1: DASHBOARD EJECUTIVO & CUENTAS REALES                      -->
+    <!-- VISTA 1: DASHBOARD EJECUTIVO PULSO                                 -->
     <!-- ================================================================== -->
     <div id="view-dashboard" class="space-y-6">
 
-      <!-- Tarjetas de Cuentas Reales (Guayaquil, Pichincha, Meta $1000, Diners y Titanium) -->
-      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4">
+      <!-- Tarjetas de Cuentas Reales + Meta BG $1,000 + Meta Autonomy + Diners + Titanium -->
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-6 gap-3.5">
         <!-- Banco Guayaquil 0015687792 -->
         <div class="glass rounded-2xl p-4 border-l-4 border-l-pink-500 flex flex-col justify-between">
           <div>
             <div class="flex items-center justify-between text-xs text-slate-400">
-              <span>Banco Guayaquil (Nómina)</span>
-              <button onclick="promptEditAccount('BG-AHO')" class="text-slate-400 hover:text-cyan-300"><i data-lucide="edit-3" class="w-3.5 h-3.5"></i></button>
+              <span>Banco Guayaquil</span>
+              <button onclick="promptEditAccount('BG-AHO')" class="hover:text-cyan-300"><i data-lucide="edit-3" class="w-3.5 h-3.5"></i></button>
             </div>
-            <p class="text-[11px] mono text-slate-400 mt-0.5">Ahorros N° 0015687792</p>
+            <p class="text-[11px] mono text-slate-400">Aho. 0015687792</p>
           </div>
           <div class="mt-3">
-            <p id="saldo-BG-AHO" class="text-2xl font-extrabold mono text-white">$19.20</p>
-            <p class="text-[11px] text-emerald-400 mt-1">Recibe Quincena ($448) + Fin de Mes</p>
+            <p id="saldo-BG-AHO" class="text-xl font-extrabold mono text-white">$19.20</p>
+            <p class="text-[10px] text-emerald-400 mt-1">Cuenta Nómina Principal</p>
           </div>
         </div>
 
@@ -218,113 +201,134 @@
           <div>
             <div class="flex items-center justify-between text-xs text-slate-400">
               <span>Banco Pichincha</span>
-              <button onclick="promptEditAccount('BP-AHO')" class="text-slate-400 hover:text-cyan-300"><i data-lucide="edit-3" class="w-3.5 h-3.5"></i></button>
+              <button onclick="promptEditAccount('BP-AHO')" class="hover:text-cyan-300"><i data-lucide="edit-3" class="w-3.5 h-3.5"></i></button>
             </div>
-            <p class="text-[11px] mono text-slate-400 mt-0.5">Ahorros N° 2209937058</p>
+            <p class="text-[11px] mono text-slate-400">Aho. 2209937058</p>
           </div>
           <div class="mt-3">
-            <p id="saldo-BP-AHO" class="text-2xl font-extrabold mono text-white">$19.10</p>
-            <p class="text-[11px] text-slate-400 mt-1">Liquidez Total Bancos: <span id="liquidezDisponibleTotal" class="text-cyan-300 font-bold mono">$38.30</span></p>
+            <p id="saldo-BP-AHO" class="text-xl font-extrabold mono text-white">$19.10</p>
+            <p class="text-[10px] text-slate-400 mt-1">Total Bancos: <span id="liquidezDisponibleTotal" class="text-cyan-300 font-bold mono">$38.30</span></p>
           </div>
         </div>
 
-        <!-- Meta de Ahorro $1,000 Banco Guayaquil -->
+        <!-- Meta Ahorro $1,000 BG -->
         <div class="glass-cyan rounded-2xl p-4 flex flex-col justify-between">
           <div>
             <div class="flex items-center justify-between text-xs text-cyan-200">
               <span class="font-semibold">Meta Ahorro BG</span>
-              <span class="mono text-[11px] bg-cyan-500/20 px-2 py-0.5 rounded-full text-cyan-300">+$50/mes</span>
+              <span class="mono text-[10px] bg-cyan-500/20 px-1.5 py-0.5 rounded text-cyan-300">$50/mes</span>
             </div>
-            <div class="flex items-baseline gap-1.5 mt-2">
-              <p id="saldo-BG-META" class="text-2xl font-extrabold mono text-cyan-300">$151.23</p>
-              <span class="text-xs text-slate-400 mono">/ $1,000.00</span>
+            <div class="flex items-baseline gap-1 mt-1.5">
+              <p id="saldo-BG-META" class="text-xl font-extrabold mono text-cyan-300">$151.23</p>
+              <span class="text-[11px] text-slate-400 mono">/ $1,000</span>
             </div>
           </div>
-          <div class="mt-3">
-            <div class="w-full h-2 bg-slate-800 rounded-full overflow-hidden">
-              <div id="metaProgressBar" class="h-full bg-gradient-to-r from-cyan-400 to-purple-500" style="width: 15.12%"></div>
+          <div class="mt-2.5">
+            <div class="w-full h-1.5 bg-slate-800 rounded-full overflow-hidden">
+              <div id="metaProgressBar" class="h-full bg-cyan-400" style="width: 15.12%"></div>
             </div>
-            <p id="metaProgressText" class="text-[11px] text-cyan-200 mt-1.5">15.12% completado • Faltan $848.77 (~17 meses)</p>
+            <p id="metaProgressText" class="text-[10px] text-cyan-200 mt-1">15.1% • Faltan $848.77</p>
           </div>
         </div>
 
-        <!-- Diners Club (Activa: Ciclo 19 al 18, Pago día 05) -->
+        <!-- Meta Proyecto Autonomy (Con Socio: $400/mes) -->
         <div class="glass-purple rounded-2xl p-4 flex flex-col justify-between">
           <div>
             <div class="flex items-center justify-between text-xs text-purple-200">
-              <span class="font-semibold">Diners Club (Activa)</span>
-              <button onclick="promptEditAccount('TC-DINERS')" class="text-purple-300 hover:text-white" title="Ajustar saldo o cupo"><i data-lucide="edit-3" class="w-3.5 h-3.5"></i></button>
+              <span class="font-semibold">Meta Autonomy</span>
+              <span class="text-[10px] bg-purple-500/30 px-1.5 py-0.5 rounded text-purple-200">Proyecto</span>
             </div>
-            <p class="text-[11px] text-purple-300 mt-0.5">Ciclo: 19 al 18 • Pago máx: día 05</p>
+            <div class="flex items-baseline gap-1 mt-1.5">
+              <p id="saldo-AUT-META" class="text-xl font-extrabold mono text-purple-200">$0.00</p>
+              <span class="text-[11px] text-slate-400 mono">/ $400</span>
+            </div>
           </div>
-          <div class="mt-3">
-            <p id="saldo-TC-DINERS" class="text-2xl font-extrabold mono text-white">$0.00</p>
-            <p id="dinersCountdown" class="text-[11px] text-amber-300 mt-1">Corte día 18 • Pago día 05</p>
+          <div class="mt-2">
+            <button onclick="openQuickModal('Ingreso_Autonomy')" class="w-full py-1 rounded-lg bg-purple-500/30 hover:bg-purple-500/50 text-purple-100 text-[10px] font-semibold transition">
+              + Registrar Cobro Autonomy
+            </button>
           </div>
         </div>
 
-        <!-- Deuda Titanium (Pasivo Bloqueado en Liquidación) -->
+        <!-- Diners Club (Ciclo 19 al 18, Pago 05) -->
+        <div class="glass rounded-2xl p-4 border-l-4 border-l-indigo-500 flex flex-col justify-between">
+          <div>
+            <div class="flex items-center justify-between text-xs text-slate-300">
+              <span class="font-semibold">Diners Club</span>
+              <button onclick="promptEditAccount('TC-DINERS')" class="text-slate-400 hover:text-white"><i data-lucide="edit-3" class="w-3.5 h-3.5"></i></button>
+            </div>
+            <p class="text-[10px] text-indigo-300 mt-0.5">Ciclo 19-18 • Pago día 05</p>
+          </div>
+          <div class="mt-2.5">
+            <p id="saldo-TC-DINERS" class="text-xl font-extrabold mono text-white">$0.00</p>
+            <p id="dinersCountdown" class="text-[10px] text-amber-300 mt-1">Corte 18 • Pago 05</p>
+          </div>
+        </div>
+
+        <!-- Deuda Titanium (Pasivo Bloqueado) -->
         <div class="glass-magenta rounded-2xl p-4 flex flex-col justify-between">
           <div>
             <div class="flex items-center justify-between text-xs text-rose-200">
               <span class="font-semibold">Deuda Titanium</span>
-              <span class="text-[10px] px-2 py-0.5 rounded-full bg-rose-500/30 text-rose-200 uppercase font-bold">Bloqueada</span>
+              <span class="text-[9px] px-1.5 py-0.5 rounded bg-rose-500/30 text-rose-200 uppercase font-bold">Bloqueada</span>
             </div>
-            <p class="text-[11px] text-rose-300/80 mt-0.5">Solo abonos y fondeos</p>
+            <p class="text-[10px] text-rose-300/80 mt-0.5">Pasivo en liquidación</p>
           </div>
-          <div class="mt-3">
-            <p id="saldo-PAS-TITANIUM" class="text-xl font-extrabold mono text-rose-300">$0.00 <span class="text-xs font-normal">abonado</span></p>
-            <button onclick="openQuickModal('Pago_Deuda_Titanium')" class="mt-1.5 w-full py-1 rounded-lg bg-rose-500/25 hover:bg-rose-500/40 text-rose-200 text-[11px] font-semibold transition">
-              + Registrar Pago Titanium
+          <div class="mt-2">
+            <p id="saldo-PAS-TITANIUM" class="text-lg font-extrabold mono text-rose-300">$0.00</p>
+            <button onclick="openQuickModal('Pago_Deuda_Titanium')" class="mt-1 w-full py-1 rounded-lg bg-rose-500/30 hover:bg-rose-500/50 text-rose-100 text-[10px] font-semibold">
+              + Abono / Fondeo Titanium
             </button>
           </div>
         </div>
       </div>
 
-      <!-- Fila de KPIs Financieros del Periodo Seleccionado -->
-      <div class="grid grid-cols-2 lg:grid-cols-4 gap-4">
+      <!-- KPIs de Pulso (Con Gasto Hormiga <= $10, Burn Rate y Canal de Salida de tu Google Sheet) -->
+      <div class="grid grid-cols-2 lg:grid-cols-5 gap-3.5">
         <div class="glass rounded-2xl p-4">
-          <p class="text-xs text-slate-400">Ingreso Bruto Periodo</p>
-          <p id="kpiIngresoBruto" class="text-xl sm:text-2xl font-bold mono text-white mt-1">$1,516.62</p>
-          <p id="kpiLiquidezBanco" class="text-[11px] text-cyan-400 mt-1">Líquido al Banco: $1,037.69</p>
+          <p class="text-xs text-slate-400">Gasto Bancario vs Meta ($1,100)</p>
+          <p id="kpiGastoBancario" class="text-xl font-extrabold mono text-white mt-1">$614.70</p>
+          <p id="kpiDisponibleMeta" class="text-[11px] text-emerald-400 mt-1">Disponible: $485.30 (55.9%)</p>
         </div>
         <div class="glass rounded-2xl p-4">
-          <p class="text-xs text-slate-400">Gastos Totales (Rol + Bancos)</p>
-          <p id="kpiGastosTotales" class="text-xl sm:text-2xl font-bold mono text-rose-400 mt-1">$478.93</p>
-          <p id="kpiDesgloseGastos" class="text-[11px] text-slate-400 mt-1">En Rol: $478.93 | Bancos: $0.00</p>
+          <p class="text-xs text-slate-400">Proyección Cierre (Burn Rate)</p>
+          <p id="kpiBurnRateProy" class="text-xl font-extrabold mono text-cyan-300 mt-1">$1,024.50</p>
+          <p id="kpiTicketPromedio" class="text-[11px] text-slate-400 mt-1">Ticket Prom.: $27.45</p>
         </div>
         <div class="glass rounded-2xl p-4">
-          <p class="text-xs text-slate-400">Tasa de Ahorro / Flujo Neto</p>
-          <p id="kpiTasaAhorro" class="text-xl sm:text-2xl font-bold mono text-emerald-400 mt-1">68.4%</p>
-          <p id="kpiBurnRate" class="text-[11px] text-slate-400 mt-1">Burn Rate Diario: $15.96/día</p>
+          <p class="text-xs text-slate-400">Gasto Hormiga (&le; $10.00)</p>
+          <p id="kpiGastoHormiga" class="text-xl font-extrabold mono text-amber-300 mt-1">$45.69</p>
+          <p id="kpiHormigaCount" class="text-[11px] text-slate-400 mt-1">9 micro-compras en el mes</p>
         </div>
         <div class="glass rounded-2xl p-4">
-          <p class="text-xs text-slate-400">Patrimonio Líquido + Meta BG</p>
-          <p id="kpiPatrimonioLiquido" class="text-xl sm:text-2xl font-bold mono text-cyan-300 mt-1">$189.53</p>
-          <p class="text-[11px] text-slate-400 mt-1">Cuentas ($38.30) + Meta ($151.23)</p>
+          <p class="text-xs text-slate-400">Canales de Salida (Mes)</p>
+          <p id="kpiCanalesResumen" class="text-xs font-bold mono text-white mt-1.5">Tarjetas: $241.49</p>
+          <p id="kpiCanalesTransf" class="text-[11px] text-cyan-300 mt-1">Transf. BG/Interb: $417.21</p>
+        </div>
+        <div class="glass rounded-2xl p-4 col-span-2 lg:col-span-1 flex flex-col justify-between">
+          <div>
+            <p class="text-xs text-rose-300 font-semibold">En "Otros / Por Clasificar"</p>
+            <p id="kpiOtrosMonto" class="text-xl font-extrabold mono text-rose-400 mt-1">$159.05</p>
+          </div>
+          <button onclick="switchTab('reclassify')" class="mt-2 w-full py-1.5 rounded-xl bg-rose-500/25 hover:bg-rose-500/40 text-rose-200 text-[11px] font-bold">
+            Clasificar Ahora →
+          </button>
         </div>
       </div>
 
-      <!-- Gráficos Interactivos (Evolución Nómina 2026 + Distribución de Gastos) -->
+      <!-- Gráficos Interactivos -->
       <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
         <div class="glass rounded-2xl p-5 lg:col-span-2">
-          <div class="flex items-center justify-between mb-4">
-            <div>
-              <h3 class="text-sm font-bold text-white">Evolución Salarial FARMCORP 2026 (Ene - Oct)</h3>
-              <p class="text-xs text-slate-400">Sueldo Bruto vs. Liquidez en Banco Guayaquil ($448 Quincena + Neto Fin de Mes) vs. Descuentos de Rol</p>
-            </div>
-          </div>
+          <h3 class="text-sm font-bold text-white">Evolución Salarial FARMCORP 2026 (Ene - Oct) + Presupuesto Noviembre</h3>
+          <p class="text-xs text-slate-400 mb-4">Liquidez depositada en Banco Guayaquil ($448 Quincena + Neto Fin de Mes) vs. Descuentos de Rol</p>
           <div class="h-72">
             <canvas id="payrollChart"></canvas>
           </div>
         </div>
-
         <div class="glass rounded-2xl p-5">
-          <div class="mb-4">
-            <h3 class="text-sm font-bold text-white">Distribución de Gastos y Deducciones</h3>
-            <p class="text-xs text-slate-400">Desglose por categoría del periodo</p>
-          </div>
-          <div class="h-64 flex items-center justify-center">
+          <h3 class="text-sm font-bold text-white">Distribución de Gastos por Categoría</h3>
+          <p class="text-xs text-slate-400 mb-4">Con restaurantes, licencia y cruces reclasificados</p>
+          <div class="h-64">
             <canvas id="expensesDonutChart"></canvas>
           </div>
         </div>
@@ -332,501 +336,490 @@
     </div>
 
     <!-- ================================================================== -->
-    <!-- VISTA 2: LIBRO MAYOR DE TRANSACCIONES & RASTREADOR TITANIUM        -->
+    <!-- VISTA 2: CENTRO INTELIGENTE PARA CLASIFICAR "OTROS" (1-TOQUE)      -->
+    <!-- ================================================================== -->
+    <div id="view-reclassify" class="hidden space-y-6">
+      <div class="glass-magenta rounded-2xl p-5">
+        <div class="flex flex-wrap items-center justify-between gap-3 mb-2">
+          <div>
+            <span class="text-[11px] px-2.5 py-0.5 rounded-full bg-rose-500/30 text-rose-200 font-bold uppercase">Limpieza de Presupuesto</span>
+            <h2 class="text-lg font-bold text-white mt-1">Bandeja de Consumos y Transferencias en "Otros"</h2>
+            <p class="text-xs text-slate-300">
+              Aquí aparecen todas las transferencias o consumos cuyo comercio o motivo de transferencia no tenía regla. Asígnales su categoría y un motivo; si activas <strong>"Crear regla automática"</strong>, Pulso clasificará solo a ese beneficiario la próxima vez.
+            </p>
+          </div>
+        </div>
+        <div id="otrosTriageContainer" class="grid grid-cols-1 md:grid-cols-2 gap-4 mt-4"></div>
+      </div>
+    </div>
+
+    <!-- ================================================================== -->
+    <!-- VISTA 3: LIBRO MAYOR DE MOVIMIENTOS (SEPT, OCT, NOV + ROLES)       -->
     <!-- ================================================================== -->
     <div id="view-transactions" class="hidden space-y-6">
       <div class="glass rounded-2xl p-5">
         <div class="flex flex-wrap items-center justify-between gap-3 mb-4">
           <div>
-            <h2 class="text-base font-bold text-white">Libro Mayor de Movimientos (Bancos, Diners, Titanium y Gastos de Rol)</h2>
-            <p class="text-xs text-slate-400">Incluye las deducciones de tus roles de FARMCORP divididas automáticamente como gastos pagados</p>
+            <h2 class="text-base font-bold text-white">Registro Unificado de Movimientos (Gmail + Motivos + Roles FARMCORP)</h2>
+            <p class="text-xs text-slate-400">Incluye los consumos y transferencias de Septiembre, Octubre y Noviembre de tu hoja Banco Guayaquil</p>
           </div>
-          <div class="flex flex-wrap items-center gap-2">
-            <button onclick="openQuickModal('Gasto')" class="px-3.5 py-2 rounded-xl bg-cyan-500 hover:bg-cyan-400 text-slate-950 font-bold text-xs flex items-center gap-1.5">
-              <i data-lucide="plus" class="w-4 h-4"></i> Nuevo Movimiento
-            </button>
-            <button onclick="openQuickModal('Pago_Deuda_Titanium')" class="px-3.5 py-2 rounded-xl glass-magenta text-rose-200 font-semibold text-xs flex items-center gap-1.5">
-              <i data-lucide="credit-card" class="w-4 h-4"></i> Abono / Fondeo Titanium
-            </button>
-          </div>
-        </div>
-
-        <!-- Filtros de Transacciones -->
-        <div class="grid grid-cols-1 sm:grid-cols-4 gap-3 mb-4">
-          <input id="txSearchInput" oninput="renderTransactionsTable()" type="text" placeholder="Buscar comercio, rubro o nota..."
-            class="bg-slate-900/90 border border-slate-700 rounded-xl px-3 py-2 text-xs text-white focus:outline-none focus:border-cyan-400" />
-          <select id="txAccountFilter" onchange="renderTransactionsTable()"
-            class="bg-slate-900/90 border border-slate-700 rounded-xl px-3 py-2 text-xs text-slate-200">
-            <option value="ALL">Todas las Cuentas / Orígenes</option>
-            <option value="BG-AHO">Banco Guayaquil (0015687792)</option>
-            <option value="BP-AHO">Banco Pichincha (2209937058)</option>
-            <option value="TC-DINERS">Diners Club (Activa)</option>
-            <option value="PAS-TITANIUM">Deuda Titanium (Bloqueada)</option>
-            <option value="ROL-FC">Descuentos Directos Rol FARMCORP</option>
-          </select>
-          <select id="txTypeFilter" onchange="renderTransactionsTable()"
-            class="bg-slate-900/90 border border-slate-700 rounded-xl px-3 py-2 text-xs text-slate-200">
-            <option value="ALL">Todos los Tipos</option>
-            <option value="Gasto">Gasto Bancario / Tarjeta</option>
-            <option value="Gasto_Rol">Gasto Descontado en Rol</option>
-            <option value="Ingreso_Nomina">Ingreso Nómina FARMCORP</option>
-            <option value="Ingreso">Ingreso Adicional</option>
-            <option value="Pago_Tarjeta">Pago Tarjeta Diners</option>
-            <option value="Pago_Deuda_Titanium">Pago Deuda Titanium</option>
-            <option value="Fondeo_Titanium">Fondeo Recibido Titanium</option>
-            <option value="Ahorro_Meta">Ahorro Meta $1000 BG</option>
-          </select>
-          <select id="txOriginFilter" onchange="renderTransactionsTable()"
-            class="bg-slate-900/90 border border-slate-700 rounded-xl px-3 py-2 text-xs text-slate-200">
-            <option value="ALL">Todos los Orígenes (Gmail + Rol + Manual)</option>
-            <option value="Gmail">Automático Gmail</option>
-            <option value="Rol_Pago">Rol de Pago FARMCORP</option>
-            <option value="Manual">Registro Manual</option>
-          </select>
-        </div>
-
-        <div class="overflow-x-auto">
-          <table class="w-full text-left border-collapse">
-            <thead>
-              <tr class="border-b border-white/10 text-[11px] text-slate-400 uppercase">
-                <th class="py-2.5 px-3">Fecha</th>
-                <th class="py-2.5 px-3">Concepto / Comercio</th>
-                <th class="py-2.5 px-3">Categoría</th>
-                <th class="py-2.5 px-3">Cuenta / Origen</th>
-                <th class="py-2.5 px-3 text-right">Monto</th>
-              </tr>
-            </thead>
-            <tbody id="txTableBody" class="divide-y divide-white/5 text-xs"></tbody>
-          </table>
-        </div>
-      </div>
-    </div>
-
-    <!-- ================================================================== -->
-    <!-- VISTA 3: ROLES DE PAGO FARMCORP 2026 (PDF.js + DRIVE + DÉCIMOS)     -->
-    <!-- ================================================================== -->
-    <div id="view-payroll" class="hidden space-y-6">
-
-      <!-- Lector de PDF con PDF.js + Formulario Estructurado FARMCORP -->
-      <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
-        <div class="glass-cyan rounded-2xl p-5 flex flex-col justify-between">
-          <div>
-            <span class="text-[11px] px-2.5 py-0.5 rounded-full bg-cyan-500/20 text-cyan-300 font-semibold">Auto-Parser PDF.js + Google Drive</span>
-            <h2 class="text-base font-bold text-white mt-2">Subir Nuevo Rol de Pago FARMCORP</h2>
-            <p class="text-xs text-slate-300 mt-1">
-              Selecciona el PDF de tu rol de pago. El navegador extraerá automáticamente los 16 rubros de ingresos y descuentos, dividirá los descuentos como gastos pagados y respaldará el PDF en tu carpeta <span class="mono text-cyan-300">Mis_Roles_Farmcorp_2026</span> en Drive.
-            </p>
-
-            <label class="mt-4 flex flex-col items-center justify-center border-2 border-dashed border-cyan-400/40 hover:border-cyan-400 rounded-2xl p-6 cursor-pointer bg-slate-950/40 transition">
-              <i data-lucide="upload-cloud" class="w-8 h-8 text-cyan-400 mb-2"></i>
-              <span id="pdfFileNameLabel" class="text-xs font-semibold text-white text-center">Arrastra o toca para elegir tu Rol en PDF</span>
-              <span class="text-[11px] text-slate-400 mt-1">Formato Nómina Administrativos FARMCORP S.A.</span>
-              <input id="pdfUploadInput" type="file" accept="application/pdf" class="hidden" onchange="handlePayrollPdfUpload(event)" />
-            </label>
-          </div>
-
-          <div id="pdfParseStatus" class="mt-4 text-xs text-cyan-200 bg-slate-900/80 rounded-xl p-3 border border-cyan-500/20">
-            💡 Tip: Puedes cargar el rol de Noviembre o Diciembre 2026 en PDF o editar cualquier valor directamente en el formulario contiguo.
-          </div>
-        </div>
-
-        <!-- Formulario Estructurado con los Rubros Exactos de FARMCORP 2026 -->
-        <div class="glass rounded-2xl p-5 lg:col-span-2">
-          <div class="flex items-center justify-between mb-4">
-            <h3 class="text-sm font-bold text-white">Formulario Oficial de Rol FARMCORP (Validador & Divisor de Gastos)</h3>
-            <div class="flex items-center gap-2">
-              <label class="text-xs text-slate-400">Período:</label>
-              <input id="rolPeriodo" type="month" value="2026-11"
-                class="bg-slate-900 border border-slate-700 rounded-xl px-2.5 py-1 text-xs text-cyan-300 mono font-bold" />
-            </div>
-          </div>
-
-          <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 text-xs">
-            <!-- Ingresos -->
-            <div class="col-span-2 sm:col-span-4 text-[11px] font-bold uppercase tracking-wider text-emerald-400 border-b border-white/10 pb-1">
-              1. Rubros de Ingresos
-            </div>
-            <div>
-              <label class="text-slate-400">Remun. Unificada ($)</label>
-              <input id="rolRemuneracion" type="number" step="0.01" value="1120.00" oninput="recalcPayrollForm()" class="w-full mt-1 bg-slate-900 border border-slate-700 rounded-xl px-2.5 py-1.5 mono text-white" />
-            </div>
-            <div>
-              <label class="text-slate-400">Sueldo Variable ($)</label>
-              <input id="rolVariable" type="number" step="0.01" value="280.00" oninput="recalcPayrollForm()" class="w-full mt-1 bg-slate-900 border border-slate-700 rounded-xl px-2.5 py-1.5 mono text-white" />
-            </div>
-            <div>
-              <label class="text-slate-400">Fondo Reserva Mens. ($)</label>
-              <input id="rolFondoReserva" type="number" step="0.01" value="116.62" oninput="recalcPayrollForm()" class="w-full mt-1 bg-slate-900 border border-slate-700 rounded-xl px-2.5 py-1.5 mono text-white" />
-            </div>
-            <div>
-              <label class="text-slate-400">Vacaciones / Enferm. / Otros</label>
-              <input id="rolVacacionesOtros" type="number" step="0.01" value="0.00" oninput="recalcPayrollForm()" class="w-full mt-1 bg-slate-900 border border-slate-700 rounded-xl px-2.5 py-1.5 mono text-white" />
-            </div>
-
-            <!-- Descuentos -->
-            <div class="col-span-2 sm:col-span-4 text-[11px] font-bold uppercase tracking-wider text-rose-400 border-b border-white/10 pb-1 mt-2">
-              2. Anticipo Quincenal y Descuentos (Se dividirán como Gastos Pagados)
-            </div>
-            <div>
-              <label class="text-cyan-300 font-semibold">Anticipo Quincena ($)</label>
-              <input id="rolAnticipo" type="number" step="0.01" value="448.00" oninput="recalcPayrollForm()" class="w-full mt-1 bg-slate-900 border border-cyan-500/40 rounded-xl px-2.5 py-1.5 mono text-cyan-300 font-bold" />
-            </div>
-            <div>
-              <label class="text-slate-400">Seguro Social IESS ($)</label>
-              <input id="rolIess" type="number" step="0.01" value="132.30" oninput="recalcPayrollForm()" class="w-full mt-1 bg-slate-900 border border-slate-700 rounded-xl px-2.5 py-1.5 mono text-white" />
-            </div>
-            <div>
-              <label class="text-slate-400">Impuesto Renta ($)</label>
-              <input id="rolImpRenta" type="number" step="0.01" value="15.21" oninput="recalcPayrollForm()" class="w-full mt-1 bg-slate-900 border border-slate-700 rounded-xl px-2.5 py-1.5 mono text-white" />
-            </div>
-            <div>
-              <label class="text-slate-400">Seguro Salud ($)</label>
-              <input id="rolSeguroSalud" type="number" step="0.01" value="31.07" oninput="recalcPayrollForm()" class="w-full mt-1 bg-slate-900 border border-slate-700 rounded-xl px-2.5 py-1.5 mono text-white" />
-            </div>
-            <div>
-              <label class="text-slate-400">Crédito Empresarial ($)</label>
-              <input id="rolCreditoEmp" type="number" step="0.01" value="85.00" oninput="recalcPayrollForm()" class="w-full mt-1 bg-slate-900 border border-slate-700 rounded-xl px-2.5 py-1.5 mono text-white" />
-            </div>
-            <div>
-              <label class="text-slate-400">Préstamo Gimnasio ($)</label>
-              <input id="rolGimnasio" type="number" step="0.01" value="0.00" oninput="recalcPayrollForm()" class="w-full mt-1 bg-slate-900 border border-slate-700 rounded-xl px-2.5 py-1.5 mono text-white" />
-            </div>
-            <div>
-              <label class="text-slate-400">Préstamo Estudios ($)</label>
-              <input id="rolEstudios" type="number" step="0.01" value="0.00" oninput="recalcPayrollForm()" class="w-full mt-1 bg-slate-900 border border-slate-700 rounded-xl px-2.5 py-1.5 mono text-white" />
-            </div>
-            <div>
-              <label class="text-slate-400">Corazones FC ($)</label>
-              <input id="rolCorazones" type="number" step="0.01" value="5.00" oninput="recalcPayrollForm()" class="w-full mt-1 bg-slate-900 border border-slate-700 rounded-xl px-2.5 py-1.5 mono text-white" />
-            </div>
-            <div>
-              <label class="text-slate-400">Atrasos + Colaboración ($)</label>
-              <input id="rolAtrasos" type="number" step="0.01" value="0.00" oninput="recalcPayrollForm()" class="w-full mt-1 bg-slate-900 border border-slate-700 rounded-xl px-2.5 py-1.5 mono text-white" />
-            </div>
-            <div>
-              <label class="text-slate-400">Descuentos Varios ($)</label>
-              <input id="rolDescuentosVarios" type="number" step="0.01" value="0.00" oninput="recalcPayrollForm()" class="w-full mt-1 bg-slate-900 border border-slate-700 rounded-xl px-2.5 py-1.5 mono text-white" />
-            </div>
-            <div>
-              <label class="text-slate-400">Días Trabajados</label>
-              <input id="rolDias" type="number" value="30" class="w-full mt-1 bg-slate-900 border border-slate-700 rounded-xl px-2.5 py-1.5 mono text-white" />
-            </div>
-          </div>
-
-          <!-- Resumen en Vivo antes de Guardar -->
-          <div class="mt-4 pt-3 border-t border-white/10 flex flex-wrap items-center justify-between gap-3">
-            <div class="flex flex-wrap items-center gap-4 text-xs">
-              <span>Total Ingresos: <strong id="formTotalIngresos" class="mono text-emerald-400">$1,516.62</strong></span>
-              <span>Total Descuentos: <strong id="formTotalDescuentos" class="mono text-rose-400">$716.58</strong></span>
-              <span>Neto Fin de Mes: <strong id="formNetoPagar" class="mono text-cyan-300 text-sm">$800.04</strong></span>
-              <span>Liquidez Total Mes (Quincena+Neto): <strong id="formLiquidezTotal" class="mono text-white">$1,248.04</strong></span>
-            </div>
-            <button onclick="submitPayrollForm()" class="px-5 py-2.5 rounded-xl bg-cyan-500 hover:bg-cyan-400 text-slate-950 font-bold text-xs flex items-center gap-2 shadow-lg shadow-cyan-500/20">
-              <i data-lucide="save" class="w-4 h-4"></i> Guardar Rol, Respaldar PDF y Dividir Gastos
-            </button>
-          </div>
-        </div>
-      </div>
-
-      <!-- Módulo de Décimos, Utilidades e Ingresos Adicionales -->
-      <div class="grid grid-cols-1 md:grid-cols-4 gap-4">
-        <div class="glass-purple rounded-2xl p-4">
-          <span class="text-[10px] uppercase font-bold text-purple-300">Diciembre 2026</span>
-          <h4 class="text-sm font-bold text-white mt-1">Décimo Tercer Sueldo</h4>
-          <p class="text-2xl font-extrabold mono text-purple-200 mt-2">$1,400.00</p>
-          <p class="text-[11px] text-slate-300 mt-1">Proyección Dic-Nov (Base: Sueldo + Variable $1,400/mes)</p>
-        </div>
-        <div class="glass rounded-2xl p-4 border border-emerald-500/20">
-          <span class="text-[10px] uppercase font-bold text-emerald-300">Marzo (Región Costa)</span>
-          <h4 class="text-sm font-bold text-white mt-1">Décimo Cuarto Sueldo</h4>
-          <p class="text-2xl font-extrabold mono text-emerald-300 mt-2">$482.00</p>
-          <p class="text-[11px] text-slate-400 mt-1">100% SBU Oficial Ecuador 2026</p>
-        </div>
-        <div class="glass rounded-2xl p-4 border border-cyan-500/20">
-          <span class="text-[10px] uppercase font-bold text-cyan-300">Mensualizado en Rol</span>
-          <h4 class="text-sm font-bold text-white mt-1">Fondos de Reserva 2026</h4>
-          <p class="text-2xl font-extrabold mono text-cyan-300 mt-2">$1,163.93</p>
-          <p class="text-[11px] text-slate-400 mt-1">Acumulado Ene-Oct ($116.62/mes en rol)</p>
-        </div>
-        <div class="glass rounded-2xl p-4 flex flex-col justify-between">
-          <div>
-            <span class="text-[10px] uppercase font-bold text-amber-300">Fuera de Nómina</span>
-            <h4 class="text-sm font-bold text-white mt-1">Ingresos Adicionales / Extras</h4>
-          </div>
-          <button onclick="openQuickModal('Ingreso')" class="mt-3 w-full py-2 rounded-xl bg-emerald-500/20 hover:bg-emerald-500/30 border border-emerald-500/40 text-emerald-300 font-bold text-xs">
-            + Registrar Ingreso Adicional
+          <button onclick="openQuickModal('Gasto')" class="px-4 py-2 rounded-xl bg-cyan-400 hover:bg-cyan-300 text-slate-950 font-bold text-xs flex items-center gap-1.5">
+            <i data-lucide="plus" class="w-4 h-4"></i> Registrar Movimiento o Transferencia
           </button>
         </div>
-      </div>
 
-      <!-- Tabla Histórica de los 10 Roles de Pago 2026 (Enero a Octubre) -->
-      <div class="glass rounded-2xl p-5">
-        <h3 class="text-sm font-bold text-white mb-1">Historial Consolidado de Roles de Pago FARMCORP 2026 (Enero – Octubre)</h3>
-        <p class="text-xs text-slate-400 mb-4">Haz clic en "Cargar en Editor" en cualquier mes para inspeccionar sus 16 rubros o adjuntarle su PDF hacia Google Drive</p>
+        <div class="grid grid-cols-1 sm:grid-cols-4 gap-3 mb-4">
+          <input id="txSearchInput" oninput="renderTransactionsTable()" type="text" placeholder="Buscar beneficiario, comercio o motivo..."
+            class="bg-slate-900/90 border border-slate-700 rounded-xl px-3 py-2 text-xs text-white focus:outline-none focus:border-cyan-400" />
+          <select id="txCategoryFilter" onchange="renderTransactionsTable()"
+            class="bg-slate-900/90 border border-slate-700 rounded-xl px-3 py-2 text-xs text-slate-200">
+            <option value="ALL">Todas las Categorías</option>
+            <option value="Otros">🚨 Solo "Otros" (Por clasificar)</option>
+            <option value="Supermercado">Supermercado</option>
+            <option value="Restaurantes">Restaurantes</option>
+            <option value="Alimentación">Alimentación</option>
+            <option value="Entretenimiento">Entretenimiento</option>
+            <option value="Transporte">Transporte (Gasolina / Licencia)</option>
+            <option value="Servicios">Servicios (CNEL / Lavandería / Mamá)</option>
+            <option value="Préstamos y Cruces">Préstamos y Cruce de Valores</option>
+            <option value="Amortización Deuda Titanium">Amortización Deuda Titanium</option>
+            <option value="Salud">Salud (Rol + Farmacia)</option>
+            <option value="Crédito Empresarial / Farmacia">Crédito Empresarial FARMCORP</option>
+          </select>
+          <select id="txCanalFilter" onchange="renderTransactionsTable()"
+            class="bg-slate-900/90 border border-slate-700 rounded-xl px-3 py-2 text-xs text-slate-200">
+            <option value="ALL">Todos los Canales</option>
+            <option value="Consumo Tarjeta">Consumo Tarjeta</option>
+            <option value="Transferencia Interna BG">Transferencia Interna BG</option>
+            <option value="Transferencia Interbancaria">Transferencia Interbancaria</option>
+            <option value="Descuento Rol">Descuento Directo en Rol</option>
+          </select>
+          <select id="txAccountFilter" onchange="renderTransactionsTable()"
+            class="bg-slate-900/90 border border-slate-700 rounded-xl px-3 py-2 text-xs text-slate-200">
+            <option value="ALL">Todas las Cuentas</option>
+            <option value="BG-AHO">Banco Guayaquil (0015687792)</option>
+            <option value="BP-AHO">Banco Pichincha (2209937058)</option>
+            <option value="TC-DINERS">Diners Club</option>
+            <option value="PAS-TITANIUM">Deuda Titanium</option>
+            <option value="ROL-FC">Rol FARMCORP</option>
+          </select>
+        </div>
+
         <div class="overflow-x-auto">
           <table class="w-full text-left border-collapse text-xs">
             <thead>
               <tr class="border-b border-white/10 text-[11px] text-slate-400 uppercase">
-                <th class="py-2.5 px-2">Período</th>
-                <th class="py-2.5 px-2 text-right">Total Ingresos</th>
-                <th class="py-2.5 px-2 text-right">Anticipo (15)</th>
-                <th class="py-2.5 px-2 text-right">IESS + Renta</th>
-                <th class="py-2.5 px-2 text-right">Seg. Salud</th>
-                <th class="py-2.5 px-2 text-right">Créd. Empres.</th>
-                <th class="py-2.5 px-2 text-right">Gym / Estudios / Otros</th>
-                <th class="py-2.5 px-2 text-right">Neto Fin Mes</th>
-                <th class="py-2.5 px-2 text-right text-cyan-300">Liquidez Total Banco</th>
-                <th class="py-2.5 px-2 text-center">Acción</th>
+                <th class="py-2.5 px-3">Fecha / Hora</th>
+                <th class="py-2.5 px-3">Comercio / Beneficiario</th>
+                <th class="py-2.5 px-3">Motivo / Nota</th>
+                <th class="py-2.5 px-3">Categoría (1-Clic para cambiar)</th>
+                <th class="py-2.5 px-3">Canal</th>
+                <th class="py-2.5 px-3 text-right">Monto</th>
               </tr>
             </thead>
-            <tbody id="payrollHistoryBody" class="divide-y divide-white/5 mono"></tbody>
+            <tbody id="txTableBody" class="divide-y divide-white/5"></tbody>
           </table>
         </div>
       </div>
     </div>
 
     <!-- ================================================================== -->
-    <!-- VISTA 4: PLANEAMIENTO (PRESUPUESTO BASE CERO & REGLAS GMAIL)       -->
+    <!-- VISTA 4: ROLES FARMCORP 2026 + META PROYECTO AUTONOMY              -->
+    <!-- ================================================================== -->
+    <div id="view-payroll" class="hidden space-y-6">
+      <!-- Tarjeta Especial de Meta Proyecto Autonomy con Socio -->
+      <div class="glass-purple rounded-2xl p-5 flex flex-wrap items-center justify-between gap-4">
+        <div class="max-w-2xl">
+          <span class="text-[10px] uppercase font-bold px-2.5 py-0.5 rounded-full bg-purple-500/30 text-purple-200">Emprendimiento & Consultoría con Socio</span>
+          <h2 class="text-base font-bold text-white mt-1.5">Meta de Ingresos Variable: Proyecto Autonomy ($400.00 / mes referencial)</h2>
+          <p class="text-xs text-slate-300 mt-1">
+            Esta meta se mantiene separada de tu sueldo fijo de FARMCORP para que tu presupuesto básico nunca dependa de ingresos aún no facturados. Cada vez que cierre un proyecto de Autonomy, regístralo aquí para ver el progreso del mes.
+          </p>
+        </div>
+        <div class="flex items-center gap-4">
+          <div class="text-right">
+            <p class="text-xs text-purple-200">Facturado en el Mes</p>
+            <p id="autonomyMonthTotal" class="text-2xl font-extrabold mono text-white">$0.00 <span class="text-xs text-purple-300 font-normal">/ $400.00</span></p>
+          </div>
+          <button onclick="openQuickModal('Ingreso_Autonomy')" class="px-4 py-2.5 rounded-xl bg-purple-500 hover:bg-purple-400 text-white font-bold text-xs shadow-lg shadow-purple-500/30">
+            + Registrar Ingreso Autonomy
+          </button>
+        </div>
+      </div>
+
+      <!-- Subida de PDF de Rol FARMCORP + Formulario Estructurado -->
+      <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+        <div class="glass-cyan rounded-2xl p-5 flex flex-col justify-between">
+          <div>
+            <span class="text-[11px] px-2.5 py-0.5 rounded-full bg-cyan-500/20 text-cyan-300 font-semibold">Lector PDF.js + Drive</span>
+            <h3 class="text-base font-bold text-white mt-2">Cargar Rol de Pago FARMCORP</h3>
+            <p class="text-xs text-slate-300 mt-1">
+              Sube el PDF del rol de Noviembre o Diciembre 2026. Pulso prellenará los rubros, respaldará el PDF en <span class="mono text-cyan-300">Mis_Roles_Farmcorp_2026</span> y dividirá los descuentos como gastos pagados.
+            </p>
+            <label class="mt-4 flex flex-col items-center justify-center border-2 border-dashed border-cyan-400/40 hover:border-cyan-400 rounded-2xl p-6 cursor-pointer bg-slate-950/40 transition">
+              <i data-lucide="upload-cloud" class="w-8 h-8 text-cyan-400 mb-2"></i>
+              <span id="pdfFileNameLabel" class="text-xs font-semibold text-white text-center">Seleccionar PDF de Rol FARMCORP</span>
+              <input id="pdfUploadInput" type="file" accept="application/pdf" class="hidden" onchange="handlePayrollPdfUpload(event)" />
+            </label>
+          </div>
+          <div id="pdfParseStatus" class="mt-4 text-xs text-cyan-200 bg-slate-900/80 rounded-xl p-3 border border-cyan-500/20">
+            Tus 10 roles de Enero a Octubre 2026 ya están cargados y conciliados abajo.
+          </div>
+        </div>
+
+        <div class="glass rounded-2xl p-5 lg:col-span-2">
+          <div class="flex items-center justify-between mb-3">
+            <h3 class="text-sm font-bold text-white">Desglose de Rubros del Rol FARMCORP</h3>
+            <input id="rolPeriodo" type="month" value="2026-11" class="bg-slate-900 border border-slate-700 rounded-xl px-2.5 py-1 text-xs text-cyan-300 mono font-bold" />
+          </div>
+          <div class="grid grid-cols-2 sm:grid-cols-4 gap-2.5 text-xs">
+            <div><label class="text-slate-400">Remun. Unificada</label><input id="rolRemuneracion" type="number" step="0.01" value="1120.00" oninput="recalcPayrollForm()" class="w-full mt-1 bg-slate-900 border border-slate-700 rounded-xl px-2.5 py-1.5 mono text-white" /></div>
+            <div><label class="text-slate-400">Sueldo Variable</label><input id="rolVariable" type="number" step="0.01" value="280.00" oninput="recalcPayrollForm()" class="w-full mt-1 bg-slate-900 border border-slate-700 rounded-xl px-2.5 py-1.5 mono text-white" /></div>
+            <div><label class="text-slate-400">Fondo Reserva</label><input id="rolFondoReserva" type="number" step="0.01" value="116.62" oninput="recalcPayrollForm()" class="w-full mt-1 bg-slate-900 border border-slate-700 rounded-xl px-2.5 py-1.5 mono text-white" /></div>
+            <div><label class="text-slate-400">Vacaciones / Otros</label><input id="rolVacacionesOtros" type="number" step="0.01" value="0.00" oninput="recalcPayrollForm()" class="w-full mt-1 bg-slate-900 border border-slate-700 rounded-xl px-2.5 py-1.5 mono text-white" /></div>
+            <div><label class="text-cyan-300 font-semibold">Anticipo Quincena</label><input id="rolAnticipo" type="number" step="0.01" value="448.00" oninput="recalcPayrollForm()" class="w-full mt-1 bg-slate-900 border border-cyan-500/40 rounded-xl px-2.5 py-1.5 mono text-cyan-300 font-bold" /></div>
+            <div><label class="text-slate-400">IESS (9.45%)</label><input id="rolIess" type="number" step="0.01" value="132.30" oninput="recalcPayrollForm()" class="w-full mt-1 bg-slate-900 border border-slate-700 rounded-xl px-2.5 py-1.5 mono text-white" /></div>
+            <div><label class="text-slate-400">Impuesto Renta</label><input id="rolImpRenta" type="number" step="0.01" value="15.21" oninput="recalcPayrollForm()" class="w-full mt-1 bg-slate-900 border border-slate-700 rounded-xl px-2.5 py-1.5 mono text-white" /></div>
+            <div><label class="text-slate-400">Seguro Salud</label><input id="rolSeguroSalud" type="number" step="0.01" value="31.07" oninput="recalcPayrollForm()" class="w-full mt-1 bg-slate-900 border border-slate-700 rounded-xl px-2.5 py-1.5 mono text-white" /></div>
+            <div><label class="text-slate-400">Créd. Empresarial</label><input id="rolCreditoEmp" type="number" step="0.01" value="85.00" oninput="recalcPayrollForm()" class="w-full mt-1 bg-slate-900 border border-slate-700 rounded-xl px-2.5 py-1.5 mono text-white" /></div>
+            <div><label class="text-slate-400">Préstamo Gym</label><input id="rolGimnasio" type="number" step="0.01" value="0.00" oninput="recalcPayrollForm()" class="w-full mt-1 bg-slate-900 border border-slate-700 rounded-xl px-2.5 py-1.5 mono text-white" /></div>
+            <div><label class="text-slate-400">Préstamo Estudios</label><input id="rolEstudios" type="number" step="0.01" value="0.00" oninput="recalcPayrollForm()" class="w-full mt-1 bg-slate-900 border border-slate-700 rounded-xl px-2.5 py-1.5 mono text-white" /></div>
+            <div><label class="text-slate-400">Corazones / Atrasos / Varios</label><input id="rolDescuentosVarios" type="number" step="0.01" value="5.00" oninput="recalcPayrollForm()" class="w-full mt-1 bg-slate-900 border border-slate-700 rounded-xl px-2.5 py-1.5 mono text-white" /></div>
+          </div>
+          <div class="mt-4 pt-3 border-t border-white/10 flex flex-wrap items-center justify-between gap-3 text-xs">
+            <div class="flex flex-wrap gap-3">
+              <span>Bruto: <strong id="formTotalIngresos" class="mono text-emerald-400">$1,516.62</strong></span>
+              <span>Neto Fin Mes: <strong id="formNetoPagar" class="mono text-cyan-300">$800.04</strong></span>
+              <span>Liquidez Total Banco: <strong id="formLiquidezTotal" class="mono text-white">$1,248.04</strong></span>
+            </div>
+            <button onclick="submitPayrollForm()" class="px-4 py-2 rounded-xl bg-cyan-400 hover:bg-cyan-300 text-slate-950 font-bold text-xs">
+              Guardar y Conciliar Rol
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Tabla Histórica de Roles 2026 -->
+      <div class="glass rounded-2xl p-5 overflow-x-auto">
+        <h3 class="text-sm font-bold text-white mb-3">Historial de Roles de Pago FARMCORP 2026 (Enero – Octubre)</h3>
+        <table class="w-full text-left border-collapse text-xs mono">
+          <thead>
+            <tr class="border-b border-white/10 text-[11px] text-slate-400 uppercase font-sans">
+              <th class="py-2 px-2">Mes</th>
+              <th class="py-2 px-2 text-right">Ingresos</th>
+              <th class="py-2 px-2 text-right">Quincena (15)</th>
+              <th class="py-2 px-2 text-right">IESS+Renta</th>
+              <th class="py-2 px-2 text-right">Seg. Salud</th>
+              <th class="py-2 px-2 text-right">Créd. Emp.</th>
+              <th class="py-2 px-2 text-right">Neto Fin Mes</th>
+              <th class="py-2 px-2 text-right text-cyan-300">Liquidez Total</th>
+            </tr>
+          </thead>
+          <tbody id="payrollHistoryBody" class="divide-y divide-white/5"></tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- ================================================================== -->
+    <!-- VISTA 5: PRESUPUESTO VS REAL & REGLAS DE CATEGORIZACIÓN            -->
     <!-- ================================================================== -->
     <div id="view-planning" class="hidden space-y-6">
       <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
-        <!-- Ejecución Presupuestaria por Categoría (Semáforo) -->
         <div class="glass rounded-2xl p-5 lg:col-span-2">
-          <h2 class="text-base font-bold text-white">Ejecución Presupuestaria Mensual (Gastos de Rol + Bancos/Tarjetas)</h2>
-          <p class="text-xs text-slate-400 mb-4">Semáforo visual: Verde (&lt;75%), Ámbar (75%-95%), Magenta Neón (&gt;95%)</p>
+          <h2 class="text-base font-bold text-white">Presupuesto Base vs. Ejecución Real Mensual</h2>
+          <p class="text-xs text-slate-400 mb-4">Unifica las 9 categorías de tu hoja Banco Guayaquil + Gastos de Rol + Préstamos/Cruces</p>
           <div id="budgetBarsContainer" class="space-y-3.5"></div>
         </div>
 
-        <!-- Reglas de Categorización Automática de Gmail -->
         <div class="glass rounded-2xl p-5">
-          <h2 class="text-base font-bold text-white">Reglas Automáticas Gmail</h2>
-          <p class="text-xs text-slate-400 mb-3">Palabras clave para clasificar consumos de Guayaquil, Pichincha, Diners y pagos a Titanium</p>
-
+          <h2 class="text-base font-bold text-white">Diccionario de Reglas (Comercio o Motivo)</h2>
+          <p class="text-xs text-slate-400 mb-3">Si el nombre del beneficiario o el motivo de la transferencia contiene la palabra clave, Pulso asigna la categoría automáticamente</p>
           <div class="space-y-2 mb-4">
-            <input id="ruleKeyword" type="text" placeholder="Palabra clave (ej. TITANIUM, UBER)"
+            <input id="ruleKeyword" type="text" placeholder="Palabra clave o Motivo (ej. ALMUERZO, LICENCIA)"
               class="w-full bg-slate-900 border border-slate-700 rounded-xl px-3 py-2 text-xs text-white" />
             <select id="ruleCategory" class="w-full bg-slate-900 border border-slate-700 rounded-xl px-3 py-2 text-xs text-slate-200">
-              <option value="Alimentación y Supermercado">Alimentación y Supermercado</option>
-              <option value="Transporte, Gasolina y Movilidad">Transporte, Gasolina y Movilidad</option>
-              <option value="Salud y Seguro Médico">Salud y Seguro Médico</option>
-              <option value="Restaurantes, Ocio y Suscripciones">Restaurantes, Ocio y Suscripciones</option>
-              <option value="Vivienda y Servicios Básicos">Vivienda y Servicios Básicos</option>
+              <option value="Restaurantes">Restaurantes</option>
+              <option value="Alimentación">Alimentación</option>
+              <option value="Supermercado">Supermercado</option>
+              <option value="Transporte">Transporte (Gasolina / Vehículo / Licencia)</option>
+              <option value="Servicios">Servicios (CNEL / Lavandería / Mamá)</option>
+              <option value="Entretenimiento">Entretenimiento (Salidas Dara / BSC)</option>
+              <option value="Compras">Compras</option>
+              <option value="Salud">Salud</option>
+              <option value="Préstamos y Cruces">Préstamos y Cruce de Valores</option>
               <option value="Amortización Deuda Titanium">Amortización Deuda Titanium</option>
             </select>
-            <button onclick="addNewGmailRule()" class="w-full py-2 rounded-xl bg-cyan-500 hover:bg-cyan-400 text-slate-950 font-bold text-xs">
-              + Agregar Regla de Clasificación
+            <button onclick="addNewGmailRule()" class="w-full py-2 rounded-xl bg-cyan-400 hover:bg-cyan-300 text-slate-950 font-bold text-xs">
+              + Guardar Regla Automática
             </button>
           </div>
-
-          <div id="gmailRulesList" class="space-y-2 max-h-80 overflow-y-auto pr-1"></div>
+          <div id="gmailRulesList" class="space-y-2 max-h-96 overflow-y-auto pr-1"></div>
         </div>
       </div>
     </div>
 
   </main>
 
-  <!-- ==================================================================== -->
-  <!-- 4. BOTÓN FLOTANTE (FAB) DE REGISTRO EN 3 TOQUES + NAV MÓVIL          -->
-  <!-- ==================================================================== -->
-  <button onclick="openQuickModal('Gasto')" title="Registrar movimiento rápido (3 toques)"
+  <!-- Botón Flotante (FAB) + Barra Móvil -->
+  <button onclick="openQuickModal('Gasto')" title="Registrar movimiento o transferencia con motivo"
     class="fixed right-5 bottom-20 md:bottom-8 z-40 w-14 h-14 rounded-2xl bg-gradient-to-tr from-cyan-400 to-purple-600 text-slate-950 shadow-xl shadow-cyan-500/30 flex items-center justify-center hover:scale-105 transition">
     <i data-lucide="plus" class="w-7 h-7 stroke-[2.5]"></i>
   </button>
 
-  <nav class="md:hidden fixed bottom-0 inset-x-0 z-30 glass border-t border-white/10 grid grid-cols-4 py-2 px-2 text-[11px]">
+  <nav class="md:hidden fixed bottom-0 inset-x-0 z-30 glass border-t border-white/10 grid grid-cols-5 py-2 px-1 text-[10px]">
     <button onclick="switchTab('dashboard')" id="mobTab-dashboard" class="flex flex-col items-center gap-1 text-cyan-400 font-semibold">
-      <i data-lucide="layout-dashboard" class="w-5 h-5"></i><span>Inicio</span>
+      <i data-lucide="layout-dashboard" class="w-4 h-4"></i><span>Pulso</span>
+    </button>
+    <button onclick="switchTab('reclassify')" id="mobTab-reclassify" class="flex flex-col items-center gap-1 text-rose-400">
+      <i data-lucide="sparkles" class="w-4 h-4"></i><span>"Otros"</span>
     </button>
     <button onclick="switchTab('transactions')" id="mobTab-transactions" class="flex flex-col items-center gap-1 text-slate-400">
-      <i data-lucide="arrow-left-right" class="w-5 h-5"></i><span>Movimientos</span>
+      <i data-lucide="arrow-left-right" class="w-4 h-4"></i><span>Movimientos</span>
     </button>
     <button onclick="switchTab('payroll')" id="mobTab-payroll" class="flex flex-col items-center gap-1 text-slate-400">
-      <i data-lucide="file-spreadsheet" class="w-5 h-5"></i><span>Roles 2026</span>
+      <i data-lucide="file-spreadsheet" class="w-4 h-4"></i><span>Roles/Auton.</span>
     </button>
     <button onclick="switchTab('planning')" id="mobTab-planning" class="flex flex-col items-center gap-1 text-slate-400">
-      <i data-lucide="target" class="w-5 h-5"></i><span>Presupuesto</span>
+      <i data-lucide="target" class="w-4 h-4"></i><span>Presupuesto</span>
     </button>
   </nav>
 
   <!-- ==================================================================== -->
-  <!-- 5. MODAL DE REGISTRO RÁPIDO (GASTO, INGRESO, DINERS, TITANIUM)       -->
+  <!-- MODAL DE REGISTRO RÁPIDO CON CAMPO "MOTIVO DE TRANSFERENCIA"         -->
   <!-- ==================================================================== -->
   <div id="quickTxModal" class="fixed inset-0 z-50 hidden items-center justify-center bg-black/80 backdrop-blur-md p-4">
     <div class="glass max-w-md w-full rounded-3xl p-6 border border-cyan-500/30">
       <div class="flex items-center justify-between mb-4">
-        <h3 class="text-base font-bold text-white">Registro Rápido de Movimiento</h3>
+        <h3 class="text-base font-bold text-white">Nuevo Movimiento en Pulso</h3>
         <button onclick="closeQuickModal()" class="text-slate-400 hover:text-white"><i data-lucide="x" class="w-5 h-5"></i></button>
       </div>
 
       <div class="space-y-3 text-xs">
         <div>
-          <label class="text-slate-400">Tipo de Operación</label>
+          <label class="text-slate-400">Tipo de Movimiento</label>
           <select id="qTipo" onchange="handleQuickTypeChange()" class="w-full mt-1 bg-slate-900 border border-slate-700 rounded-xl px-3 py-2.5 text-white font-semibold">
-            <option value="Gasto">Gasto / Consumo (Débito o Diners Club)</option>
-            <option value="Ingreso">Ingreso Adicional (Fuera de Rol)</option>
-            <option value="Pago_Deuda_Titanium">Salida: Pago de Deuda Tarjeta Titanium (Bloqueada)</option>
+            <option value="Gasto">Gasto / Consumo / Transferencia</option>
+            <option value="Cruce_Valores">Préstamo o Cruce de Valores (Amigos / Reembolsable)</option>
+            <option value="Ingreso_Autonomy">Ingreso Proyecto Consultoría Autonomy (Con Socio)</option>
+            <option value="Pago_Deuda_Titanium">Salida: Abono a Deuda Tarjeta Titanium (Bloqueada)</option>
             <option value="Fondeo_Titanium">Entrada: Dinero Recibido para Pagar Titanium</option>
-            <option value="Pago_Tarjeta">Pago de Estado de Cuenta Diners Club</option>
-            <option value="Ahorro_Meta">Aporte a Meta de Ahorro $1,000 BG</option>
+            <option value="Pago_Tarjeta">Pago Estado de Cuenta Diners Club</option>
+            <option value="Ahorro_Meta">Aporte a Meta $1,000 Banco Guayaquil</option>
           </select>
         </div>
 
         <div class="grid grid-cols-2 gap-3">
           <div>
-            <label class="text-slate-400">Monto (USD $)</label>
+            <label class="text-slate-400">Monto ($)</label>
             <input id="qMonto" type="number" step="0.01" placeholder="0.00"
-              class="w-full mt-1 bg-slate-900 border border-cyan-500/40 rounded-xl px-3 py-2.5 text-lg mono font-bold text-cyan-300" />
+              class="w-full mt-1 bg-slate-900 border border-cyan-500/40 rounded-xl px-3 py-2 text-lg mono font-bold text-cyan-300" />
           </div>
           <div>
             <label class="text-slate-400">Fecha</label>
             <input id="qFecha" type="date"
-              class="w-full mt-1 bg-slate-900 border border-slate-700 rounded-xl px-3 py-2.5 text-white mono" />
+              class="w-full mt-1 bg-slate-900 border border-slate-700 rounded-xl px-3 py-2 text-white mono" />
+          </div>
+        </div>
+
+        <div class="grid grid-cols-2 gap-3">
+          <div>
+            <label class="text-slate-400">Cuenta</label>
+            <select id="qCuenta" class="w-full mt-1 bg-slate-900 border border-slate-700 rounded-xl px-3 py-2 text-white">
+              <option value="BG-AHO">Banco Guayaquil (0015687792)</option>
+              <option value="BP-AHO">Banco Pichincha (2209937058)</option>
+              <option value="TC-DINERS">Diners Club</option>
+            </select>
+          </div>
+          <div>
+            <label class="text-slate-400">Canal</label>
+            <select id="qCanal" class="w-full mt-1 bg-slate-900 border border-slate-700 rounded-xl px-3 py-2 text-white">
+              <option value="Transferencia Interna BG">Transferencia Interna BG</option>
+              <option value="Transferencia Interbancaria">Transferencia Interbancaria</option>
+              <option value="Consumo Tarjeta">Consumo Tarjeta</option>
+              <option value="Efectivo">Efectivo</option>
+            </select>
           </div>
         </div>
 
         <div>
-          <label class="text-slate-400">Cuenta Bancaria / Medio</label>
-          <select id="qCuenta" class="w-full mt-1 bg-slate-900 border border-slate-700 rounded-xl px-3 py-2.5 text-white">
-            <option value="BG-AHO">Banco Guayaquil Ahorros (0015687792)</option>
-            <option value="BP-AHO">Banco Pichincha Ahorros (2209937058)</option>
-            <option value="TC-DINERS">Tarjeta Diners Club (Activa)</option>
-          </select>
-        </div>
-
-        <div>
-          <label class="text-slate-400">Categoría</label>
-          <select id="qCategoria" class="w-full mt-1 bg-slate-900 border border-slate-700 rounded-xl px-3 py-2.5 text-white">
-            <option value="Alimentación y Supermercado">Alimentación y Supermercado</option>
-            <option value="Transporte, Gasolina y Movilidad">Transporte, Gasolina y Movilidad</option>
-            <option value="Restaurantes, Ocio y Suscripciones">Restaurantes, Ocio y Suscripciones</option>
-            <option value="Vivienda y Servicios Básicos">Vivienda y Servicios Básicos</option>
-            <option value="Salud y Seguro Médico">Salud y Seguro Médico</option>
-            <option value="Amortización Deuda Titanium">Amortización Deuda Titanium</option>
-            <option value="Ahorro Meta BG ($1,000)">Ahorro Meta BG ($1,000)</option>
-            <option value="Pago Tarjeta Diners Club">Pago Tarjeta Diners Club</option>
-            <option value="Ingresos Adicionales">Ingresos Adicionales</option>
-          </select>
-        </div>
-
-        <div>
-          <label class="text-slate-400">Comercio / Concepto</label>
-          <input id="qComercio" type="text" placeholder="Ej. Supermaxi, Abono cuota Titanium, etc."
+          <label class="text-slate-400">Comercio o Beneficiario</label>
+          <input id="qComercio" type="text" placeholder="Ej. La Pata Gorda, Alban Dara, Primax..."
             class="w-full mt-1 bg-slate-900 border border-slate-700 rounded-xl px-3 py-2 text-white" />
+        </div>
+
+        <div>
+          <label class="text-cyan-300 font-semibold">Motivo de la Transferencia / Nota (Autoclasifica si escribes motivo)</label>
+          <input id="qMotivo" type="text" oninput="autoDetectCategoryFromMotivo()" placeholder="Ej. Almuerzo, Gasolina Captiva, Préstamo, Licencia..."
+            class="w-full mt-1 bg-slate-900 border border-cyan-500/40 rounded-xl px-3 py-2 text-white" />
+        </div>
+
+        <div>
+          <label class="text-slate-400">Categoría Asignada</label>
+          <select id="qCategoria" class="w-full mt-1 bg-slate-900 border border-slate-700 rounded-xl px-3 py-2 text-white font-semibold">
+            <option value="Restaurantes">Restaurantes</option>
+            <option value="Alimentación">Alimentación</option>
+            <option value="Supermercado">Supermercado</option>
+            <option value="Transporte">Transporte (Gasolina Captiva / Licencia)</option>
+            <option value="Servicios">Servicios (CNEL / Martinizing / Mamá)</option>
+            <option value="Entretenimiento">Entretenimiento (Salidas Dara / BSC)</option>
+            <option value="Compras">Compras</option>
+            <option value="Salud">Salud</option>
+            <option value="Préstamos y Cruces">Préstamos y Cruce de Valores</option>
+            <option value="Amortización Deuda Titanium">Amortización Deuda Titanium</option>
+            <option value="Proyecto Autonomy">Proyecto Autonomy</option>
+            <option value="Otros">Otros (Enviar a bandeja por clasificar)</option>
+          </select>
         </div>
       </div>
 
-      <button onclick="saveQuickTransaction()" class="mt-5 w-full py-3 rounded-xl bg-cyan-500 hover:bg-cyan-400 text-slate-950 font-bold text-sm">
-        Guardar Movimiento
+      <button onclick="saveQuickTransaction()" class="mt-5 w-full py-3 rounded-xl bg-cyan-400 hover:bg-cyan-300 text-slate-950 font-bold text-sm">
+        Guardar en Pulso
       </button>
     </div>
   </div>
 
-  <!-- ==================================================================== -->
-  <!-- 6. MODAL DE CONEXIÓN A GOOGLE APPS SCRIPT WEB APP                    -->
-  <!-- ==================================================================== -->
+  <!-- Modal Configuración URL Apps Script -->
   <div id="apiConfigModal" class="fixed inset-0 z-50 hidden items-center justify-center bg-black/80 backdrop-blur-md p-4">
     <div class="glass max-w-lg w-full rounded-3xl p-6 border border-cyan-500/30">
       <div class="flex items-center justify-between mb-3">
-        <h3 class="text-base font-bold text-white">Conexión con Google Sheets & Gmail (Apps Script)</h3>
+        <h3 class="text-base font-bold text-white">Conectar Pulso con tu Google Sheet Unificado</h3>
         <button onclick="closeApiModal()" class="text-slate-400 hover:text-white"><i data-lucide="x" class="w-5 h-5"></i></button>
       </div>
-      <p class="text-xs text-slate-300 mb-4">
-        Pega aquí la URL <span class="mono text-cyan-300">https://script.google.com/macros/s/.../exec</span> obtenida al implementar tu <span class="mono">Code.gs</span>.
-      </p>
+      <p class="text-xs text-slate-300 mb-3">Pega la URL <span class="mono text-cyan-300">/exec</span> de tu Google Apps Script unificado:</p>
       <input id="apiUrlInput" type="url" placeholder="https://script.google.com/macros/s/.../exec"
         class="w-full bg-slate-900 border border-slate-700 rounded-xl px-3 py-2.5 text-xs mono text-cyan-300 mb-4" />
       <div class="flex justify-end gap-2">
-        <button onclick="closeApiModal()" class="px-4 py-2 rounded-xl glass text-xs">Cancelar</button>
-        <button onclick="saveApiUrl()" class="px-4 py-2 rounded-xl bg-cyan-500 text-slate-950 font-bold text-xs">Guardar y Sincronizar</button>
+        <button onclick="closeApiModal()" class="px-4 py-2 rounded-xl glass text-xs">Cerrar</button>
+        <button onclick="saveApiUrl()" class="px-4 py-2 rounded-xl bg-cyan-400 text-slate-950 font-bold text-xs">Conectar Ahora</button>
       </div>
     </div>
   </div>
 
-  <!-- Toast Notification -->
   <div id="toast" class="fixed bottom-6 left-1/2 -translate-x-1/2 z-50 hidden px-4 py-2.5 rounded-2xl glass-cyan text-xs font-semibold text-white shadow-2xl"></div>
 
   <!-- ==================================================================== -->
-  <!-- 7. MOTOR JAVASCRIPT VANILLA (DATOS 2026 + PDF.JS + CHARTS + API)     -->
+  <!-- MOTOR JAVASCRIPT DE PULSO CON DATA REAL DE SEPT, OCT, NOV Y ROLES    -->
   <!-- ==================================================================== -->
   <script>
     const PIN_REQUIRED = '993008';
-    const DEFAULT_API_URL = ''; // Opcional: Pega aquí tu URL /exec fija antes de subir a GitHub Pages
-    let currentPdfBase64 = '';
-    let currentPdfName = '';
+    const DEFAULT_API_URL = '';
     let payrollChartInstance = null;
     let donutChartInstance = null;
 
-    // Semilla Local con tus Datos Reales 2026 (Enero - Octubre)
+    // 1. Roles Reales FARMCORP 2026 (Enero a Octubre)
     const INITIAL_ROLES_2026 = [
-      { ID_Rol: 'ROL-2026-01', Periodo: '2026-01', Dias_Trab: 29, Remuneracion_Unificada: 1082.67, Sueldo_Variable: 280.00, Fondo_Reserva: 116.62, Vacaciones_Enfermedad_Otros: 38.48, Total_Ingresos: 1517.77, Anticipo_Quincena: 448.00, IESS: 132.30, Imp_Renta: 0.00, Seguro_Salud: 27.81, Corazones_FC: 5.00, Credito_Empresarial: 84.50, Prestamo_Gimnasio: 20.00, Prestamo_Estudios: 180.00, Atrasos_Colaboracion: 0.93, Descuentos_Varios: 15.33, Total_Descuentos: 913.87, Neto_Pagar_Fin_Mes: 603.90, Liquidez_Total_Banco: 1051.90, URL_PDF_Drive: '' },
-      { ID_Rol: 'ROL-2026-02', Periodo: '2026-02', Dias_Trab: 26, Remuneracion_Unificada: 970.67, Sueldo_Variable: 280.00, Fondo_Reserva: 116.62, Vacaciones_Enfermedad_Otros: 149.33, Total_Ingresos: 1516.62, Anticipo_Quincena: 448.00, IESS: 132.30, Imp_Renta: 13.66, Seguro_Salud: 27.81, Corazones_FC: 5.00, Credito_Empresarial: 89.57, Prestamo_Gimnasio: 20.00, Prestamo_Estudios: 180.00, Atrasos_Colaboracion: 0.93, Descuentos_Varios: 10.38, Total_Descuentos: 927.65, Neto_Pagar_Fin_Mes: 588.97, Liquidez_Total_Banco: 1036.97, URL_PDF_Drive: '' },
-      { ID_Rol: 'ROL-2026-03', Periodo: '2026-03', Dias_Trab: 30, Remuneracion_Unificada: 1120.00, Sueldo_Variable: 280.00, Fondo_Reserva: 116.62, Vacaciones_Enfermedad_Otros: 0.00, Total_Ingresos: 1516.62, Anticipo_Quincena: 448.00, IESS: 132.30, Imp_Renta: 13.66, Seguro_Salud: 27.81, Corazones_FC: 5.00, Credito_Empresarial: 90.00, Prestamo_Gimnasio: 20.00, Prestamo_Estudios: 180.00, Atrasos_Colaboracion: 11.20, Descuentos_Varios: 0.00, Total_Descuentos: 927.97, Neto_Pagar_Fin_Mes: 588.65, Liquidez_Total_Banco: 1036.65, URL_PDF_Drive: '' },
-      { ID_Rol: 'ROL-2026-04', Periodo: '2026-04', Dias_Trab: 28, Remuneracion_Unificada: 1045.33, Sueldo_Variable: 280.00, Fondo_Reserva: 116.62, Vacaciones_Enfermedad_Otros: 74.67, Total_Ingresos: 1516.62, Anticipo_Quincena: 448.00, IESS: 132.30, Imp_Renta: 15.21, Seguro_Salud: 31.07, Corazones_FC: 5.00, Credito_Empresarial: 56.34, Prestamo_Gimnasio: 40.00, Prestamo_Estudios: 0.00, Atrasos_Colaboracion: 12.58, Descuentos_Varios: 0.00, Total_Descuentos: 740.50, Neto_Pagar_Fin_Mes: 776.12, Liquidez_Total_Banco: 1224.12, URL_PDF_Drive: '' },
-      { ID_Rol: 'ROL-2026-05', Periodo: '2026-05', Dias_Trab: 30, Remuneracion_Unificada: 1120.00, Sueldo_Variable: 280.00, Fondo_Reserva: 116.62, Vacaciones_Enfermedad_Otros: 0.00, Total_Ingresos: 1516.62, Anticipo_Quincena: 448.00, IESS: 132.30, Imp_Renta: 15.21, Seguro_Salud: 31.07, Corazones_FC: 5.00, Credito_Empresarial: 89.20, Prestamo_Gimnasio: 20.00, Prestamo_Estudios: 0.00, Atrasos_Colaboracion: 4.12, Descuentos_Varios: 0.00, Total_Descuentos: 744.90, Neto_Pagar_Fin_Mes: 771.72, Liquidez_Total_Banco: 1219.72, URL_PDF_Drive: '' },
-      { ID_Rol: 'ROL-2026-06', Periodo: '2026-06', Dias_Trab: 8, Remuneracion_Unificada: 298.67, Sueldo_Variable: 280.00, Fondo_Reserva: 116.62, Vacaciones_Enfermedad_Otros: 821.33, Total_Ingresos: 1516.62, Anticipo_Quincena: 448.00, IESS: 132.30, Imp_Renta: 15.21, Seguro_Salud: 31.07, Corazones_FC: 5.00, Credito_Empresarial: 12.45, Prestamo_Gimnasio: 20.00, Prestamo_Estudios: 0.00, Atrasos_Colaboracion: 4.98, Descuentos_Varios: 0.00, Total_Descuentos: 669.01, Neto_Pagar_Fin_Mes: 847.61, Liquidez_Total_Banco: 1295.61, URL_PDF_Drive: '' },
-      { ID_Rol: 'ROL-2026-07', Periodo: '2026-07', Dias_Trab: 30, Remuneracion_Unificada: 1120.00, Sueldo_Variable: 280.00, Fondo_Reserva: 116.62, Vacaciones_Enfermedad_Otros: 0.00, Total_Ingresos: 1516.62, Anticipo_Quincena: 448.00, IESS: 132.30, Imp_Renta: 15.21, Seguro_Salud: 31.07, Corazones_FC: 5.00, Credito_Empresarial: 86.43, Prestamo_Gimnasio: 20.00, Prestamo_Estudios: 0.00, Atrasos_Colaboracion: 8.40, Descuentos_Varios: 0.00, Total_Descuentos: 746.41, Neto_Pagar_Fin_Mes: 770.21, Liquidez_Total_Banco: 1218.21, URL_PDF_Drive: '' },
-      { ID_Rol: 'ROL-2026-08', Periodo: '2026-08', Dias_Trab: 30, Remuneracion_Unificada: 1120.00, Sueldo_Variable: 252.00, Fondo_Reserva: 114.29, Vacaciones_Enfermedad_Otros: 0.00, Total_Ingresos: 1486.29, Anticipo_Quincena: 448.00, IESS: 129.65, Imp_Renta: 13.95, Seguro_Salud: 31.07, Corazones_FC: 5.00, Credito_Empresarial: 113.53, Prestamo_Gimnasio: 20.00, Prestamo_Estudios: 0.00, Atrasos_Colaboracion: 12.94, Descuentos_Varios: 0.00, Total_Descuentos: 774.14, Neto_Pagar_Fin_Mes: 712.15, Liquidez_Total_Banco: 1160.15, URL_PDF_Drive: '' },
-      { ID_Rol: 'ROL-2026-09', Periodo: '2026-09', Dias_Trab: 30, Remuneracion_Unificada: 1120.00, Sueldo_Variable: 276.08, Fondo_Reserva: 116.29, Vacaciones_Enfermedad_Otros: 0.00, Total_Ingresos: 1512.37, Anticipo_Quincena: 448.00, IESS: 131.93, Imp_Renta: 15.04, Seguro_Salud: 31.07, Corazones_FC: 5.00, Credito_Empresarial: 50.08, Prestamo_Gimnasio: 20.00, Prestamo_Estudios: 0.00, Atrasos_Colaboracion: 19.62, Descuentos_Varios: 0.00, Total_Descuentos: 720.74, Neto_Pagar_Fin_Mes: 791.63, Liquidez_Total_Banco: 1239.63, URL_PDF_Drive: '' },
-      { ID_Rol: 'ROL-2026-10', Periodo: '2026-10', Dias_Trab: 30, Remuneracion_Unificada: 1120.00, Sueldo_Variable: 280.00, Fondo_Reserva: 116.62, Vacaciones_Enfermedad_Otros: 0.00, Total_Ingresos: 1516.62, Anticipo_Quincena: 448.00, IESS: 132.30, Imp_Renta: 15.21, Seguro_Salud: 31.07, Corazones_FC: 5.00, Credito_Empresarial: 155.32, Prestamo_Gimnasio: 0.00, Prestamo_Estudios: 0.00, Atrasos_Colaboracion: 10.28, Descuentos_Varios: 129.75, Total_Descuentos: 926.93, Neto_Pagar_Fin_Mes: 589.69, Liquidez_Total_Banco: 1037.69, URL_PDF_Drive: '' }
+      { ID_Rol: 'ROL-2026-01', Periodo: '2026-01', Dias_Trab: 29, Remuneracion_Unificada: 1082.67, Sueldo_Variable: 280.00, Fondo_Reserva: 116.62, Vacaciones_Enfermedad_Otros: 38.48, Total_Ingresos: 1517.77, Anticipo_Quincena: 448.00, IESS: 132.30, Imp_Renta: 0.00, Seguro_Salud: 27.81, Corazones_FC: 5.00, Credito_Empresarial: 84.50, Prestamo_Gimnasio: 20.00, Prestamo_Estudios: 180.00, Atrasos_Colaboracion: 0.93, Descuentos_Varios: 15.33, Total_Descuentos: 913.87, Neto_Pagar_Fin_Mes: 603.90, Liquidez_Total_Banco: 1051.90 },
+      { ID_Rol: 'ROL-2026-02', Periodo: '2026-02', Dias_Trab: 26, Remuneracion_Unificada: 970.67, Sueldo_Variable: 280.00, Fondo_Reserva: 116.62, Vacaciones_Enfermedad_Otros: 149.33, Total_Ingresos: 1516.62, Anticipo_Quincena: 448.00, IESS: 132.30, Imp_Renta: 13.66, Seguro_Salud: 27.81, Corazones_FC: 5.00, Credito_Empresarial: 89.57, Prestamo_Gimnasio: 20.00, Prestamo_Estudios: 180.00, Atrasos_Colaboracion: 0.93, Descuentos_Varios: 10.38, Total_Descuentos: 927.65, Neto_Pagar_Fin_Mes: 588.97, Liquidez_Total_Banco: 1036.97 },
+      { ID_Rol: 'ROL-2026-03', Periodo: '2026-03', Dias_Trab: 30, Remuneracion_Unificada: 1120.00, Sueldo_Variable: 280.00, Fondo_Reserva: 116.62, Vacaciones_Enfermedad_Otros: 0.00, Total_Ingresos: 1516.62, Anticipo_Quincena: 448.00, IESS: 132.30, Imp_Renta: 13.66, Seguro_Salud: 27.81, Corazones_FC: 5.00, Credito_Empresarial: 90.00, Prestamo_Gimnasio: 20.00, Prestamo_Estudios: 180.00, Atrasos_Colaboracion: 11.20, Descuentos_Varios: 0.00, Total_Descuentos: 927.97, Neto_Pagar_Fin_Mes: 588.65, Liquidez_Total_Banco: 1036.65 },
+      { ID_Rol: 'ROL-2026-04', Periodo: '2026-04', Dias_Trab: 28, Remuneracion_Unificada: 1045.33, Sueldo_Variable: 280.00, Fondo_Reserva: 116.62, Vacaciones_Enfermedad_Otros: 74.67, Total_Ingresos: 1516.62, Anticipo_Quincena: 448.00, IESS: 132.30, Imp_Renta: 15.21, Seguro_Salud: 31.07, Corazones_FC: 5.00, Credito_Empresarial: 56.34, Prestamo_Gimnasio: 40.00, Prestamo_Estudios: 0.00, Atrasos_Colaboracion: 12.58, Descuentos_Varios: 0.00, Total_Descuentos: 740.50, Neto_Pagar_Fin_Mes: 776.12, Liquidez_Total_Banco: 1224.12 },
+      { ID_Rol: 'ROL-2026-05', Periodo: '2026-05', Dias_Trab: 30, Remuneracion_Unificada: 1120.00, Sueldo_Variable: 280.00, Fondo_Reserva: 116.62, Vacaciones_Enfermedad_Otros: 0.00, Total_Ingresos: 1516.62, Anticipo_Quincena: 448.00, IESS: 132.30, Imp_Renta: 15.21, Seguro_Salud: 31.07, Corazones_FC: 5.00, Credito_Empresarial: 89.20, Prestamo_Gimnasio: 20.00, Prestamo_Estudios: 0.00, Atrasos_Colaboracion: 4.12, Descuentos_Varios: 0.00, Total_Descuentos: 744.90, Neto_Pagar_Fin_Mes: 771.72, Liquidez_Total_Banco: 1219.72 },
+      { ID_Rol: 'ROL-2026-06', Periodo: '2026-06', Dias_Trab: 8, Remuneracion_Unificada: 298.67, Sueldo_Variable: 280.00, Fondo_Reserva: 116.62, Vacaciones_Enfermedad_Otros: 821.33, Total_Ingresos: 1516.62, Anticipo_Quincena: 448.00, IESS: 132.30, Imp_Renta: 15.21, Seguro_Salud: 31.07, Corazones_FC: 5.00, Credito_Empresarial: 12.45, Prestamo_Gimnasio: 20.00, Prestamo_Estudios: 0.00, Atrasos_Colaboracion: 4.98, Descuentos_Varios: 0.00, Total_Descuentos: 669.01, Neto_Pagar_Fin_Mes: 847.61, Liquidez_Total_Banco: 1295.61 },
+      { ID_Rol: 'ROL-2026-07', Periodo: '2026-07', Dias_Trab: 30, Remuneracion_Unificada: 1120.00, Sueldo_Variable: 280.00, Fondo_Reserva: 116.62, Vacaciones_Enfermedad_Otros: 0.00, Total_Ingresos: 1516.62, Anticipo_Quincena: 448.00, IESS: 132.30, Imp_Renta: 15.21, Seguro_Salud: 31.07, Corazones_FC: 5.00, Credito_Empresarial: 86.43, Prestamo_Gimnasio: 20.00, Prestamo_Estudios: 0.00, Atrasos_Colaboracion: 8.40, Descuentos_Varios: 0.00, Total_Descuentos: 746.41, Neto_Pagar_Fin_Mes: 770.21, Liquidez_Total_Banco: 1218.21 },
+      { ID_Rol: 'ROL-2026-08', Periodo: '2026-08', Dias_Trab: 30, Remuneracion_Unificada: 1120.00, Sueldo_Variable: 252.00, Fondo_Reserva: 114.29, Vacaciones_Enfermedad_Otros: 0.00, Total_Ingresos: 1486.29, Anticipo_Quincena: 448.00, IESS: 129.65, Imp_Renta: 13.95, Seguro_Salud: 31.07, Corazones_FC: 5.00, Credito_Empresarial: 113.53, Prestamo_Gimnasio: 20.00, Prestamo_Estudios: 0.00, Atrasos_Colaboracion: 12.94, Descuentos_Varios: 0.00, Total_Descuentos: 774.14, Neto_Pagar_Fin_Mes: 712.15, Liquidez_Total_Banco: 1160.15 },
+      { ID_Rol: 'ROL-2026-09', Periodo: '2026-09', Dias_Trab: 30, Remuneracion_Unificada: 1120.00, Sueldo_Variable: 276.08, Fondo_Reserva: 116.29, Vacaciones_Enfermedad_Otros: 0.00, Total_Ingresos: 1512.37, Anticipo_Quincena: 448.00, IESS: 131.93, Imp_Renta: 15.04, Seguro_Salud: 31.07, Corazones_FC: 5.00, Credito_Empresarial: 50.08, Prestamo_Gimnasio: 20.00, Prestamo_Estudios: 0.00, Atrasos_Colaboracion: 19.62, Descuentos_Varios: 0.00, Total_Descuentos: 720.74, Neto_Pagar_Fin_Mes: 791.63, Liquidez_Total_Banco: 1239.63 },
+      { ID_Rol: 'ROL-2026-10', Periodo: '2026-10', Dias_Trab: 30, Remuneracion_Unificada: 1120.00, Sueldo_Variable: 280.00, Fondo_Reserva: 116.62, Vacaciones_Enfermedad_Otros: 0.00, Total_Ingresos: 1516.62, Anticipo_Quincena: 448.00, IESS: 132.30, Imp_Renta: 15.21, Seguro_Salud: 31.07, Corazones_FC: 5.00, Credito_Empresarial: 155.32, Prestamo_Gimnasio: 0.00, Prestamo_Estudios: 0.00, Atrasos_Colaboracion: 10.28, Descuentos_Varios: 129.75, Total_Descuentos: 926.93, Neto_Pagar_Fin_Mes: 589.69, Liquidez_Total_Banco: 1037.69 }
+    ];
+
+    // 2. Transacciones Reales extraídas de tu hoja "Control de Gastos Mensuales - Banco Guayaquil" (Con reclasificación aplicada)
+    const LEGACY_GASTOS_BG = [
+      // Noviembre 2026 (Actual)
+      { ID_Tx: 'TX-NOV-01', Fecha: '2026-11-16', Hora: '19:40', Periodo: '2026-11', Tipo: 'Gasto', Canal_Salida: 'Transferencia Interna BG', Cuenta_Origen: 'BG-AHO', Categoria: 'Entretenimiento', Comercio_Concepto: 'Alban Tola Dara Noemi (BANCO GUAYAQUIL)', Motivo_Transferencia: 'Salidas / Gastos compartidos Dara', Monto: 172.31, Origen_Dato: 'Gmail', Estado_Revision: 'Confirmado' },
+      { ID_Tx: 'TX-NOV-02', Fecha: '2026-11-15', Hora: '14:20', Periodo: '2026-11', Tipo: 'Gasto', Canal_Salida: 'Transferencia Interbancaria', Cuenta_Origen: 'BG-AHO', Categoria: 'Entretenimiento', Comercio_Concepto: 'Alban Dara (BANCO INTERNACIONAL)', Motivo_Transferencia: 'Reclasificado a Entretenimiento (Dara)', Monto: 145.00, Origen_Dato: 'Gmail', Estado_Revision: 'Confirmado' },
+      { ID_Tx: 'TX-NOV-03', Fecha: '2026-11-14', Hora: '18:10', Periodo: '2026-11', Tipo: 'Gasto', Canal_Salida: 'Consumo Tarjeta', Cuenta_Origen: 'BG-AHO', Categoria: 'Supermercado', Comercio_Concepto: 'SUPERMAXI BATAN', Motivo_Transferencia: 'Compras supermercado', Monto: 55.08, Origen_Dato: 'Gmail', Estado_Revision: 'Confirmado' },
+      { ID_Tx: 'TX-NOV-04', Fecha: '2026-11-12', Hora: '13:15', Periodo: '2026-11', Tipo: 'Cruce_Valores', Canal_Salida: 'Transferencia Interna BG', Cuenta_Origen: 'BG-AHO', Categoria: 'Préstamos y Cruces', Comercio_Concepto: 'Ardila Barrios Antony Johnnson (BANCO GUAYAQUIL)', Motivo_Transferencia: 'Préstamo / Cruce de valores', Monto: 44.00, Origen_Dato: 'Gmail', Estado_Revision: 'Confirmado' },
+      { ID_Tx: 'TX-NOV-05', Fecha: '2026-11-10', Hora: '20:45', Periodo: '2026-11', Tipo: 'Gasto', Canal_Salida: 'Consumo Tarjeta', Cuenta_Origen: 'BG-AHO', Categoria: 'Restaurantes', Comercio_Concepto: 'LA PATA GORDA', Motivo_Transferencia: 'Restaurante reclasificado', Monto: 36.52, Origen_Dato: 'Gmail', Estado_Revision: 'Confirmado' },
+      { ID_Tx: 'TX-NOV-06', Fecha: '2026-11-08', Hora: '21:00', Periodo: '2026-11', Tipo: 'Gasto', Canal_Salida: 'Consumo Tarjeta', Cuenta_Origen: 'BG-AHO', Categoria: 'Restaurantes', Comercio_Concepto: 'PEDIDOSYA RESTAURANTES', Motivo_Transferencia: 'Delivery comida', Monto: 28.99, Origen_Dato: 'Gmail', Estado_Revision: 'Confirmado' },
+      { ID_Tx: 'TX-NOV-07', Fecha: '2026-11-07', Hora: '16:30', Periodo: '2026-11', Tipo: 'Gasto', Canal_Salida: 'Consumo Tarjeta', Cuenta_Origen: 'BG-AHO', Categoria: 'Entretenimiento', Comercio_Concepto: 'PTP - BARCELONA SPORTI', Motivo_Transferencia: 'Fútbol BSC', Monto: 15.00, Origen_Dato: 'Gmail', Estado_Revision: 'Confirmado' },
+      { ID_Tx: 'TX-NOV-08', Fecha: '2026-11-06', Hora: '11:20', Periodo: '2026-11', Tipo: 'Gasto', Canal_Salida: 'Consumo Tarjeta', Cuenta_Origen: 'BG-AHO', Categoria: 'Supermercado', Comercio_Concepto: 'MINI COMPRA SUPERMERCADO', Motivo_Transferencia: 'Gasto hormiga', Monto: 3.23, Origen_Dato: 'Gmail', Estado_Revision: 'Confirmado' },
+      { ID_Tx: 'TX-NOV-09', Fecha: '2026-11-05', Hora: '17:05', Periodo: '2026-11', Tipo: 'Gasto', Canal_Salida: 'Transferencia Interna BG', Cuenta_Origen: 'BG-AHO', Categoria: 'Otros', Comercio_Concepto: 'Transferencias Varias BG (Pendientes de Motivo)', Motivo_Transferencia: 'Sin motivo especificado', Monto: 116.59, Origen_Dato: 'Gmail', Estado_Revision: 'Pendiente_Categoria' },
+      { ID_Tx: 'TX-NOV-10', Fecha: '2026-11-03', Hora: '10:15', Periodo: '2026-11', Tipo: 'Gasto', Canal_Salida: 'Consumo Tarjeta', Cuenta_Origen: 'BG-AHO', Categoria: 'Otros', Comercio_Concepto: 'Micro-compras Hormiga Varias (<= $10)', Motivo_Transferencia: '8 micro-consumos del mes', Monto: 42.46, Origen_Dato: 'Gmail', Estado_Revision: 'Pendiente_Categoria' },
+
+      // Septiembre / Octubre 2026 (Muestra representativa de tu hoja con las reclasificaciones que me indicaste)
+      { ID_Tx: 'TX-010926-1206', Fecha: '2026-09-01', Hora: '12:06', Periodo: '2026-09', Tipo: 'Gasto', Canal_Salida: 'Transferencia Interna BG', Cuenta_Origen: 'BG-AHO', Categoria: 'Otros', Comercio_Concepto: 'MALAMBO BELTRAN FABIAN DAVID (BANCO GUAYAQUIL)', Motivo_Transferencia: '', Monto: 8.00, Origen_Dato: 'Gmail', Estado_Revision: 'Pendiente_Categoria' },
+      { ID_Tx: 'TX-010926-2130', Fecha: '2026-09-01', Hora: '21:30', Periodo: '2026-09', Tipo: 'Gasto', Canal_Salida: 'Transferencia Interna BG', Cuenta_Origen: 'BG-AHO', Categoria: 'Restaurantes', Comercio_Concepto: 'CIELITO LINDO SAS (BANCO GUAYAQUIL)', Motivo_Transferencia: 'Restaurante', Monto: 45.00, Origen_Dato: 'Gmail', Estado_Revision: 'Confirmado' },
+      { ID_Tx: 'TX-020926-1003', Fecha: '2026-09-02', Hora: '10:03', Periodo: '2026-09', Tipo: 'Gasto', Canal_Salida: 'Transferencia Interna BG', Cuenta_Origen: 'BG-AHO', Categoria: 'Transporte', Comercio_Concepto: 'Navia Aray Silvia Alexandra (BANCO GUAYAQUIL)', Motivo_Transferencia: 'Pago para sacar la licencia', Monto: 100.00, Origen_Dato: 'Gmail', Estado_Revision: 'Confirmado' },
+      { ID_Tx: 'TX-020926-1648', Fecha: '2026-09-02', Hora: '16:48', Periodo: '2026-09', Tipo: 'Gasto', Canal_Salida: 'Consumo Tarjeta', Cuenta_Origen: 'BG-AHO', Categoria: 'Servicios', Comercio_Concepto: 'MARTINIZING', Motivo_Transferencia: 'Lavandería / Tintorería', Monto: 14.42, Origen_Dato: 'Gmail', Estado_Revision: 'Confirmado' },
+      { ID_Tx: 'TX-040926-0856', Fecha: '2026-09-04', Hora: '08:56', Periodo: '2026-09', Tipo: 'Gasto', Canal_Salida: 'Consumo Tarjeta', Cuenta_Origen: 'BG-AHO', Categoria: 'Restaurantes', Comercio_Concepto: 'PTP - DL -PEDIDOSYA PL', Motivo_Transferencia: 'Delivery', Monto: 2.99, Origen_Dato: 'Gmail', Estado_Revision: 'Confirmado' },
+      { ID_Tx: 'TX-040926-2039', Fecha: '2026-09-04', Hora: '20:39', Periodo: '2026-09', Tipo: 'Gasto', Canal_Salida: 'Consumo Tarjeta', Cuenta_Origen: 'BG-AHO', Categoria: 'Restaurantes', Comercio_Concepto: 'DOMINOS PIZZA', Motivo_Transferencia: 'Cena Pizza', Monto: 35.55, Origen_Dato: 'Gmail', Estado_Revision: 'Confirmado' },
+      { ID_Tx: 'TX-060926-1228', Fecha: '2026-09-06', Hora: '12:28', Periodo: '2026-09', Tipo: 'Gasto', Canal_Salida: 'Consumo Tarjeta', Cuenta_Origen: 'BG-AHO', Categoria: 'Restaurantes', Comercio_Concepto: 'LA BRASA GUAYACA', Motivo_Transferencia: 'Comida', Monto: 4.80, Origen_Dato: 'Gmail', Estado_Revision: 'Confirmado' },
+      { ID_Tx: 'TX-070926-1756', Fecha: '2026-09-07', Hora: '17:56', Periodo: '2026-09', Tipo: 'Gasto', Canal_Salida: 'Consumo Tarjeta', Cuenta_Origen: 'BG-AHO', Categoria: 'Supermercado', Comercio_Concepto: 'MEGAMAXI VILLAGE', Motivo_Transferencia: 'Supermercado', Monto: 1.28, Origen_Dato: 'Gmail', Estado_Revision: 'Confirmado' },
+      { ID_Tx: 'TX-090926-0754', Fecha: '2026-09-09', Hora: '07:54', Periodo: '2026-09', Tipo: 'Gasto', Canal_Salida: 'Transferencia Interbancaria', Cuenta_Origen: 'BG-AHO', Categoria: 'Servicios', Comercio_Concepto: 'EDITA RICARDINA AROCA ZUNIGA (BANCO PICHINCHA)', Motivo_Transferencia: 'Transferencia Mamá', Monto: 5.00, Origen_Dato: 'Gmail', Estado_Revision: 'Confirmado' },
+      { ID_Tx: 'TX-090926-1431', Fecha: '2026-09-09', Hora: '14:31', Periodo: '2026-09', Tipo: 'Gasto', Canal_Salida: 'Consumo Tarjeta', Cuenta_Origen: 'BG-AHO', Categoria: 'Restaurantes', Comercio_Concepto: 'SWEET 8 COFFEE VILLAGE', Motivo_Transferencia: 'Cafetería', Monto: 7.20, Origen_Dato: 'Gmail', Estado_Revision: 'Confirmado' },
+      { ID_Tx: 'TX-100926-0116', Fecha: '2026-09-10', Hora: '01:16', Periodo: '2026-09', Tipo: 'Gasto', Canal_Salida: 'Consumo Tarjeta', Cuenta_Origen: 'BG-AHO', Categoria: 'Entretenimiento', Comercio_Concepto: 'PTP - BARCELONA SPORTI', Motivo_Transferencia: 'BSC', Monto: 15.00, Origen_Dato: 'Gmail', Estado_Revision: 'Confirmado' },
+      { ID_Tx: 'TX-100926-0812', Fecha: '2026-09-10', Hora: '08:12', Periodo: '2026-09', Tipo: 'Gasto', Canal_Salida: 'Consumo Tarjeta', Cuenta_Origen: 'BG-AHO', Categoria: 'Alimentación', Comercio_Concepto: 'GALLETAS PECOSA ARCOS', Motivo_Transferencia: 'Snacks Los Arcos', Monto: 16.00, Origen_Dato: 'Gmail', Estado_Revision: 'Confirmado' },
+      { ID_Tx: 'TX-100926-0940', Fecha: '2026-09-10', Hora: '09:40', Periodo: '2026-09', Tipo: 'Gasto', Canal_Salida: 'Transferencia Interna BG', Cuenta_Origen: 'BG-AHO', Categoria: 'Entretenimiento', Comercio_Concepto: 'ALBAN TOLA DARA NOEMI (BANCO GUAYAQUIL)', Motivo_Transferencia: 'Salidas Dara', Monto: 30.00, Origen_Dato: 'Gmail', Estado_Revision: 'Confirmado' },
+      { ID_Tx: 'TX-120926-1011', Fecha: '2026-09-12', Hora: '10:11', Periodo: '2026-09', Tipo: 'Gasto', Canal_Salida: 'Consumo Tarjeta', Cuenta_Origen: 'BG-AHO', Categoria: 'Alimentación', Comercio_Concepto: 'MIGAJAS', Motivo_Transferencia: 'Panadería', Monto: 20.65, Origen_Dato: 'Gmail', Estado_Revision: 'Confirmado' },
+      { ID_Tx: 'TX-120926-1708', Fecha: '2026-09-12', Hora: '17:08', Periodo: '2026-09', Tipo: 'Gasto', Canal_Salida: 'Consumo Tarjeta', Cuenta_Origen: 'BG-AHO', Categoria: 'Restaurantes', Comercio_Concepto: 'CHIFA AMISTOSO', Motivo_Transferencia: 'Comida fuera', Monto: 8.15, Origen_Dato: 'Gmail', Estado_Revision: 'Confirmado' },
+      { ID_Tx: 'TX-130926-0833', Fecha: '2026-09-13', Hora: '08:33', Periodo: '2026-09', Tipo: 'Gasto', Canal_Salida: 'Consumo Tarjeta', Cuenta_Origen: 'BG-AHO', Categoria: 'Restaurantes', Comercio_Concepto: 'PEDIDOSYA*PICANTERIA E', Motivo_Transferencia: 'Delivery', Monto: 11.86, Origen_Dato: 'Gmail', Estado_Revision: 'Confirmado' },
+      { ID_Tx: 'TX-130926-1617', Fecha: '2026-09-13', Hora: '16:17', Periodo: '2026-09', Tipo: 'Gasto', Canal_Salida: 'Consumo Tarjeta', Cuenta_Origen: 'BG-AHO', Categoria: 'Supermercado', Comercio_Concepto: 'AVICOLA FERNANDEZ MILA', Motivo_Transferencia: 'Carnes / Hogar', Monto: 27.47, Origen_Dato: 'Gmail', Estado_Revision: 'Confirmado' },
+      { ID_Tx: 'TX-130926-1648', Fecha: '2026-09-13', Hora: '16:48', Periodo: '2026-09', Tipo: 'Gasto', Canal_Salida: 'Consumo Tarjeta', Cuenta_Origen: 'BG-AHO', Categoria: 'Supermercado', Comercio_Concepto: 'SUPERMAXI BATAN', Motivo_Transferencia: 'Supermercado', Monto: 11.67, Origen_Dato: 'Gmail', Estado_Revision: 'Confirmado' },
+      { ID_Tx: 'TX-150926-1717', Fecha: '2026-09-15', Hora: '17:17', Periodo: '2026-09', Tipo: 'Gasto', Canal_Salida: 'Transferencia Interna BG', Cuenta_Origen: 'BG-AHO', Categoria: 'Transporte', Comercio_Concepto: 'NAVIA ARAY SILVIA ALEXANDRA (BANCO GUAYAQUIL)', Motivo_Transferencia: 'Pago trámite licencia', Monto: 100.00, Origen_Dato: 'Gmail', Estado_Revision: 'Confirmado' },
+      { ID_Tx: 'TX-150926-1723', Fecha: '2026-09-15', Hora: '17:23', Periodo: '2026-09', Tipo: 'Gasto', Canal_Salida: 'Transferencia Interna BG', Cuenta_Origen: 'BG-AHO', Categoria: 'Entretenimiento', Comercio_Concepto: 'ALBAN TOLA DARA NOEMI (BANCO GUAYAQUIL)', Motivo_Transferencia: 'Salidas Dara', Monto: 30.00, Origen_Dato: 'Gmail', Estado_Revision: 'Confirmado' },
+      { ID_Tx: 'TX-150926-1741', Fecha: '2026-09-15', Hora: '17:41', Periodo: '2026-09', Tipo: 'Gasto', Canal_Salida: 'Transferencia Interna BG', Cuenta_Origen: 'BG-AHO', Categoria: 'Servicios', Comercio_Concepto: 'AROCA ZUNIGA EDITA RICARDINA (BANCO GUAYAQUIL)', Motivo_Transferencia: 'Transferencia Mamá', Monto: 90.00, Origen_Dato: 'Gmail', Estado_Revision: 'Confirmado' },
+      { ID_Tx: 'TX-160926-0926', Fecha: '2026-09-16', Hora: '09:26', Periodo: '2026-09', Tipo: 'Cruce_Valores', Canal_Salida: 'Transferencia Interna BG', Cuenta_Origen: 'BG-AHO', Categoria: 'Préstamos y Cruces', Comercio_Concepto: 'ALARCON SANCHEZ WELLINGTON TOM (BANCO GUAYAQUIL)', Motivo_Transferencia: 'Préstamo / Cruce de valores', Monto: 100.00, Origen_Dato: 'Gmail', Estado_Revision: 'Confirmado' }
     ];
 
     function generatePayrollSplitTransactions(roles) {
       const list = [];
       roles.forEach(r => {
         const p = r.Periodo;
-        list.push({ ID_Tx: `TX-ROL-${p}-Q`, Fecha: `${p}-15`, Periodo: p, Tipo: 'Ingreso_Nomina', Cuenta_Origen: 'FARMCORP', Cuenta_Destino: 'BG-AHO', Categoria: 'Nómina FARMCORP', Comercio_Concepto: 'Anticipo Quincenal FARMCORP (40%)', Monto: r.Anticipo_Quincena, Origen_Dato: 'Rol_Pago', Estado_Revision: 'Confirmado' });
-        list.push({ ID_Tx: `TX-ROL-${p}-N`, Fecha: `${p}-28`, Periodo: p, Tipo: 'Ingreso_Nomina', Cuenta_Origen: 'FARMCORP', Cuenta_Destino: 'BG-AHO', Categoria: 'Nómina FARMCORP', Comercio_Concepto: 'Líquido Rol Fin de Mes FARMCORP', Monto: r.Neto_Pagar_Fin_Mes, Origen_Dato: 'Rol_Pago', Estado_Revision: 'Confirmado' });
-
+        list.push({ ID_Tx: `TX-ROL-${p}-Q`, Fecha: `${p}-15`, Hora: '09:00', Periodo: p, Tipo: 'Ingreso_Nomina', Canal_Salida: 'Nómina BG', Cuenta_Origen: 'FARMCORP', Cuenta_Destino: 'BG-AHO', Categoria: 'Nómina FARMCORP', Comercio_Concepto: 'Anticipo Quincenal FARMCORP (40%)', Motivo_Transferencia: 'Quincena', Monto: r.Anticipo_Quincena, Origen_Dato: 'Rol_Pago', Estado_Revision: 'Confirmado' });
+        list.push({ ID_Tx: `TX-ROL-${p}-N`, Fecha: `${p}-28`, Hora: '17:00', Periodo: p, Tipo: 'Ingreso_Nomina', Canal_Salida: 'Nómina BG', Cuenta_Origen: 'FARMCORP', Cuenta_Destino: 'BG-AHO', Categoria: 'Nómina FARMCORP', Comercio_Concepto: 'Líquido Rol Fin de Mes FARMCORP', Motivo_Transferencia: 'Fin de Mes', Monto: r.Neto_Pagar_Fin_Mes, Origen_Dato: 'Rol_Pago', Estado_Revision: 'Confirmado' });
         const ley = +(r.IESS + r.Imp_Renta).toFixed(2);
-        if (ley > 0) list.push({ ID_Tx: `TX-ROL-${p}-LEY`, Fecha: `${p}-28`, Periodo: p, Tipo: 'Gasto_Rol', Cuenta_Origen: 'ROL-FC', Cuenta_Destino: '', Categoria: 'Deducciones de Ley (IESS + Imp. Renta)', Comercio_Concepto: `IESS ($${r.IESS.toFixed(2)}) + Imp. Renta ($${r.Imp_Renta.toFixed(2)})`, Monto: ley, Origen_Dato: 'Rol_Pago', Estado_Revision: 'Confirmado' });
-        if (r.Seguro_Salud > 0) list.push({ ID_Tx: `TX-ROL-${p}-SAL`, Fecha: `${p}-28`, Periodo: p, Tipo: 'Gasto_Rol', Cuenta_Origen: 'ROL-FC', Cuenta_Destino: '', Categoria: 'Salud y Seguro Médico', Comercio_Concepto: 'Descuento Seguro Salud Privado (Rol)', Monto: r.Seguro_Salud, Origen_Dato: 'Rol_Pago', Estado_Revision: 'Confirmado' });
-        if (r.Credito_Empresarial > 0) list.push({ ID_Tx: `TX-ROL-${p}-CRE`, Fecha: `${p}-28`, Periodo: p, Tipo: 'Gasto_Rol', Cuenta_Origen: 'ROL-FC', Cuenta_Destino: '', Categoria: 'Crédito Empresarial / Farmacia', Comercio_Concepto: 'Consumo Crédito Empresarial FARMCORP', Monto: r.Credito_Empresarial, Origen_Dato: 'Rol_Pago', Estado_Revision: 'Confirmado' });
-        if (r.Prestamo_Gimnasio > 0) list.push({ ID_Tx: `TX-ROL-${p}-GYM`, Fecha: `${p}-28`, Periodo: p, Tipo: 'Gasto_Rol', Cuenta_Origen: 'ROL-FC', Cuenta_Destino: '', Categoria: 'Deporte y Gimnasio', Comercio_Concepto: 'Descuento Préstamo Gimnasio (Rol)', Monto: r.Prestamo_Gimnasio, Origen_Dato: 'Rol_Pago', Estado_Revision: 'Confirmado' });
-        if (r.Prestamo_Estudios > 0) list.push({ ID_Tx: `TX-ROL-${p}-EST`, Fecha: `${p}-28`, Periodo: p, Tipo: 'Gasto_Rol', Cuenta_Origen: 'ROL-FC', Cuenta_Destino: '', Categoria: 'Educación y Desarrollo Profesional', Comercio_Concepto: 'Cuota Préstamo Desarrollo Profesional / Estudios', Monto: r.Prestamo_Estudios, Origen_Dato: 'Rol_Pago', Estado_Revision: 'Confirmado' });
-        const otros = +(r.Corazones_FC + r.Atrasos_Colaboracion + r.Descuentos_Varios).toFixed(2);
-        if (otros > 0) list.push({ ID_Tx: `TX-ROL-${p}-OTR`, Fecha: `${p}-28`, Periodo: p, Tipo: 'Gasto_Rol', Cuenta_Origen: 'ROL-FC', Cuenta_Destino: '', Categoria: 'Donaciones y Otros Descuentos Rol', Comercio_Concepto: 'Corazones FC / Atrasos / Descuentos Varios Rol', Monto: otros, Origen_Dato: 'Rol_Pago', Estado_Revision: 'Confirmado' });
+        if (ley > 0) list.push({ ID_Tx: `TX-ROL-${p}-LEY`, Fecha: `${p}-28`, Hora: '17:00', Periodo: p, Tipo: 'Gasto_Rol', Canal_Salida: 'Descuento Rol', Cuenta_Origen: 'ROL-FC', Categoria: 'Deducciones de Ley (IESS + Imp. Renta)', Comercio_Concepto: `IESS ($${r.IESS.toFixed(2)}) + Imp. Renta ($${r.Imp_Renta.toFixed(2)})`, Motivo_Transferencia: 'Deducción Ley', Monto: ley, Origen_Dato: 'Rol_Pago', Estado_Revision: 'Confirmado' });
+        if (r.Seguro_Salud > 0) list.push({ ID_Tx: `TX-ROL-${p}-SAL`, Fecha: `${p}-28`, Hora: '17:00', Periodo: p, Tipo: 'Gasto_Rol', Canal_Salida: 'Descuento Rol', Cuenta_Origen: 'ROL-FC', Categoria: 'Salud', Comercio_Concepto: 'Descuento Seguro Salud Privado (Rol)', Motivo_Transferencia: 'Seguro Salud', Monto: r.Seguro_Salud, Origen_Dato: 'Rol_Pago', Estado_Revision: 'Confirmado' });
+        if (r.Credito_Empresarial > 0) list.push({ ID_Tx: `TX-ROL-${p}-CRE`, Fecha: `${p}-28`, Hora: '17:00', Periodo: p, Tipo: 'Gasto_Rol', Canal_Salida: 'Descuento Rol', Cuenta_Origen: 'ROL-FC', Categoria: 'Crédito Empresarial / Farmacia', Comercio_Concepto: 'Consumo Crédito Empresarial FARMCORP', Motivo_Transferencia: 'Convenio Farmacia', Monto: r.Credito_Empresarial, Origen_Dato: 'Rol_Pago', Estado_Revision: 'Confirmado' });
+        if (r.Prestamo_Gimnasio > 0) list.push({ ID_Tx: `TX-ROL-${p}-GYM`, Fecha: `${p}-28`, Hora: '17:00', Periodo: p, Tipo: 'Gasto_Rol', Canal_Salida: 'Descuento Rol', Cuenta_Origen: 'ROL-FC', Categoria: 'Deporte y Gimnasio (Rol)', Comercio_Concepto: 'Cuota Préstamo Gimnasio (Rol)', Motivo_Transferencia: 'Gimnasio', Monto: r.Prestamo_Gimnasio, Origen_Dato: 'Rol_Pago', Estado_Revision: 'Confirmado' });
       });
       return list;
     }
 
     let STATE = {
       cuentas: [
-        { ID_Cuenta: 'BG-AHO', Nombre: 'Ahorros Nómina Guayaquil', Entidad: 'Banco Guayaquil', Numero_Cuenta: '0015687792', Tipo: 'Ahorros', Saldo_Actual: 19.20, Meta_Cupo: 0 },
-        { ID_Cuenta: 'BP-AHO', Nombre: 'Ahorros Pichincha', Entidad: 'Banco Pichincha', Numero_Cuenta: '2209937058', Tipo: 'Ahorros', Saldo_Actual: 19.10, Meta_Cupo: 0 },
-        { ID_Cuenta: 'BG-META', Nombre: 'Meta Ahorro $1000 BG', Entidad: 'Banco Guayaquil', Numero_Cuenta: '0015687792-M', Tipo: 'Meta_Ahorro', Saldo_Actual: 151.23, Meta_Cupo: 1000.00 },
-        { ID_Cuenta: 'TC-DINERS', Nombre: 'Diners Club Principal', Entidad: 'Diners Club', Numero_Cuenta: 'XXXX-DIN', Tipo: 'Tarjeta_Activa', Saldo_Actual: 0.00, Meta_Cupo: 2500.00 },
-        { ID_Cuenta: 'PAS-TITANIUM', Nombre: 'Deuda Tarjeta Titanium (Bloqueada)', Entidad: 'Titanium', Numero_Cuenta: 'XXXX-TIT', Tipo: 'Deuda_Pasiva', Saldo_Actual: 0.00, Meta_Cupo: 0 }
+        { ID_Cuenta: 'BG-AHO', Nombre: 'Banco Guayaquil', Saldo_Actual: 19.20, Meta_Cupo: 0 },
+        { ID_Cuenta: 'BP-AHO', Nombre: 'Banco Pichincha', Saldo_Actual: 19.10, Meta_Cupo: 0 },
+        { ID_Cuenta: 'BG-META', Nombre: 'Meta Ahorro $1,000 BG', Saldo_Actual: 151.23, Meta_Cupo: 1000.00 },
+        { ID_Cuenta: 'AUT-META', Nombre: 'Proyecto Autonomy', Saldo_Actual: 0.00, Meta_Cupo: 400.00 },
+        { ID_Cuenta: 'TC-DINERS', Nombre: 'Diners Club', Saldo_Actual: 0.00, Meta_Cupo: 2500.00 },
+        { ID_Cuenta: 'PAS-TITANIUM', Nombre: 'Deuda Titanium', Saldo_Actual: 0.00, Meta_Cupo: 0 }
       ],
       nomina: [...INITIAL_ROLES_2026],
-      transacciones: generatePayrollSplitTransactions(INITIAL_ROLES_2026),
+      transacciones: [...LEGACY_GASTOS_BG, ...generatePayrollSplitTransactions(INITIAL_ROLES_2026)],
       presupuestos: [
-        { Categoria: 'Deducciones de Ley (IESS + Imp. Renta)', Limite_Mensual: 148.00 },
-        { Categoria: 'Salud y Seguro Médico', Limite_Mensual: 60.00 },
+        { Categoria: 'Servicios', Limite_Mensual: 120.00 },
+        { Categoria: 'Supermercado', Limite_Mensual: 200.00 },
+        { Categoria: 'Salud', Limite_Mensual: 82.00 },
+        { Categoria: 'Transporte', Limite_Mensual: 280.00 },
+        { Categoria: 'Alimentación', Limite_Mensual: 100.00 },
+        { Categoria: 'Restaurantes', Limite_Mensual: 120.00 },
+        { Categoria: 'Entretenimiento', Limite_Mensual: 180.00 },
+        { Categoria: 'Compras', Limite_Mensual: 100.00 },
+        { Categoria: 'Préstamos y Cruces', Limite_Mensual: 100.00 },
         { Categoria: 'Crédito Empresarial / Farmacia', Limite_Mensual: 110.00 },
-        { Categoria: 'Alimentación y Supermercado', Limite_Mensual: 280.00 },
-        { Categoria: 'Transporte, Gasolina y Movilidad', Limite_Mensual: 120.00 },
-        { Categoria: 'Vivienda y Servicios Básicos', Limite_Mensual: 200.00 },
-        { Categoria: 'Deporte y Gimnasio', Limite_Mensual: 30.00 },
-        { Categoria: 'Educación y Desarrollo Profesional', Limite_Mensual: 180.00 },
-        { Categoria: 'Restaurantes, Ocio y Suscripciones', Limite_Mensual: 120.00 },
-        { Categoria: 'Ahorro Meta BG ($1,000)', Limite_Mensual: 50.00 },
-        { Categoria: 'Amortización Deuda Titanium', Limite_Mensual: 150.00 },
-        { Categoria: 'Donaciones y Otros Descuentos Rol', Limite_Mensual: 35.00 }
+        { Categoria: 'Deducciones de Ley (IESS + Imp. Renta)', Limite_Mensual: 148.00 },
+        { Categoria: 'Otros', Limite_Mensual: 50.00 }
       ],
       reglasGmail: [
-        { ID_Regla: 'REG-01', Banco_Emisor: 'TODOS', Palabra_Clave: 'TITANIUM', Categoria_Asignada: 'Amortización Deuda Titanium' },
-        { ID_Regla: 'REG-02', Banco_Emisor: 'Banco Guayaquil', Palabra_Clave: 'FARMCORP', Categoria_Asignada: 'Nómina FARMCORP' },
-        { ID_Regla: 'REG-03', Banco_Emisor: 'TODOS', Palabra_Clave: 'SUPERMAXI|TIA|MI COMISARIATO', Categoria_Asignada: 'Alimentación y Supermercado' },
-        { ID_Regla: 'REG-04', Banco_Emisor: 'TODOS', Palabra_Clave: 'PRIMAX|UBER|TERPEL', Categoria_Asignada: 'Transporte, Gasolina y Movilidad' }
+        { Palabra_Clave: 'PRIMAX|GASOLINA|CAPTIVA', Categoria_Asignada: 'Transporte', Nota_Referencia: 'Gasolina Captiva' },
+        { Palabra_Clave: 'NAVIA ARAY SILVIA|LICENCIA', Categoria_Asignada: 'Transporte', Nota_Referencia: 'Pago Trámite Licencia' },
+        { Palabra_Clave: 'CNEL|MARTINIZING', Categoria_Asignada: 'Servicios', Nota_Referencia: 'Planilla de Luz / Lavandería' },
+        { Palabra_Clave: 'AROCA ZUNIGA EDITA', Categoria_Asignada: 'Servicios', Nota_Referencia: 'Transferencia Mamá' },
+        { Palabra_Clave: 'PEDIDOSYA|CHIFA|DOMINOS|LA PATA GORDA|SWEET 8 COFFEE|LA BRASA GUAYACA|CIELITO LINDO', Categoria_Asignada: 'Restaurantes', Nota_Referencia: 'Restaurantes y Delivery' },
+        { Palabra_Clave: 'MIGAJAS|GALLETAS PECOSA', Categoria_Asignada: 'Alimentación', Nota_Referencia: 'Panadería / Cafetería' },
+        { Palabra_Clave: 'AVICOLA FERNANDEZ|SUPERMAXI|MEGAMAXI', Categoria_Asignada: 'Supermercado', Nota_Referencia: 'Compras hogar' },
+        { Palabra_Clave: 'ALBAN TOLA DARA|ALBAN DARA', Categoria_Asignada: 'Entretenimiento', Nota_Referencia: 'Salidas / Gastos compartidos Dara' },
+        { Palabra_Clave: 'BARCELONA SPORTI', Categoria_Asignada: 'Entretenimiento', Nota_Referencia: 'Entradas / Fútbol BSC' },
+        { Palabra_Clave: 'ALARCON SANCHEZ WELLINGTON|ARDILA BARRIOS ANTONY|PRESTAMO|CRUCE', Categoria_Asignada: 'Préstamos y Cruces', Nota_Referencia: 'Préstamos o cruce de valores' },
+        { Palabra_Clave: 'TITANIUM', Categoria_Asignada: 'Amortización Deuda Titanium', Nota_Referencia: 'Pago tarjeta Titanium bloqueada' }
       ]
     };
 
     // ====================================================================
-    // AUTENTICACIÓN POR PIN (993008)
+    // PIN LOCK (993008)
     // ====================================================================
-    function appendPin(digit) {
+    function appendPin(d) {
       const inp = document.getElementById('pinInput');
-      if (inp.value.length < 6) inp.value += digit;
+      if (inp.value.length < 6) inp.value += d;
       if (inp.value.length === 6) validatePin();
     }
     function clearPin() {
@@ -834,9 +827,8 @@
       document.getElementById('pinError').classList.add('hidden');
     }
     function validatePin() {
-      const val = document.getElementById('pinInput').value.trim();
-      if (val === PIN_REQUIRED) {
-        sessionStorage.setItem('finanzas_unlocked', 'true');
+      if (document.getElementById('pinInput').value.trim() === PIN_REQUIRED) {
+        sessionStorage.setItem('pulso_unlocked', 'true');
         document.getElementById('pinLockModal').classList.add('hidden');
         initApp();
       } else {
@@ -845,85 +837,18 @@
       }
     }
     function lockApp() {
-      sessionStorage.removeItem('finanzas_unlocked');
+      sessionStorage.removeItem('pulso_unlocked');
       document.getElementById('pinInput').value = '';
       document.getElementById('pinLockModal').classList.remove('hidden');
     }
 
     // ====================================================================
-    // INICIALIZACIÓN Y SINCRONIZACIÓN CON GOOGLE APPS SCRIPT
-    // ====================================================================
-    function getApiUrl() {
-      return localStorage.getItem('finanzas_gas_url') || DEFAULT_API_URL;
-    }
-    function openApiModal() {
-      document.getElementById('apiUrlInput').value = getApiUrl();
-      document.getElementById('apiConfigModal').classList.remove('hidden');
-      document.getElementById('apiConfigModal').classList.add('flex');
-    }
-    function closeApiModal() {
-      document.getElementById('apiConfigModal').classList.add('hidden');
-      document.getElementById('apiConfigModal').classList.remove('flex');
-    }
-    async function saveApiUrl() {
-      const url = document.getElementById('apiUrlInput').value.trim();
-      localStorage.setItem('finanzas_gas_url', url);
-      closeApiModal();
-      await fetchFromBackend();
-    }
-
-    async function fetchFromBackend() {
-      const url = getApiUrl();
-      if (!url) return;
-      try {
-        showToast('Sincronizando con Google Sheets...');
-        const res = await fetch(`${url}?action=getDashboardData&pin=${PIN_REQUIRED}`);
-        const json = await res.json();
-        if (json.ok && json.data) {
-          STATE = json.data;
-          localStorage.setItem('finanzas_cached_state', JSON.stringify(STATE));
-          document.getElementById('connectionBadge').textContent = 'Google Sheets Conectado';
-          renderAll();
-          showToast('✅ Datos sincronizados con Google Sheets');
-        }
-      } catch (e) {
-        console.warn('Usando datos en caché local:', e);
-      }
-    }
-
-    async function triggerGmailSync() {
-      const url = getApiUrl();
-      if (!url) {
-        openApiModal();
-        showToast('Configura primero la URL de tu Google Apps Script');
-        return;
-      }
-      try {
-        document.getElementById('syncIcon').classList.add('animate-spin');
-        showToast('Analizando notificaciones de Guayaquil, Pichincha y Diners en Gmail...');
-        const res = await fetch(`${url}?action=syncGmail&pin=${PIN_REQUIRED}`);
-        const json = await res.json();
-        if (json.ok) {
-          STATE = json.data;
-          renderAll();
-          const imp = json.syncResult ? json.syncResult.importedCount : 0;
-          const otp = json.syncResult ? json.syncResult.ignoredOtpCount : 0;
-          showToast(`✅ Gmail sincronizado: ${imp} nuevos movimientos (${otp} OTP ignorados)`);
-        }
-      } catch (e) {
-        showToast('Error al sincronizar Gmail: ' + e.message);
-      } finally {
-        document.getElementById('syncIcon').classList.remove('animate-spin');
-      }
-    }
-
-    // ====================================================================
-    // RENDERIZADO GENERAL DEL DASHBOARD Y MÉTRICAS
+    // RENDERIZADO GENERAL DE PULSO
     // ====================================================================
     function renderAll() {
       renderAccountCards();
-      renderPendingGmailTriage();
-      renderKPIsAndCharts();
+      renderDashboardMetricsAndCharts();
+      renderOtrosReclassifyCenter();
       renderTransactionsTable();
       renderPayrollHistory();
       renderBudgetAndRules();
@@ -931,479 +856,353 @@
     }
 
     function renderAccountCards() {
-      const getAcct = id => STATE.cuentas.find(c => c.ID_Cuenta === id) || { Saldo_Actual: 0, Meta_Cupo: 0 };
-      const bg = getAcct('BG-AHO');
-      const bp = getAcct('BP-AHO');
-      const meta = getAcct('BG-META');
-      const diners = getAcct('TC-DINERS');
-      const titanium = getAcct('PAS-TITANIUM');
+      const getC = id => STATE.cuentas.find(c => c.ID_Cuenta === id) || { Saldo_Actual: 0, Meta_Cupo: 0 };
+      const bg = getC('BG-AHO');
+      const bp = getC('BP-AHO');
+      const meta = getC('BG-META');
+      const aut = getC('AUT-META');
+      const diners = getC('TC-DINERS');
+      const tit = getC('PAS-TITANIUM');
 
       document.getElementById('saldo-BG-AHO').textContent = formatUSD(bg.Saldo_Actual);
       document.getElementById('saldo-BP-AHO').textContent = formatUSD(bp.Saldo_Actual);
       document.getElementById('liquidezDisponibleTotal').textContent = formatUSD(Number(bg.Saldo_Actual) + Number(bp.Saldo_Actual));
 
       document.getElementById('saldo-BG-META').textContent = formatUSD(meta.Saldo_Actual);
-      const goal = Number(meta.Meta_Cupo || 1000);
-      const pct = Math.min(100, ((Number(meta.Saldo_Actual) / goal) * 100)).toFixed(2);
-      const faltante = Math.max(0, goal - Number(meta.Saldo_Actual));
-      const mesesRest = Math.ceil(faltante / 50);
+      const pct = Math.min(100, (Number(meta.Saldo_Actual) / 1000) * 100).toFixed(1);
       document.getElementById('metaProgressBar').style.width = `${pct}%`;
-      document.getElementById('metaProgressText').textContent = `${pct}% completado • Faltan ${formatUSD(faltante)} (~${mesesRest} meses a $50/mes)`;
+      document.getElementById('metaProgressText').textContent = `${pct}% • Faltan ${formatUSD(1000 - Number(meta.Saldo_Actual))}`;
 
+      document.getElementById('saldo-AUT-META').textContent = formatUSD(aut.Saldo_Actual);
+      document.getElementById('autonomyMonthTotal').innerHTML = `${formatUSD(aut.Saldo_Actual)} <span class="text-xs text-purple-300 font-normal">/ $400.00</span>`;
       document.getElementById('saldo-TC-DINERS').textContent = formatUSD(diners.Saldo_Actual);
-      document.getElementById('saldo-PAS-TITANIUM').innerHTML = `${formatUSD(titanium.Saldo_Actual)} <span class="text-xs font-normal">abonado</span>`;
-
-      // Contador de días de Diners Club (Corte día 18, Pago día 05)
-      const hoy = new Date().getDate();
-      const diasCorte = hoy <= 18 ? (18 - hoy) : (30 - hoy + 18);
-      const diasPago = hoy <= 5 ? (5 - hoy) : (30 - hoy + 5);
-      document.getElementById('dinersCountdown').textContent = `Corte en ${diasCorte} días (día 18) • Pago en ${diasPago} días (día 05)`;
+      document.getElementById('saldo-PAS-TITANIUM').textContent = formatUSD(tit.Saldo_Actual);
     }
 
-    function renderPendingGmailTriage() {
-      const pending = STATE.transacciones.filter(t => t.Estado_Revision === 'Pendiente');
-      const sec = document.getElementById('pendingGmailSection');
-      const container = document.getElementById('pendingGmailList');
-      document.getElementById('pendingCountBadge').textContent = pending.length;
+    function renderDashboardMetricsAndCharts() {
+      const period = document.getElementById('globalPeriodFilter').value;
+      const txs = period === 'ALL' ? STATE.transacciones : STATE.transacciones.filter(t => String(t.Periodo) === period);
 
-      if (pending.length === 0) {
-        sec.classList.add('hidden');
+      // Gastos bancarios de consumo (sin contar cruce de valores ni descuentos internos de rol)
+      const gastosBancarios = txs.filter(t => t.Tipo === 'Gasto');
+      const totalBancario = gastosBancarios.reduce((acc, t) => acc + Number(t.Monto || 0), 0);
+      const dispMeta = 1100 - totalBancario;
+      const pctMeta = ((totalBancario / 1100) * 100).toFixed(1);
+
+      document.getElementById('kpiGastoBancario').textContent = formatUSD(totalBancario);
+      document.getElementById('kpiDisponibleMeta').textContent = `Disponible: ${formatUSD(dispMeta)} (${pctMeta}%)`;
+
+      // Burn Rate & Gasto Hormiga (<= $10)
+      const diaMes = 18;
+      const burnProy = period === '2026-11' ? (totalBancario / diaMes) * 30 : totalBancario;
+      const hormigas = gastosBancarios.filter(t => Number(t.Monto) <= 10.00);
+      const sumHormiga = hormigas.reduce((acc, t) => acc + Number(t.Monto || 0), 0);
+
+      document.getElementById('kpiBurnRateProy').textContent = formatUSD(burnProy);
+      document.getElementById('kpiGastoHormiga').textContent = formatUSD(sumHormiga);
+      document.getElementById('kpiHormigaCount').textContent = `${hormigas.length} micro-compras (<= $10)`;
+
+      // Canales de Salida
+      const sumTarjetas = gastosBancarios.filter(t => String(t.Canal_Salida).includes('Tarjeta')).reduce((a, t) => a + Number(t.Monto), 0);
+      const sumTransf = gastosBancarios.filter(t => String(t.Canal_Salida).includes('Transferencia')).reduce((a, t) => a + Number(t.Monto), 0);
+      document.getElementById('kpiCanalesResumen').textContent = `Tarjetas: ${formatUSD(sumTarjetas)}`;
+      document.getElementById('kpiCanalesTransf').textContent = `Transferencias: ${formatUSD(sumTransf)}`;
+
+      // Monto en "Otros"
+      const otrosList = STATE.transacciones.filter(t => t.Categoria === 'Otros' && t.Origen_Dato !== 'Rol_Pago');
+      const otrosMes = txs.filter(t => t.Categoria === 'Otros' && t.Origen_Dato !== 'Rol_Pago').reduce((a, t) => a + Number(t.Monto), 0);
+      document.getElementById('kpiOtrosMonto').textContent = formatUSD(otrosMes);
+      document.getElementById('navOtrosBadge').textContent = otrosList.length;
+
+      // Gráfico 1: Roles FARMCORP
+      const ctxP = document.getElementById('payrollChart').getContext('2d');
+      if (payrollChartInstance) payrollChartInstance.destroy();
+      const sortedRoles = [...STATE.nomina].sort((a, b) => a.Periodo.localeCompare(b.Periodo));
+      payrollChartInstance = new Chart(ctxP, {
+        type: 'bar',
+        data: {
+          labels: sortedRoles.map(r => r.Periodo),
+          datasets: [
+            { label: 'Liquidez al Banco ($448 Quincena + Neto Fin Mes)', data: sortedRoles.map(r => r.Liquidez_Total_Banco), backgroundColor: 'rgba(0, 242, 254, 0.78)', borderRadius: 6 },
+            { label: 'Gastos Descontados en Rol', data: sortedRoles.map(r => +(r.Total_Descuentos - r.Anticipo_Quincena).toFixed(2)), backgroundColor: 'rgba(255, 8, 68, 0.68)', borderRadius: 6 }
+          ]
+        },
+        options: {
+          responsive: true, maintainAspectRatio: false,
+          plugins: { legend: { labels: { color: '#cbd5e1', font: { size: 11 } } } },
+          scales: {
+            x: { stacked: true, ticks: { color: '#94a3b8' } },
+            y: { stacked: true, ticks: { color: '#94a3b8' } }
+          }
+        }
+      });
+
+      // Gráfico 2: Donut Categorías
+      const catMap = {};
+      txs.filter(t => t.Tipo === 'Gasto' || t.Tipo === 'Cruce_Valores').forEach(t => {
+        catMap[t.Categoria] = (catMap[t.Categoria] || 0) + Number(t.Monto || 0);
+      });
+      const ctxD = document.getElementById('expensesDonutChart').getContext('2d');
+      if (donutChartInstance) donutChartInstance.destroy();
+      donutChartInstance = new Chart(ctxD, {
+        type: 'doughnut',
+        data: {
+          labels: Object.keys(catMap),
+          datasets: [{
+            data: Object.values(catMap),
+            backgroundColor: ['#00f2fe', '#7c3aed', '#10b981', '#f59e0b', '#ec4899', '#3b82f6', '#ff0844'],
+            borderWidth: 0
+          }]
+        },
+        options: {
+          responsive: true, maintainAspectRatio: false, cutout: '66%',
+          plugins: { legend: { position: 'bottom', labels: { color: '#cbd5e1', font: { size: 10 }, boxWidth: 10 } } }
+        }
+      });
+    }
+
+    // ====================================================================
+    // CENTRO INTELIGENTE PARA CLASIFICAR "OTROS" Y ASIGNAR MOTIVOS
+    // ====================================================================
+    function renderOtrosReclassifyCenter() {
+      const container = document.getElementById('otrosTriageContainer');
+      const otros = STATE.transacciones.filter(t => t.Categoria === 'Otros' && t.Origen_Dato !== 'Rol_Pago');
+
+      if (otros.length === 0) {
+        container.innerHTML = `<div class="col-span-2 glass rounded-2xl p-6 text-center text-emerald-300 font-semibold">🎉 ¡Excelente! No tienes ningún consumo o transferencia estancado en "Otros".</div>`;
         return;
       }
-      sec.classList.remove('hidden');
-      container.innerHTML = pending.map(t => `
-        <div class="glass rounded-xl p-3 flex flex-col justify-between gap-2">
-          <div class="flex justify-between items-start">
+
+      container.innerHTML = otros.map(t => `
+        <div class="glass rounded-2xl p-4 flex flex-col justify-between gap-3 border border-rose-500/30">
+          <div class="flex items-start justify-between gap-2">
             <div>
-              <span class="text-[10px] px-2 py-0.5 rounded bg-cyan-500/20 text-cyan-300 mono">${t.Fecha} • ${t.Cuenta_Origen}</span>
-              <p class="text-xs font-bold text-white mt-1">${t.Comercio_Concepto}</p>
+              <span class="text-[10px] px-2 py-0.5 rounded bg-slate-800 text-cyan-300 mono">${t.Fecha} • ${t.Canal_Salida}</span>
+              <h4 class="text-xs font-bold text-white mt-1.5">${t.Comercio_Concepto}</h4>
             </div>
-            <span class="text-sm font-extrabold mono text-rose-400">${formatUSD(t.Monto)}</span>
+            <span class="text-base font-extrabold mono text-rose-400">${formatUSD(t.Monto)}</span>
           </div>
-          <div class="flex flex-wrap gap-1.5 pt-1">
-            <button onclick="quickConfirmTx('${t.ID_Tx}', 'Alimentación y Supermercado', 'Gasto')" class="px-2 py-1 rounded bg-slate-800 hover:bg-cyan-500/20 text-[11px] text-slate-200">🛒 Supermercado</button>
-            <button onclick="quickConfirmTx('${t.ID_Tx}', 'Restaurantes, Ocio y Suscripciones', 'Gasto')" class="px-2 py-1 rounded bg-slate-800 hover:bg-cyan-500/20 text-[11px] text-slate-200">🍔 Restaurante</button>
-            <button onclick="quickConfirmTx('${t.ID_Tx}', 'Transporte, Gasolina y Movilidad', 'Gasto')" class="px-2 py-1 rounded bg-slate-800 hover:bg-cyan-500/20 text-[11px] text-slate-200">⛽ Transporte</button>
-            <button onclick="quickConfirmTx('${t.ID_Tx}', 'Amortización Deuda Titanium', 'Pago_Deuda_Titanium')" class="px-2 py-1 rounded bg-rose-500/30 hover:bg-rose-500/50 text-[11px] text-rose-200 font-semibold">💳 Es Pago Titanium</button>
+
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs">
+            <input id="motivo-${t.ID_Tx}" type="text" value="${t.Motivo_Transferencia || ''}" placeholder="Escribir motivo (ej. Almuerzo, Préstamo...)"
+              class="bg-slate-900 border border-slate-700 rounded-xl px-2.5 py-1.5 text-white" />
+            <select id="cat-${t.ID_Tx}" class="bg-slate-900 border border-cyan-500/40 rounded-xl px-2.5 py-1.5 text-cyan-300 font-semibold">
+              <option value="Restaurantes">🍔 Restaurantes</option>
+              <option value="Alimentación">🥐 Alimentación</option>
+              <option value="Supermercado">🛒 Supermercado</option>
+              <option value="Entretenimiento">🎉 Entretenimiento</option>
+              <option value="Transporte">⛽ Transporte / Vehículo / Licencia</option>
+              <option value="Servicios">💡 Servicios / Casa / Mamá</option>
+              <option value="Préstamos y Cruces">🤝 Préstamo / Cruce de Valores</option>
+              <option value="Amortización Deuda Titanium">💳 Pago Deuda Titanium</option>
+              <option value="Compras">🛍️ Compras</option>
+              <option value="Salud">⚕️ Salud</option>
+            </select>
+          </div>
+
+          <div class="flex items-center justify-between pt-1">
+            <label class="flex items-center gap-1.5 text-[11px] text-slate-300 cursor-pointer">
+              <input id="learn-${t.ID_Tx}" type="checkbox" checked class="rounded accent-cyan-400" />
+              <span>Crear regla automática para este beneficiario</span>
+            </label>
+            <button onclick="applyReclassification('${t.ID_Tx}')" class="px-3.5 py-1.5 rounded-xl bg-cyan-400 hover:bg-cyan-300 text-slate-950 font-bold text-xs">
+              Asignar Categoría
+            </button>
           </div>
         </div>
       `).join('');
     }
 
-    function renderKPIsAndCharts() {
-      const period = document.getElementById('globalPeriodFilter').value;
-      const rolesFiltered = period === 'ALL' ? STATE.nomina : STATE.nomina.filter(r => r.Periodo === period);
-      const txsFiltered = period === 'ALL' ? STATE.transacciones : STATE.transacciones.filter(t => String(t.Periodo) === period);
+    async function applyReclassification(idTx) {
+      const tx = STATE.transacciones.find(t => t.ID_Tx === idTx);
+      if (!tx) return;
+      const nuevaCat = document.getElementById(`cat-${idTx}`).value;
+      const motivo = document.getElementById(`motivo-${idTx}`).value.trim();
+      const learn = document.getElementById(`learn-${idTx}`).checked;
 
-      const ingresoBrutoRoles = rolesFiltered.reduce((acc, r) => acc + Number(r.Total_Ingresos || 0), 0);
-      const liquidezRoles = rolesFiltered.reduce((acc, r) => acc + Number(r.Liquidez_Total_Banco || 0), 0);
-      const ingresosExtra = txsFiltered.filter(t => t.Tipo === 'Ingreso').reduce((acc, t) => acc + Number(t.Monto || 0), 0);
+      tx.Categoria = nuevaCat;
+      if (motivo) tx.Motivo_Transferencia = motivo;
+      if (nuevaCat === 'Préstamos y Cruces') tx.Tipo = 'Cruce_Valores';
+      if (nuevaCat === 'Amortización Deuda Titanium') tx.Tipo = 'Pago_Deuda_Titanium';
+      tx.Estado_Revision = 'Confirmado';
 
-      const gastosRol = txsFiltered.filter(t => t.Tipo === 'Gasto_Rol').reduce((acc, t) => acc + Number(t.Monto || 0), 0);
-      const gastosBancos = txsFiltered.filter(t => t.Tipo === 'Gasto' || t.Tipo === 'Pago_Deuda_Titanium').reduce((acc, t) => acc + Number(t.Monto || 0), 0);
-      const gastosTotales = gastosRol + gastosBancos;
-
-      const totalBruto = ingresoBrutoRoles + ingresosExtra;
-      const flujoNeto = totalBruto - gastosTotales;
-      const tasaAhorro = totalBruto > 0 ? ((flujoNeto / totalBruto) * 100).toFixed(1) : '0.0';
-      const diasDivisor = period === 'ALL' ? 300 : 30;
-      const burnRate = (gastosTotales / diasDivisor).toFixed(2);
-
-      document.getElementById('kpiIngresoBruto').textContent = formatUSD(totalBruto);
-      document.getElementById('kpiLiquidezBanco').textContent = `Líquido al Banco: ${formatUSD(liquidezRoles + ingresosExtra)}`;
-      document.getElementById('kpiGastosTotales').textContent = formatUSD(gastosTotales);
-      document.getElementById('kpiDesgloseGastos').textContent = `En Rol: ${formatUSD(gastosRol)} | Bancos: ${formatUSD(gastosBancos)}`;
-      document.getElementById('kpiTasaAhorro').textContent = `${tasaAhorro}% (${formatUSD(flujoNeto)})`;
-      document.getElementById('kpiBurnRate').textContent = `Ritmo de Gasto: $${burnRate}/día`;
-
-      const bg = STATE.cuentas.find(c => c.ID_Cuenta === 'BG-AHO')?.Saldo_Actual || 0;
-      const bp = STATE.cuentas.find(c => c.ID_Cuenta === 'BP-AHO')?.Saldo_Actual || 0;
-      const meta = STATE.cuentas.find(c => c.ID_Cuenta === 'BG-META')?.Saldo_Actual || 0;
-      document.getElementById('kpiPatrimonioLiquido').textContent = formatUSD(Number(bg) + Number(bp) + Number(meta));
-
-      // Gráfico 1: Evolución Salarial FARMCORP 2026
-      const ctxPayroll = document.getElementById('payrollChart').getContext('2d');
-      if (payrollChartInstance) payrollChartInstance.destroy();
-      const sortedRoles = [...STATE.nomina].sort((a, b) => a.Periodo.localeCompare(b.Periodo));
-
-      payrollChartInstance = new Chart(ctxPayroll, {
-        type: 'bar',
-        data: {
-          labels: sortedRoles.map(r => r.Periodo),
-          datasets: [
-            {
-              label: 'Líquido Total en Banco ($448 Quincena + Neto Fin de Mes)',
-              data: sortedRoles.map(r => Number(r.Liquidez_Total_Banco)),
-              backgroundColor: 'rgba(0, 242, 254, 0.75)',
-              borderRadius: 6
-            },
-            {
-              label: 'Gastos y Deducciones Descontadas en Rol',
-              data: sortedRoles.map(r => +(Number(r.Total_Descuentos) - Number(r.Anticipo_Quincena)).toFixed(2)),
-              backgroundColor: 'rgba(255, 8, 68, 0.70)',
-              borderRadius: 6
+      let keywordToLearn = '';
+      if (learn) {
+        keywordToLearn = tx.Comercio_Concepto.split('(')[0].trim().toUpperCase();
+        if (keywordToLearn.length >= 3) {
+          STATE.reglasGmail.push({ Palabra_Clave: keywordToLearn, Categoria_Asignada: nuevaCat, Nota_Referencia: motivo || 'Aprendido en Pulso' });
+          // Aplicar a otros con el mismo nombre
+          STATE.transacciones.forEach(other => {
+            if (other.Categoria === 'Otros' && other.Comercio_Concepto.toUpperCase().includes(keywordToLearn)) {
+              other.Categoria = nuevaCat;
+              other.Estado_Revision = 'Confirmado';
             }
-          ]
-        },
-        options: {
-          responsive: true,
-          maintainAspectRatio: false,
-          plugins: { legend: { labels: { color: '#cbd5e1', font: { size: 11 } } } },
-          scales: {
-            x: { stacked: true, ticks: { color: '#94a3b8' }, grid: { color: 'rgba(255,255,255,0.04)' } },
-            y: { stacked: true, ticks: { color: '#94a3b8' }, grid: { color: 'rgba(255,255,255,0.06)' } }
-          }
+          });
         }
-      });
+      }
 
-      // Gráfico 2: Donut de Distribución de Gastos por Categoría
-      const catTotals = {};
-      txsFiltered.filter(t => t.Tipo === 'Gasto' || t.Tipo === 'Gasto_Rol' || t.Tipo === 'Pago_Deuda_Titanium').forEach(t => {
-        catTotals[t.Categoria] = (catTotals[t.Categoria] || 0) + Number(t.Monto || 0);
-      });
+      renderAll();
+      showToast(`✅ Clasificado en "${nuevaCat}"${keywordToLearn ? ' y regla guardada' : ''}`);
 
-      const ctxDonut = document.getElementById('expensesDonutChart').getContext('2d');
-      if (donutChartInstance) donutChartInstance.destroy();
-      donutChartInstance = new Chart(ctxDonut, {
-        type: 'doughnut',
-        data: {
-          labels: Object.keys(catTotals),
-          datasets: [{
-            data: Object.values(catTotals),
-            backgroundColor: ['#00f2fe', '#7c3aed', '#ff0844', '#10b981', '#f59e0b', '#ec4899', '#3b82f6'],
-            borderWidth: 0
-          }]
-        },
-        options: {
-          responsive: true,
-          maintainAspectRatio: false,
-          cutout: '68%',
-          plugins: {
-            legend: { position: 'bottom', labels: { color: '#cbd5e1', font: { size: 10 }, boxWidth: 10 } }
-          }
-        }
-      });
+      const url = getApiUrl();
+      if (url) {
+        fetch(url, {
+          method: 'POST',
+          body: JSON.stringify({
+            pin: PIN_REQUIRED,
+            action: 'reclassifyTransaction',
+            idTx,
+            categoria: nuevaCat,
+            tipo: tx.Tipo,
+            motivoNota: motivo,
+            createRuleKeyword: keywordToLearn
+          })
+        });
+      }
     }
 
     // ====================================================================
-    // TABLA DE TRANSACCIONES & FILTROS
+    // TABLA DE MOVIMIENTOS CON EDICIÓN DE CATEGORÍA EN 1 CLIC
     // ====================================================================
     function renderTransactionsTable() {
       const period = document.getElementById('globalPeriodFilter').value;
       const q = (document.getElementById('txSearchInput').value || '').toLowerCase();
+      const cat = document.getElementById('txCategoryFilter').value;
+      const canal = document.getElementById('txCanalFilter').value;
       const acc = document.getElementById('txAccountFilter').value;
-      const type = document.getElementById('txTypeFilter').value;
-      const orig = document.getElementById('txOriginFilter').value;
 
-      const filtered = STATE.transacciones.filter(t => {
+      const list = STATE.transacciones.filter(t => {
         if (period !== 'ALL' && String(t.Periodo) !== period) return false;
+        if (cat !== 'ALL' && t.Categoria !== cat) return false;
+        if (canal !== 'ALL' && t.Canal_Salida !== canal) return false;
         if (acc !== 'ALL' && t.Cuenta_Origen !== acc && t.Cuenta_Destino !== acc) return false;
-        if (type !== 'ALL' && t.Tipo !== type) return false;
-        if (orig !== 'ALL' && t.Origen_Dato !== orig) return false;
-        if (q && !(`${t.Comercio_Concepto} ${t.Categoria} ${t.Notas || ''}`).toLowerCase().includes(q)) return false;
+        if (q && !(`${t.Comercio_Concepto} ${t.Categoria} ${t.Motivo_Transferencia || ''}`).toLowerCase().includes(q)) return false;
         return true;
       }).sort((a, b) => String(b.Fecha).localeCompare(String(a.Fecha)));
 
-      const tbody = document.getElementById('txTableBody');
-      tbody.innerHTML = filtered.map(t => {
-        const isPositive = t.Tipo.includes('Ingreso') || t.Tipo === 'Fondeo_Titanium';
-        const colorClass = isPositive ? 'text-emerald-400' : (t.Tipo === 'Ahorro_Meta' ? 'text-cyan-300' : 'text-rose-400');
-        const sign = isPositive ? '+' : '-';
+      const categoriesOptions = ['Restaurantes', 'Alimentación', 'Supermercado', 'Entretenimiento', 'Transporte', 'Servicios', 'Préstamos y Cruces', 'Amortización Deuda Titanium', 'Compras', 'Salud', 'Otros'];
+
+      document.getElementById('txTableBody').innerHTML = list.map(t => {
+        const isIncome = t.Tipo.includes('Ingreso') || t.Tipo === 'Fondeo_Titanium';
+        const isCruce = t.Tipo === 'Cruce_Valores';
+        const badgeColor = t.Categoria === 'Otros' ? 'bg-rose-500/30 text-rose-200 border border-rose-500/40' : 'bg-slate-800 text-cyan-300';
+        const amountColor = isIncome ? 'text-emerald-400' : (isCruce ? 'text-amber-300' : 'text-rose-400');
+
         return `
           <tr class="hover:bg-white/5 transition">
-            <td class="py-2.5 px-3 mono text-slate-300">${String(t.Fecha).substring(0, 10)}</td>
+            <td class="py-2.5 px-3 mono text-slate-300">${t.Fecha} <span class="text-[10px] text-slate-500">${t.Hora || ''}</span></td>
+            <td class="py-2.5 px-3 font-semibold text-white">${t.Comercio_Concepto}</td>
+            <td class="py-2.5 px-3 text-slate-300">${t.Motivo_Transferencia || '<span class="text-slate-600">—</span>'}</td>
             <td class="py-2.5 px-3">
-              <p class="font-semibold text-white">${t.Comercio_Concepto}</p>
-              <span class="text-[10px] text-slate-400">${t.Tipo} • ${t.Origen_Dato}</span>
+              <select onchange="inlineChangeCategory('${t.ID_Tx}', this.value)" class="px-2.5 py-1 rounded-full text-[11px] font-semibold ${badgeColor} focus:outline-none">
+                ${categoriesOptions.map(c => `<option value="${c}" ${c === t.Categoria ? 'selected' : ''}>${c}</option>`).join('')}
+                ${!categoriesOptions.includes(t.Categoria) ? `<option value="${t.Categoria}" selected>${t.Categoria}</option>` : ''}
+              </select>
             </td>
-            <td class="py-2.5 px-3">
-              <span class="px-2 py-0.5 rounded-full bg-slate-800 text-slate-200 text-[11px]">${t.Categoria}</span>
-            </td>
-            <td class="py-2.5 px-3 mono text-slate-300">${t.Cuenta_Origen}${t.Cuenta_Destino ? ' → ' + t.Cuenta_Destino : ''}</td>
-            <td class="py-2.5 px-3 text-right mono font-bold ${colorClass}">${sign}${formatUSD(t.Monto)}</td>
+            <td class="py-2.5 px-3 text-slate-400">${t.Canal_Salida || t.Origen_Dato}</td>
+            <td class="py-2.5 px-3 text-right mono font-bold ${amountColor}">${isIncome ? '+' : '-'}${formatUSD(t.Monto)}</td>
           </tr>
         `;
       }).join('');
     }
 
-    // ====================================================================
-    // LECTOR AUTOMÁTICO DE ROLES EN PDF (PDF.JS) + HISTORIAL FARMCORP
-    // ====================================================================
-    async function handlePayrollPdfUpload(event) {
-      const file = event.target.files[0];
-      if (!file) return;
-      currentPdfName = file.name;
-      document.getElementById('pdfFileNameLabel').textContent = `📄 ${file.name}`;
-      document.getElementById('pdfParseStatus').textContent = '⏳ Analizando texto del Rol de Pago FARMCORP con PDF.js...';
-
-      // Guardar Base64 para envío a Google Drive
-      const readerB64 = new FileReader();
-      readerB64.onload = e => { currentPdfBase64 = e.target.result; };
-      readerB64.readAsDataURL(file);
-
-      // Extraer texto del PDF localmente
-      try {
-        const arrayBuffer = await file.arrayBuffer();
-        pdfjsLib.GlobalWorkerOptions.workerSrc = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js';
-        const pdf = await pdfjsLib.getDocument({ data: arrayBuffer }).promise;
-        let fullText = '';
-        for (let i = 1; i <= pdf.numPages; i++) {
-          const page = await pdf.getPage(i);
-          const content = await page.getTextContent();
-          fullText += content.items.map(item => item.str).join(' ') + '\n';
-        }
-        parseFarmcorpPdfText(fullText);
-      } catch (err) {
-        document.getElementById('pdfParseStatus').textContent = '⚠️ PDF leído como imagen. Ajusta los montos en el formulario y se respaldará en Drive.';
-      }
-    }
-
-    function parseFarmcorpPdfText(text) {
-      const clean = text.replace(/\s+/g, ' ').toUpperCase();
-      const parseNum = str => {
-        if (!str) return 0;
-        return parseFloat(str.replace(/\./g, '').replace(',', '.')) || 0;
-      };
-      const extractConcept = regex => {
-        const m = clean.match(regex);
-        return m ? parseNum(m[1]) : 0;
-      };
-
-      // Período (ej. 01/10/2026 31/10/2026)
-      const perMatch = clean.match(/01\/(\d{2})\/(\d{4})/);
-      if (perMatch) {
-        document.getElementById('rolPeriodo').value = `${perMatch[2]}-${perMatch[1]}`;
-      }
-
-      const remun = extractConcept(/REMUNERACION UNIFICADA\s+[0-9,]+\s+([0-9.,]+)/);
-      const variable = extractConcept(/SUELDO VARIABLE\s+[0-9,]+\s+([0-9.,]+)/);
-      const fondo = extractConcept(/INGRESO FONDO RESERVA \(MENSUAL\)\s+([0-9.,]+)/);
-      const vacGoz = extractConcept(/VACACIONES GOZADAS\s+[0-9,]+\s+([0-9.,]+)/);
-      const incVac = extractConcept(/INCENTIVO POR VACACIONES\s+([0-9.,]+)/);
-      const enferm = extractConcept(/ENFERMEDAD 1 A 3 DIAS\s+[0-9,]+\s+([0-9.,]+)/);
-      const reemb = extractConcept(/REEMBOLSO\s+([0-9.,]+)/);
-
-      const anticipo = extractConcept(/DESCUENTO ANTICIPO QUINCENAL\s+([0-9.,]+)/) || 448.00;
-      const iess = extractConcept(/SEGURO SOCIAL\s+([0-9.,]+)/);
-      const renta = extractConcept(/IMPUESTO RENTA\s+([0-9.,]+)/);
-      const salud = extractConcept(/DESCUENTO SEGURO SALUD\s+([0-9.,]+)/);
-      const credEmp = extractConcept(/CREDITO EMPRESARIAL\s+([0-9.,]+)/);
-      const gym = extractConcept(/DESCUENTO POR PRESTAMO GIMNASIO\s+([0-9.,]+)/);
-      const estudios = extractConcept(/ESTUDIOS\s+([0-9.,]+)/);
-      const corazones = extractConcept(/CORAZONES FC\s+([0-9.,]+)/);
-      const atrasos = extractConcept(/ATRASOS\s+([0-9.,]+)/);
-      const colab = extractConcept(/COLABORACION\s+([0-9.,]+)/);
-      const varios = extractConcept(/DESCUENTOS VARIOS\s+([0-9.,]+)/);
-
-      if (remun > 0) document.getElementById('rolRemuneracion').value = remun.toFixed(2);
-      if (variable > 0) document.getElementById('rolVariable').value = variable.toFixed(2);
-      if (fondo > 0) document.getElementById('rolFondoReserva').value = fondo.toFixed(2);
-      document.getElementById('rolVacacionesOtros').value = (vacGoz + incVac + enferm + reemb).toFixed(2);
-
-      document.getElementById('rolAnticipo').value = anticipo.toFixed(2);
-      if (iess > 0) document.getElementById('rolIess').value = iess.toFixed(2);
-      document.getElementById('rolImpRenta').value = renta.toFixed(2);
-      if (salud > 0) document.getElementById('rolSeguroSalud').value = salud.toFixed(2);
-      document.getElementById('rolCreditoEmp').value = credEmp.toFixed(2);
-      document.getElementById('rolGimnasio').value = gym.toFixed(2);
-      document.getElementById('rolEstudios').value = estudios.toFixed(2);
-      if (corazones > 0) document.getElementById('rolCorazones').value = corazones.toFixed(2);
-      document.getElementById('rolAtrasos').value = (atrasos + colab).toFixed(2);
-      document.getElementById('rolDescuentosVarios').value = varios.toFixed(2);
-
-      recalcPayrollForm();
-      document.getElementById('pdfParseStatus').textContent = '✅ Rubros extraídos automáticamente del PDF FARMCORP. Revisa y haz clic en Guardar.';
-    }
-
-    function recalcPayrollForm() {
-      const val = id => parseFloat(document.getElementById(id).value) || 0;
-      const totIng = +(val('rolRemuneracion') + val('rolVariable') + val('rolFondoReserva') + val('rolVacacionesOtros')).toFixed(2);
-      const totDesc = +(val('rolAnticipo') + val('rolIess') + val('rolImpRenta') + val('rolSeguroSalud') + val('rolCreditoEmp') + val('rolGimnasio') + val('rolEstudios') + val('rolCorazones') + val('rolAtrasos') + val('rolDescuentosVarios')).toFixed(2);
-      const neto = +(totIng - totDesc).toFixed(2);
-      const liq = +(val('rolAnticipo') + neto).toFixed(2);
-
-      document.getElementById('formTotalIngresos').textContent = formatUSD(totIng);
-      document.getElementById('formTotalDescuentos').textContent = formatUSD(totDesc);
-      document.getElementById('formNetoPagar').textContent = formatUSD(neto);
-      document.getElementById('formLiquidezTotal').textContent = formatUSD(liq);
-    }
-
-    async function submitPayrollForm() {
-      const val = id => parseFloat(document.getElementById(id).value) || 0;
-      const periodo = document.getElementById('rolPeriodo').value;
-      const payrollObj = {
-        periodo,
-        diasTrab: val('rolDias'),
-        remuneracionUnificada: val('rolRemuneracion'),
-        sueldoVariable: val('rolVariable'),
-        fondoReserva: val('rolFondoReserva'),
-        vacacionesOtros: val('rolVacacionesOtros'),
-        anticipoQuincena: val('rolAnticipo'),
-        iess: val('rolIess'),
-        impRenta: val('rolImpRenta'),
-        seguroSalud: val('rolSeguroSalud'),
-        corazonesFc: val('rolCorazones'),
-        creditoEmpresarial: val('rolCreditoEmp'),
-        prestamoGimnasio: val('rolGimnasio'),
-        prestamoEstudios: val('rolEstudios'),
-        atrasosColaboracion: val('rolAtrasos'),
-        descuentosVarios: val('rolDescuentosVarios')
-      };
-
-      const totIng = +(payrollObj.remuneracionUnificada + payrollObj.sueldoVariable + payrollObj.fondoReserva + payrollObj.vacacionesOtros).toFixed(2);
-      const totDesc = +(payrollObj.anticipoQuincena + payrollObj.iess + payrollObj.impRenta + payrollObj.seguroSalud + payrollObj.corazonesFc + payrollObj.creditoEmpresarial + payrollObj.prestamoGimnasio + payrollObj.prestamoEstudios + payrollObj.atrasosColaboracion + payrollObj.descuentosVarios).toFixed(2);
-      const neto = +(totIng - totDesc).toFixed(2);
-      const liq = +(payrollObj.anticipoQuincena + neto).toFixed(2);
-
-      const localRow = {
-        ID_Rol: 'ROL-' + periodo, Periodo: periodo, Dias_Trab: payrollObj.diasTrab,
-        Remuneracion_Unificada: payrollObj.remuneracionUnificada, Sueldo_Variable: payrollObj.sueldoVariable,
-        Fondo_Reserva: payrollObj.fondoReserva, Vacaciones_Enfermedad_Otros: payrollObj.vacacionesOtros,
-        Total_Ingresos: totIng, Anticipo_Quincena: payrollObj.anticipoQuincena,
-        IESS: payrollObj.iess, Imp_Renta: payrollObj.impRenta, Seguro_Salud: payrollObj.seguroSalud,
-        Corazones_FC: payrollObj.corazonesFc, Credito_Empresarial: payrollObj.creditoEmpresarial,
-        Prestamo_Gimnasio: payrollObj.prestamoGimnasio, Prestamo_Estudios: payrollObj.prestamoEstudios,
-        Atrasos_Colaboracion: payrollObj.atrasosColaboracion, Descuentos_Varios: payrollObj.descuentosVarios,
-        Total_Descuentos: totDesc, Neto_Pagar_Fin_Mes: neto, Liquidez_Total_Banco: liq, URL_PDF_Drive: ''
-      };
-
-      const idx = STATE.nomina.findIndex(r => r.Periodo === periodo);
-      if (idx >= 0) STATE.nomina[idx] = localRow; else STATE.nomina.push(localRow);
-
-      // Re-dividir gastos de rol para ese periodo
-      STATE.transacciones = STATE.transacciones.filter(t => !(t.Periodo === periodo && t.Origen_Dato === 'Rol_Pago'));
-      STATE.transacciones.push(...generatePayrollSplitTransactions([localRow]));
+    function inlineChangeCategory(idTx, nuevaCat) {
+      const tx = STATE.transacciones.find(t => t.ID_Tx === idTx);
+      if (!tx) return;
+      tx.Categoria = nuevaCat;
+      if (nuevaCat === 'Préstamos y Cruces') tx.Tipo = 'Cruce_Valores';
+      tx.Estado_Revision = 'Confirmado';
       renderAll();
-      showToast(`✅ Rol ${periodo} guardado y descuentos divididos en gastos pagados`);
+      showToast(`Categoría actualizada a "${nuevaCat}"`);
 
       const url = getApiUrl();
       if (url) {
-        try {
-          const res = await fetch(url, {
-            method: 'POST',
-            body: JSON.stringify({
-              pin: PIN_REQUIRED,
-              action: 'savePayroll',
-              payroll: payrollObj,
-              pdfBase64: currentPdfBase64,
-              pdfFileName: currentPdfName
-            })
-          });
-          const json = await res.json();
-          if (json.ok) {
-            STATE = json.data;
-            renderAll();
-            showToast('✅ Rol respaldado en Google Drive y Google Sheets');
-          }
-        } catch (e) {
-          console.warn(e);
-        }
+        fetch(url, {
+          method: 'POST',
+          body: JSON.stringify({ pin: PIN_REQUIRED, action: 'reclassifyTransaction', idTx, categoria: nuevaCat, tipo: tx.Tipo })
+        });
       }
     }
 
-    function renderPayrollHistory() {
-      const tbody = document.getElementById('payrollHistoryBody');
-      const sorted = [...STATE.nomina].sort((a, b) => b.Periodo.localeCompare(a.Periodo));
-      tbody.innerHTML = sorted.map(r => {
-        const ley = +(Number(r.IESS) + Number(r.Imp_Renta)).toFixed(2);
-        const otros = +(Number(r.Prestamo_Gimnasio) + Number(r.Prestamo_Estudios) + Number(r.Corazones_FC) + Number(r.Atrasos_Colaboracion) + Number(r.Descuentos_Varios)).toFixed(2);
-        return `
-          <tr class="hover:bg-white/5 transition">
-            <td class="py-2.5 px-2 font-bold text-white">${r.Periodo}</td>
-            <td class="py-2.5 px-2 text-right text-emerald-400">${formatUSD(r.Total_Ingresos)}</td>
-            <td class="py-2.5 px-2 text-right text-cyan-300">${formatUSD(r.Anticipo_Quincena)}</td>
-            <td class="py-2.5 px-2 text-right text-rose-300">${formatUSD(ley)}</td>
-            <td class="py-2.5 px-2 text-right text-rose-300">${formatUSD(r.Seguro_Salud)}</td>
-            <td class="py-2.5 px-2 text-right text-rose-300">${formatUSD(r.Credito_Empresarial)}</td>
-            <td class="py-2.5 px-2 text-right text-rose-300">${formatUSD(otros)}</td>
-            <td class="py-2.5 px-2 text-right font-bold text-white">${formatUSD(r.Neto_Pagar_Fin_Mes)}</td>
-            <td class="py-2.5 px-2 text-right font-extrabold text-cyan-300">${formatUSD(r.Liquidez_Total_Banco)}</td>
-            <td class="py-2.5 px-2 text-center">
-              <button onclick="loadPayrollIntoForm('${r.Periodo}')" class="px-2.5 py-1 rounded-lg glass hover:bg-cyan-500/20 text-[11px] text-cyan-300 font-sans">
-                Cargar en Editor
-              </button>
-            </td>
-          </tr>
-        `;
-      }).join('');
-    }
-
-    function loadPayrollIntoForm(periodo) {
-      const r = STATE.nomina.find(x => x.Periodo === periodo);
-      if (!r) return;
-      document.getElementById('rolPeriodo').value = r.Periodo;
-      document.getElementById('rolDias').value = r.Dias_Trab;
-      document.getElementById('rolRemuneracion').value = Number(r.Remuneracion_Unificada).toFixed(2);
-      document.getElementById('rolVariable').value = Number(r.Sueldo_Variable).toFixed(2);
-      document.getElementById('rolFondoReserva').value = Number(r.Fondo_Reserva).toFixed(2);
-      document.getElementById('rolVacacionesOtros').value = Number(r.Vacaciones_Enfermedad_Otros).toFixed(2);
-      document.getElementById('rolAnticipo').value = Number(r.Anticipo_Quincena).toFixed(2);
-      document.getElementById('rolIess').value = Number(r.IESS).toFixed(2);
-      document.getElementById('rolImpRenta').value = Number(r.Imp_Renta).toFixed(2);
-      document.getElementById('rolSeguroSalud').value = Number(r.Seguro_Salud).toFixed(2);
-      document.getElementById('rolCreditoEmp').value = Number(r.Credito_Empresarial).toFixed(2);
-      document.getElementById('rolGimnasio').value = Number(r.Prestamo_Gimnasio).toFixed(2);
-      document.getElementById('rolEstudios').value = Number(r.Prestamo_Estudios).toFixed(2);
-      document.getElementById('rolCorazones').value = Number(r.Corazones_FC).toFixed(2);
-      document.getElementById('rolAtrasos').value = Number(r.Atrasos_Colaboracion).toFixed(2);
-      document.getElementById('rolDescuentosVarios').value = Number(r.Descuentos_Varios).toFixed(2);
-      recalcPayrollForm();
-      showToast(`Rol ${periodo} cargado en el editor`);
+    // ====================================================================
+    // AUTODETECCIÓN DE CATEGORÍA AL ESCRIBIR EL MOTIVO DE LA TRANSFERENCIA
+    // ====================================================================
+    function autoDetectCategoryFromMotivo() {
+      const texto = (`${document.getElementById('qComercio').value} ${document.getElementById('qMotivo').value}`).toUpperCase();
+      for (let r of STATE.reglasGmail) {
+        try {
+          const rx = new RegExp(r.Palabra_Clave, 'i');
+          if (rx.test(texto)) {
+            document.getElementById('qCategoria').value = r.Categoria_Asignada;
+            return;
+          }
+        } catch (e) {}
+      }
     }
 
     // ====================================================================
-    // PRESUPUESTOS 50/30/20 Y REGLAS GMAIL
+    // PRESUPUESTO, REGLAS Y ROLES FARMCORP
     // ====================================================================
     function renderBudgetAndRules() {
       const period = document.getElementById('globalPeriodFilter').value;
-      const mult = period === 'ALL' ? 10 : 1;
       const txs = period === 'ALL' ? STATE.transacciones : STATE.transacciones.filter(t => String(t.Periodo) === period);
 
-      const container = document.getElementById('budgetBarsContainer');
-      container.innerHTML = STATE.presupuestos.map(b => {
-        const limit = Number(b.Limite_Mensual || 100) * mult;
-        const spent = txs
-          .filter(t => t.Categoria === b.Categoria && (t.Tipo === 'Gasto' || t.Tipo === 'Gasto_Rol' || t.Tipo === 'Pago_Deuda_Titanium' || t.Tipo === 'Ahorro_Meta'))
-          .reduce((acc, t) => acc + Number(t.Monto || 0), 0);
+      document.getElementById('budgetBarsContainer').innerHTML = STATE.presupuestos.map(b => {
+        const limit = Number(b.Limite_Mensual || 100);
+        const spent = txs.filter(t => t.Categoria === b.Categoria && !t.Tipo.includes('Ingreso')).reduce((a, t) => a + Number(t.Monto || 0), 0);
         const pct = limit > 0 ? Math.min(100, (spent / limit) * 100) : 0;
         const rawPct = limit > 0 ? ((spent / limit) * 100).toFixed(0) : 0;
-        let barColor = 'bg-emerald-400';
-        if (rawPct >= 95) barColor = 'bg-rose-500';
-        else if (rawPct >= 75) barColor = 'bg-amber-400';
+        const disp = limit - spent;
+        const color = rawPct > 100 ? 'bg-rose-500' : (rawPct >= 75 ? 'bg-amber-400' : 'bg-emerald-400');
 
         return `
           <div>
             <div class="flex justify-between text-xs mb-1">
               <span class="font-semibold text-white">${b.Categoria}</span>
-              <span class="mono text-slate-300">${formatUSD(spent)} / ${formatUSD(limit)} (${rawPct}%)</span>
+              <span class="mono text-slate-300">Gastado: ${formatUSD(spent)} / Meta: ${formatUSD(limit)} (Disp: ${formatUSD(disp)} • ${rawPct}%)</span>
             </div>
             <div class="w-full h-2 bg-slate-800 rounded-full overflow-hidden">
-              <div class="h-full ${barColor} transition-all" style="width: ${pct}%"></div>
+              <div class="h-full ${color}" style="width: ${pct}%"></div>
             </div>
           </div>
         `;
       }).join('');
 
-      const rulesList = document.getElementById('gmailRulesList');
-      rulesList.innerHTML = STATE.reglasGmail.map(r => `
+      document.getElementById('gmailRulesList').innerHTML = STATE.reglasGmail.map(r => `
         <div class="glass rounded-xl p-2.5 flex items-center justify-between text-xs">
           <div>
             <span class="mono font-bold text-cyan-300">${r.Palabra_Clave}</span>
-            <p class="text-[11px] text-slate-400">→ ${r.Categoria_Asignada}</p>
+            <p class="text-[11px] text-slate-400">→ ${r.Categoria_Asignada} (${r.Nota_Referencia || ''})</p>
           </div>
-          <span class="text-[10px] px-2 py-0.5 rounded bg-slate-800 text-slate-300">${r.Banco_Emisor || 'TODOS'}</span>
         </div>
       `).join('');
     }
 
+    function renderPayrollHistory() {
+      const sorted = [...STATE.nomina].sort((a, b) => b.Periodo.localeCompare(a.Periodo));
+      document.getElementById('payrollHistoryBody').innerHTML = sorted.map(r => `
+        <tr class="hover:bg-white/5">
+          <td class="py-2 px-2 font-bold text-white">${r.Periodo}</td>
+          <td class="py-2 px-2 text-right text-emerald-400">${formatUSD(r.Total_Ingresos)}</td>
+          <td class="py-2 px-2 text-right text-cyan-300">${formatUSD(r.Anticipo_Quincena)}</td>
+          <td class="py-2 px-2 text-right text-rose-300">${formatUSD(r.IESS + r.Imp_Renta)}</td>
+          <td class="py-2 px-2 text-right text-rose-300">${formatUSD(r.Seguro_Salud)}</td>
+          <td class="py-2 px-2 text-right text-rose-300">${formatUSD(r.Credito_Empresarial)}</td>
+          <td class="py-2 px-2 text-right font-bold text-white">${formatUSD(r.Neto_Pagar_Fin_Mes)}</td>
+          <td class="py-2 px-2 text-right font-extrabold text-cyan-300">${formatUSD(r.Liquidez_Total_Banco)}</td>
+        </tr>
+      `).join('');
+    }
+
     // ====================================================================
-    // ACCIONES RÁPIDAS (MODAL 3 TOQUES, AJUSTE DE SALDOS Y REGLAS)
+    // MODALES Y CONEXIÓN API
     // ====================================================================
-    function openQuickModal(defaultType) {
-      document.getElementById('qTipo').value = defaultType || 'Gasto';
+    function openQuickModal(type) {
+      document.getElementById('qTipo').value = type || 'Gasto';
       document.getElementById('qFecha').value = new Date().toISOString().substring(0, 10);
       document.getElementById('qMonto').value = '';
       document.getElementById('qComercio').value = '';
+      document.getElementById('qMotivo').value = '';
       handleQuickTypeChange();
       document.getElementById('quickTxModal').classList.remove('hidden');
       document.getElementById('quickTxModal').classList.add('flex');
@@ -1414,197 +1213,127 @@
     }
     function handleQuickTypeChange() {
       const t = document.getElementById('qTipo').value;
-      if (t === 'Pago_Deuda_Titanium' || t === 'Fondeo_Titanium') {
+      if (t === 'Ingreso_Autonomy') {
+        document.getElementById('qCategoria').value = 'Proyecto Autonomy';
+        document.getElementById('qComercio').value = 'Consultoría Proyecto Autonomy';
+      } else if (t === 'Cruce_Valores') {
+        document.getElementById('qCategoria').value = 'Préstamos y Cruces';
+      } else if (t === 'Pago_Deuda_Titanium' || t === 'Fondeo_Titanium') {
         document.getElementById('qCategoria').value = 'Amortización Deuda Titanium';
-        document.getElementById('qComercio').value = t === 'Pago_Deuda_Titanium' ? 'Abono a Deuda Tarjeta Titanium' : 'Fondeo Recibido para Pago Titanium';
-      } else if (t === 'Pago_Tarjeta') {
-        document.getElementById('qCategoria').value = 'Pago Tarjeta Diners Club';
-        document.getElementById('qComercio').value = 'Pago Estado de Cuenta Diners Club';
-      } else if (t === 'Ahorro_Meta') {
-        document.getElementById('qCategoria').value = 'Ahorro Meta BG ($1,000)';
-        document.getElementById('qMonto').value = '50.00';
-        document.getElementById('qComercio').value = 'Aporte Mensual Meta $1000 BG';
+        document.getElementById('qComercio').value = 'Tarjeta Titanium';
       }
     }
 
-    async function saveQuickTransaction() {
+    function saveQuickTransaction() {
       const tipo = document.getElementById('qTipo').value;
       const monto = parseFloat(document.getElementById('qMonto').value);
       const fecha = document.getElementById('qFecha').value;
       const cuenta = document.getElementById('qCuenta').value;
+      const canal = document.getElementById('qCanal').value;
+      const comercio = document.getElementById('qComercio').value || 'Movimiento Manual';
+      const motivo = document.getElementById('qMotivo').value;
       const categoria = document.getElementById('qCategoria').value;
-      const comercio = document.getElementById('qComercio').value || categoria;
+      if (!monto || monto <= 0) { showToast('Ingresa un monto válido'); return; }
 
-      if (!monto || monto <= 0) {
-        showToast('Ingresa un monto válido mayor a $0');
-        return;
-      }
-
-      let cuentaDestino = '';
-      if (tipo === 'Pago_Deuda_Titanium') cuentaDestino = 'PAS-TITANIUM';
-      if (tipo === 'Pago_Tarjeta') cuentaDestino = 'TC-DINERS';
-      if (tipo === 'Ahorro_Meta') cuentaDestino = 'BG-META';
-
-      const newTx = {
-        ID_Tx: 'TX-MAN-' + Date.now(),
-        Fecha: fecha,
-        Periodo: fecha.substring(0, 7),
-        Tipo: tipo,
-        Cuenta_Origen: cuenta,
-        Cuenta_Destino: cuentaDestino,
-        Categoria: categoria,
-        Comercio_Concepto: comercio,
-        Monto: monto,
-        Origen_Dato: 'Manual',
-        Estado_Revision: 'Confirmado'
+      const tx = {
+        ID_Tx: 'TX-MAN-' + Date.now(), Fecha: fecha, Hora: '12:00', Periodo: fecha.substring(0, 7),
+        Tipo: tipo, Canal_Salida: canal, Cuenta_Origen: cuenta, Categoria: categoria,
+        Comercio_Concepto: comercio, Motivo_Transferencia: motivo, Monto: monto,
+        Origen_Dato: 'Manual', Estado_Revision: categoria === 'Otros' ? 'Pendiente_Categoria' : 'Confirmado'
       };
-
-      STATE.transacciones.unshift(newTx);
-      applyLocalBalance(tipo, cuenta, cuentaDestino, monto);
+      STATE.transacciones.unshift(tx);
+      if (tipo === 'Ingreso_Autonomy') {
+        const aut = STATE.cuentas.find(c => c.ID_Cuenta === 'AUT-META');
+        if (aut) aut.Saldo_Actual = +(Number(aut.Saldo_Actual) + monto).toFixed(2);
+      }
       closeQuickModal();
       renderAll();
-      showToast('✅ Movimiento registrado');
+      showToast('✅ Registrado en Pulso');
 
       const url = getApiUrl();
       if (url) {
-        fetch(url, {
-          method: 'POST',
-          body: JSON.stringify({
-            pin: PIN_REQUIRED,
-            action: 'addTransaction',
-            transaction: { tipo, monto, fecha, cuentaOrigen: cuenta, cuentaDestino, categoria, comercioConcepto: comercio }
-          })
-        });
+        fetch(url, { method: 'POST', body: JSON.stringify({ pin: PIN_REQUIRED, action: 'addTransaction', transaction: { tipo, monto, fecha, cuentaOrigen: cuenta, canalSalida: canal, categoria, comercioConcepto: comercio, motivo } }) });
       }
     }
 
-    function applyLocalBalance(tipo, origen, destino, monto) {
-      const findC = id => STATE.cuentas.find(c => c.ID_Cuenta === id);
-      if (tipo === 'Gasto') {
-        const c = findC(origen);
-        if (c) c.Saldo_Actual = +(Number(c.Saldo_Actual) + (origen === 'TC-DINERS' ? monto : -monto)).toFixed(2);
-      } else if (tipo === 'Ingreso' || tipo === 'Fondeo_Titanium') {
-        const c = findC(origen);
-        if (c) c.Saldo_Actual = +(Number(c.Saldo_Actual) + monto).toFixed(2);
-      } else if (tipo === 'Ahorro_Meta') {
-        const o = findC(origen); const d = findC('BG-META');
-        if (o) o.Saldo_Actual = +(Number(o.Saldo_Actual) - monto).toFixed(2);
-        if (d) d.Saldo_Actual = +(Number(d.Saldo_Actual) + monto).toFixed(2);
-      } else if (tipo === 'Pago_Tarjeta') {
-        const o = findC(origen); const d = findC('TC-DINERS');
-        if (o) o.Saldo_Actual = +(Number(o.Saldo_Actual) - monto).toFixed(2);
-        if (d) d.Saldo_Actual = +(Number(d.Saldo_Actual) - monto).toFixed(2);
-      } else if (tipo === 'Pago_Deuda_Titanium') {
-        const o = findC(origen); const d = findC('PAS-TITANIUM');
-        if (o) o.Saldo_Actual = +(Number(o.Saldo_Actual) - monto).toFixed(2);
-        if (d) d.Saldo_Actual = +(Number(d.Saldo_Actual) + monto).toFixed(2);
-      }
-    }
-
-    async function promptEditAccount(idCuenta) {
-      const c = STATE.cuentas.find(x => x.ID_Cuenta === idCuenta);
-      if (!c) return;
-      const nuevo = prompt(`Actualizar saldo actual de ${c.Nombre} (USD $):`, c.Saldo_Actual);
-      if (nuevo === null || isNaN(parseFloat(nuevo))) return;
-      c.Saldo_Actual = parseFloat(nuevo);
-      renderAll();
-      showToast(`Saldo de ${c.Nombre} actualizado a ${formatUSD(c.Saldo_Actual)}`);
-
-      const url = getApiUrl();
-      if (url) {
-        fetch(url, {
-          method: 'POST',
-          body: JSON.stringify({ pin: PIN_REQUIRED, action: 'updateAccountBalance', idCuenta, nuevoSaldo: c.Saldo_Actual })
-        });
-      }
-    }
-
-    async function quickConfirmTx(idTx, categoria, tipo) {
-      const tx = STATE.transacciones.find(t => t.ID_Tx === idTx);
-      if (tx) {
-        tx.Categoria = categoria;
-        tx.Tipo = tipo;
-        tx.Estado_Revision = 'Confirmado';
-        renderAll();
-        showToast('✅ Movimiento clasificado y confirmado');
-      }
-      const url = getApiUrl();
-      if (url) {
-        fetch(url, {
-          method: 'POST',
-          body: JSON.stringify({ pin: PIN_REQUIRED, action: 'confirmTransaction', idTx, categoria, tipo })
-        });
-      }
-    }
-
-    async function addNewGmailRule() {
+    function addNewGmailRule() {
       const kw = document.getElementById('ruleKeyword').value.trim().toUpperCase();
       const cat = document.getElementById('ruleCategory').value;
       if (!kw) return;
-      STATE.reglasGmail.push({ ID_Regla: 'REG-' + Date.now(), Banco_Emisor: 'TODOS', Palabra_Clave: kw, Categoria_Asignada: cat });
+      STATE.reglasGmail.unshift({ Palabra_Clave: kw, Categoria_Asignada: cat, Nota_Referencia: 'Regla personalizada' });
       document.getElementById('ruleKeyword').value = '';
-      renderBudgetAndRules();
-      showToast(`Regla "${kw}" → ${cat} guardada`);
-
+      renderAll();
+      showToast(`✅ Regla "${kw}" → ${cat} activada`);
       const url = getApiUrl();
-      if (url) {
-        fetch(url, {
-          method: 'POST',
-          body: JSON.stringify({ pin: PIN_REQUIRED, action: 'saveRule', rule: { keyword: kw, categoria: cat } })
-        });
-      }
+      if (url) fetch(url, { method: 'POST', body: JSON.stringify({ pin: PIN_REQUIRED, action: 'saveRule', rule: { keyword: kw, categoria: cat } }) });
     }
 
-    // ====================================================================
-    // NAVEGACIÓN DE PESTAÑAS Y UTILIDADES UI
-    // ====================================================================
+    function recalcPayrollForm() {
+      const v = id => parseFloat(document.getElementById(id).value) || 0;
+      const ing = +(v('rolRemuneracion') + v('rolVariable') + v('rolFondoReserva') + v('rolVacacionesOtros')).toFixed(2);
+      const desc = +(v('rolAnticipo') + v('rolIess') + v('rolImpRenta') + v('rolSeguroSalud') + v('rolCreditoEmp') + v('rolGimnasio') + v('rolEstudios') + v('rolDescuentosVarios')).toFixed(2);
+      const neto = +(ing - desc).toFixed(2);
+      document.getElementById('formTotalIngresos').textContent = formatUSD(ing);
+      document.getElementById('formNetoPagar').textContent = formatUSD(neto);
+      document.getElementById('formLiquidezTotal').textContent = formatUSD(v('rolAnticipo') + neto);
+    }
+
+    function getApiUrl() { return localStorage.getItem('pulso_gas_url') || DEFAULT_API_URL; }
+    function openApiModal() { document.getElementById('apiUrlInput').value = getApiUrl(); document.getElementById('apiConfigModal').classList.remove('hidden'); document.getElementById('apiConfigModal').classList.add('flex'); }
+    function closeApiModal() { document.getElementById('apiConfigModal').classList.add('hidden'); document.getElementById('apiConfigModal').classList.remove('flex'); }
+    async function saveApiUrl() {
+      localStorage.setItem('pulso_gas_url', document.getElementById('apiUrlInput').value.trim());
+      closeApiModal();
+      await fetchFromBackend();
+    }
+    async function fetchFromBackend() {
+      const url = getApiUrl();
+      if (!url) return;
+      try {
+        const res = await fetch(`${url}?action=getDashboardData&pin=${PIN_REQUIRED}`);
+        const json = await res.json();
+        if (json.ok && json.data) { STATE = json.data; renderAll(); showToast('✅ Sincronizado con Google Sheets'); }
+      } catch (e) {}
+    }
+    async function triggerGmailSync() {
+      const url = getApiUrl();
+      if (!url) { openApiModal(); return; }
+      document.getElementById('syncIcon').classList.add('animate-spin');
+      showToast('Buscando notificaciones bancarias y motivos de transferencia en Gmail...');
+      try {
+        const res = await fetch(`${url}?action=syncGmail&pin=${PIN_REQUIRED}`);
+        const json = await res.json();
+        if (json.ok) { STATE = json.data; renderAll(); showToast(`✅ Gmail sincronizado (${json.syncResult.importedCount} nuevos)`); }
+      } catch (e) {} finally { document.getElementById('syncIcon').classList.remove('animate-spin'); }
+    }
+    function promptEditAccount(id) {
+      const c = STATE.cuentas.find(x => x.ID_Cuenta === id);
+      if (!c) return;
+      const val = prompt(`Actualizar saldo de ${c.Nombre} ($):`, c.Saldo_Actual);
+      if (val !== null && !isNaN(parseFloat(val))) {
+        c.Saldo_Actual = parseFloat(val);
+        renderAll();
+      }
+    }
     function switchTab(tab) {
-      ['dashboard', 'transactions', 'payroll', 'planning'].forEach(t => {
+      ['dashboard', 'reclassify', 'transactions', 'payroll', 'planning'].forEach(t => {
         document.getElementById(`view-${t}`).classList.toggle('hidden', t !== tab);
-        const dBtn = document.getElementById(`tabBtn-${t}`);
-        if (dBtn) {
-          dBtn.className = t === tab
-            ? 'tab-btn px-4 py-2 rounded-xl text-xs font-semibold bg-cyan-500/20 text-cyan-300 border border-cyan-500/30 flex items-center gap-2'
-            : 'tab-btn px-4 py-2 rounded-xl text-xs font-semibold text-slate-400 hover:text-white flex items-center gap-2';
-        }
-        const mBtn = document.getElementById(`mobTab-${t}`);
-        if (mBtn) {
-          mBtn.className = t === tab
-            ? 'flex flex-col items-center gap-1 text-cyan-400 font-semibold'
-            : 'flex flex-col items-center gap-1 text-slate-400';
+        const btn = document.getElementById(`tabBtn-${t}`);
+        if (btn) {
+          btn.className = t === tab
+            ? 'px-4 py-2 rounded-xl text-xs font-semibold bg-cyan-500/20 text-cyan-300 border border-cyan-500/30 flex items-center gap-2'
+            : 'px-4 py-2 rounded-xl text-xs font-semibold text-slate-400 hover:text-white flex items-center gap-2';
         }
       });
     }
+    function formatUSD(n) { return '$' + (Number(n) || 0).toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 }); }
+    function showToast(m) { const t = document.getElementById('toast'); t.textContent = m; t.classList.remove('hidden'); setTimeout(() => t.classList.add('hidden'), 3200); }
+    function initApp() { renderAll(); fetchFromBackend(); }
 
-    function formatUSD(val) {
-      const n = Number(val) || 0;
-      return '$' + n.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
-    }
-
-    function showToast(msg) {
-      const el = document.getElementById('toast');
-      el.textContent = msg;
-      el.classList.remove('hidden');
-      setTimeout(() => el.classList.add('hidden'), 3400);
-    }
-
-    function initApp() {
-      const cached = localStorage.getItem('finanzas_cached_state');
-      if (cached) {
-        try { STATE = JSON.parse(cached); } catch (e) {}
-      }
-      renderAll();
-      fetchFromBackend();
-    }
-
-    // Soporte de teclado físico para el PIN
-    document.getElementById('pinInput').addEventListener('keyup', e => {
-      if (e.key === 'Enter' || e.target.value.length === 6) validatePin();
-    });
-
+    document.getElementById('pinInput').addEventListener('keyup', e => { if (e.key === 'Enter' || e.target.value.length === 6) validatePin(); });
     window.addEventListener('DOMContentLoaded', () => {
       lucide.createIcons();
-      if (sessionStorage.getItem('finanzas_unlocked') === 'true') {
+      if (sessionStorage.getItem('pulso_unlocked') === 'true') {
         document.getElementById('pinLockModal').classList.add('hidden');
         initApp();
       }
