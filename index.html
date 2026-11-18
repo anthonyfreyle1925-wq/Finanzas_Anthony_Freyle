@@ -7,7 +7,6 @@
   <script src="https://cdn.tailwindcss.com"></script>
   <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
   <script src="https://unpkg.com/lucide@latest"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
   <script>
     tailwind.config = {
       darkMode: 'class',
@@ -37,7 +36,7 @@
     }
     .mono { font-family: 'JetBrains Mono', monospace; }
     .glass {
-      background: rgba(17, 24, 39, 0.72);
+      background: rgba(17, 24, 39, 0.85);
       backdrop-filter: blur(16px);
       -webkit-backdrop-filter: blur(16px);
       border: 1px solid rgba(255, 255, 255, 0.08);
@@ -57,7 +56,7 @@
     .touch-target { min-height: 44px; min-width: 44px; }
   </style>
 </head>
-<body class="pb-24 md:pb-10 selection:bg-cyan-400 selection:text-black">
+<body class="pb-28 md:pb-10 selection:bg-cyan-400 selection:text-black">
 
   <!-- Pantalla de Bloqueo PIN (993008) -->
   <div id="pinLockModal" class="fixed inset-0 z-50 flex items-center justify-center bg-[#04060c]/95 backdrop-blur-2xl p-4">
@@ -101,7 +100,7 @@
         <div>
           <div class="flex items-center gap-2">
             <h1 class="font-extrabold text-lg text-white tracking-tight">PULSO</h1>
-            <span id="connectionBadge" class="text-[11px] px-2.5 py-0.5 rounded-full bg-emerald-500/20 text-emerald-300 border border-emerald-500/30 font-medium">
+            <span class="text-[11px] px-2.5 py-0.5 rounded-full bg-emerald-500/20 text-emerald-300 border border-emerald-500/30 font-medium">
               Activo 2026
             </span>
           </div>
@@ -118,10 +117,9 @@
           <option value="ALL">Consolidado 2026</option>
         </select>
 
-        <button onclick="triggerGmailSync()" title="Sincronizar Gmail"
-          class="touch-target flex items-center gap-1.5 px-3 py-2 rounded-xl glass-cyan hover:bg-cyan-500/20 text-cyan-300 text-xs font-semibold transition">
+        <button onclick="triggerGmailSync()" class="touch-target flex items-center gap-1.5 px-3 py-2 rounded-xl glass-cyan hover:bg-cyan-500/20 text-cyan-300 text-xs font-semibold transition">
           <i data-lucide="refresh-cw" id="syncIcon" class="w-4 h-4"></i>
-          <span class="hidden sm:inline">Sync Gmail</span>
+          <span class="hidden sm:inline">Sync</span>
         </button>
 
         <button onclick="lockApp()" class="touch-target p-2 rounded-xl glass hover:bg-rose-950/60 text-rose-400" title="Bloquear">
@@ -151,10 +149,10 @@
     </nav>
   </header>
 
-  <!-- Contenedor de Vistas -->
+  <!-- Contenedor Principal -->
   <main class="max-w-7xl mx-auto px-4 lg:px-8 pt-6 space-y-6">
 
-    <!-- VISTA 1: DASHBOARD PULSO -->
+    <!-- VISTA 1: DASHBOARD -->
     <div id="view-dashboard" class="space-y-6">
       <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-6 gap-3.5">
         <div class="glass rounded-2xl p-4 border-l-4 border-l-pink-500 flex flex-col justify-between">
@@ -301,25 +299,25 @@
       </div>
     </div>
 
-    <!-- VISTA 2: CLASIFICAR "OTROS" (CHECKBOX DESACTIVADO POR DEFECTO) -->
+    <!-- VISTA 2: CLASIFICAR "OTROS" -->
     <div id="view-reclassify" class="hidden space-y-6">
       <div class="glass-magenta rounded-2xl p-5">
         <span class="text-[11px] px-2.5 py-0.5 rounded-full bg-rose-500/30 text-rose-200 font-bold uppercase">Limpieza de Presupuesto</span>
         <h2 class="text-lg font-bold text-white mt-1">Bandeja de Consumos y Transferencias en "Otros"</h2>
         <p class="text-xs text-slate-300 mb-4">
-          Asigna la categoría correcta. Por seguridad, la opción de crear regla automática viene <strong>desactivada por defecto</strong> para evitar crear reglas accidentales.
+          Asigna la categoría correcta. Por seguridad, la opción de crear regla automática viene <strong>desactivada por defecto</strong>.
         </p>
         <div id="otrosTriageContainer" class="grid grid-cols-1 md:grid-cols-2 gap-4"></div>
       </div>
     </div>
 
-    <!-- VISTA 3: MOVIMIENTOS & DETALLE AL HACER CLIC -->
+    <!-- VISTA 3: MOVIMIENTOS -->
     <div id="view-transactions" class="hidden space-y-6">
       <div class="glass rounded-2xl p-5">
         <div class="flex flex-wrap items-center justify-between gap-3 mb-4">
           <div>
             <h2 class="text-base font-bold text-white">Registro Unificado de Movimientos</h2>
-            <p class="text-xs text-slate-400">Haz clic en cualquier fila para ver el detalle completo del movimiento</p>
+            <p class="text-xs text-slate-400">Haz clic en cualquier fila para ver el detalle completo</p>
           </div>
           <button onclick="openQuickModal('Gasto')" class="px-4 py-2 rounded-xl bg-cyan-400 hover:bg-cyan-300 text-slate-950 font-bold text-xs flex items-center gap-1.5">
             <i data-lucide="plus" class="w-4 h-4"></i> Registrar Movimiento
@@ -415,7 +413,7 @@
       </div>
     </div>
 
-    <!-- VISTA 5: PRESUPUESTO & GESTIÓN / ELIMINACIÓN DE REGLAS -->
+    <!-- VISTA 5: PRESUPUESTO & REGLAS -->
     <div id="view-planning" class="hidden space-y-6">
       <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
         <div class="glass rounded-2xl p-5 lg:col-span-2">
@@ -425,11 +423,11 @@
         </div>
 
         <div class="glass rounded-2xl p-5">
-          <h2 class="text-base font-bold text-white">Gestión de Reglas Gmail (Crear y Eliminar)</h2>
-          <p class="text-xs text-slate-400 mb-3">Aquí puedes agregar nuevas reglas o eliminar las que creaste por error</p>
+          <h2 class="text-base font-bold text-white">Gestión de Reglas Gmail</h2>
+          <p class="text-xs text-slate-400 mb-3">Agrega nuevas reglas o elimina las creadas por error</p>
           
           <div class="space-y-2 mb-4 pb-4 border-b border-white/10">
-            <input id="ruleKeyword" type="text" placeholder="Palabra clave (ej. UBER, NETFLIX)"
+            <input id="ruleKeyword" type="text" placeholder="Palabra clave (ej. UBER)"
               class="w-full bg-slate-900 border border-slate-700 rounded-xl px-3 py-2 text-xs text-white" />
             <select id="ruleCategory" class="w-full bg-slate-900 border border-slate-700 rounded-xl px-3 py-2 text-xs text-slate-200">
               <option value="Restaurantes">Restaurantes</option>
@@ -452,21 +450,16 @@
 
   </main>
 
-  <!-- Botón flotante y barra móvil -->
-  <button onclick="openQuickModal('Gasto')" title="Registrar movimiento"
-    class="fixed right-5 bottom-20 md:bottom-8 z-40 w-14 h-14 rounded-2xl bg-gradient-to-tr from-cyan-400 to-purple-600 text-slate-950 shadow-xl shadow-cyan-500/30 flex items-center justify-center hover:scale-105 transition">
-    <i data-lucide="plus" class="w-7 h-7 stroke-[2.5]"></i>
-  </button>
-
-  <nav class="md:hidden fixed bottom-0 inset-x-0 z-30 glass border-t border-white/10 grid grid-cols-5 py-2 px-1 text-[10px]">
-    <button onclick="switchTab('dashboard')" class="flex flex-col items-center gap-1 text-cyan-400 font-semibold"><i data-lucide="layout-dashboard" class="w-4 h-4"><span>Pulso</span></button>
-    <button onclick="switchTab('reclassify')" class="flex flex-col items-center gap-1 text-rose-400"><i data-lucide="sparkles" class="w-4 h-4"><span>"Otros"</span></button>
-    <button onclick="switchTab('transactions')" class="flex flex-col items-center gap-1 text-slate-400"><i data-lucide="arrow-left-right" class="w-4 h-4"><span>Movimientos</span></button>
-    <button onclick="switchTab('payroll')" class="flex flex-col items-center gap-1 text-slate-400"><i data-lucide="file-spreadsheet" class="w-4 h-4"><span>Roles</span></button>
-    <button onclick="switchTab('planning')" class="flex flex-col items-center gap-1 text-slate-400"><i data-lucide="target" class="w-4 h-4"><span>Presupuesto</span></button>
+  <!-- BARRA DE NAVEGACIÓN MÓVIL CORREGIDA Y ELEVADA -->
+  <nav class="md:hidden fixed bottom-0 inset-x-0 z-40 glass border-t border-white/10 grid grid-cols-5 py-2.5 px-1 text-[10px] bg-[#070913]/95 backdrop-blur-xl shadow-2xl">
+    <button onclick="switchTab('dashboard')" class="flex flex-col items-center gap-1 text-cyan-400 font-semibold touch-target"><i data-lucide="layout-dashboard" class="w-4 h-4"></i><span>Pulso</span></button>
+    <button onclick="switchTab('reclassify')" class="flex flex-col items-center gap-1 text-rose-400 touch-target"><i data-lucide="sparkles" class="w-4 h-4"></i><span>"Otros"</span></button>
+    <button onclick="switchTab('transactions')" class="flex flex-col items-center gap-1 text-slate-400 touch-target"><i data-lucide="arrow-left-right" class="w-4 h-4"></i><span>Movim.</span></button>
+    <button onclick="switchTab('payroll')" class="flex flex-col items-center gap-1 text-slate-400 touch-target"><i data-lucide="file-spreadsheet" class="w-4 h-4"></i><span>Roles</span></button>
+    <button onclick="switchTab('planning')" class="flex flex-col items-center gap-1 text-slate-400 touch-target"><i data-lucide="target" class="w-4 h-4"></i><span>Presup.</span></button>
   </nav>
 
-  <!-- MODAL DE DETALLE DE MOVIMIENTO AL HACER CLIC -->
+  <!-- MODAL DETALLE -->
   <div id="txDetailModal" class="fixed inset-0 z-50 hidden items-center justify-center bg-black/80 backdrop-blur-md p-4">
     <div class="glass max-w-md w-full rounded-3xl p-6 border border-cyan-500/30 space-y-4">
       <div class="flex items-center justify-between">
@@ -478,7 +471,7 @@
     </div>
   </div>
 
-  <!-- MODAL DE REGISTRO RÁPIDO -->
+  <!-- MODAL REGISTRO RÁPIDO -->
   <div id="quickTxModal" class="fixed inset-0 z-50 hidden items-center justify-center bg-black/80 backdrop-blur-md p-4">
     <div class="glass max-w-md w-full rounded-3xl p-6 border border-cyan-500/30">
       <div class="flex items-center justify-between mb-4">
@@ -527,9 +520,9 @@
     </div>
   </div>
 
-  <div id="toast" class="fixed bottom-6 left-1/2 -translate-x-1/2 z-50 hidden px-4 py-2.5 rounded-2xl glass-cyan text-xs font-semibold text-white shadow-2xl"></div>
+  <div id="toast" class="fixed bottom-20 left-1/2 -translate-x-1/2 z-50 hidden px-4 py-2.5 rounded-2xl glass-cyan text-xs font-semibold text-white shadow-2xl"></div>
 
-  <!-- Motor de Pulso -->
+  <!-- Motor -->
   <script>
     const PIN_REQUIRED = '993008';
     let payrollChartInstance = null;
@@ -587,7 +580,6 @@
       ]
     };
 
-    // PIN Authentication
     function appendPin(d) {
       const inp = document.getElementById('pinInput');
       if (inp.value.length < 6) inp.value += d;
@@ -604,7 +596,7 @@
         document.getElementById('pinInput').value = '';
       }
     }
-    function lockApp() { sessionStorage.removeItem('pulso_unlocked'); document.getElementById('pinLockModal').classList.remove('hidden'); }
+    function lockApp() { sessionStorage.removeItem('pulso_unlocked'); document.getElementById('pinLockModal').classList.add('hidden'); }
 
     function renderAll() {
       renderAccountCards();
@@ -646,7 +638,6 @@
       document.getElementById('kpiOtrosMonto').textContent = formatUSD(otrosMes);
       document.getElementById('navOtrosBadge').textContent = otrosList.length;
 
-      // Gráficos
       const ctxP = document.getElementById('payrollChart').getContext('2d');
       if (payrollChartInstance) payrollChartInstance.destroy();
       payrollChartInstance = new Chart(ctxP, {
@@ -669,7 +660,6 @@
       });
     }
 
-    // LISTAS DE CATEGORÍAS DISPONIBLES + OPCIÓN DE NUEVA CATEGORÍA
     const ALL_CATEGORIES = ['Restaurantes', 'Alimentación', 'Supermercado', 'Entretenimiento', 'Transporte', 'Servicios', 'Préstamos y Cruces', 'Amortización Deuda Titanium', 'Compras', 'Salud', 'Otros'];
 
     function getCategoryOptionsHTML(selected) {
@@ -683,7 +673,6 @@
         if (nueva && nueva.trim().length > 0) {
           const formatted = nueva.trim();
           if (!ALL_CATEGORIES.includes(formatted)) ALL_CATEGORIES.push(formatted);
-          // Actualizar presupuestos si no existe
           if (!STATE.presupuestos.some(p => p.Categoria === formatted)) {
             STATE.presupuestos.push({ Categoria: formatted, Limite_Mensual: 50.00 });
           }
@@ -694,7 +683,6 @@
       }
     }
 
-    // RENDERIZAR BANDEJA "OTROS" CON CHECKBOX DESACTIVADO POR DEFECTO (false)
     function renderOtrosReclassifyCenter() {
       const container = document.getElementById('otrosTriageContainer');
       const otros = STATE.transacciones.filter(t => t.Categoria === 'Otros');
@@ -724,7 +712,6 @@
 
           <div class="flex items-center justify-between pt-1">
             <label class="flex items-center gap-1.5 text-[11px] text-slate-300 cursor-pointer">
-              <!-- CHECKBOX DESACTIVADO POR DEFECTO (checked false) -->
               <input id="learn-${t.ID_Tx}" type="checkbox" class="rounded accent-cyan-400" />
               <span>Crear regla automática (Opcional)</span>
             </label>
@@ -758,7 +745,6 @@
       showToast(`✅ Movimiento asignado a "${nuevaCat}"`);
     }
 
-    // TABLA DE MOVIMIENTOS CON ACCESO AL DETALLE
     function renderTransactionsTable() {
       const period = document.getElementById('globalPeriodFilter').value;
       const q = (document.getElementById('txSearchInput').value || '').toLowerCase();
@@ -787,7 +773,6 @@
       `).join('');
     }
 
-    // MODAL DE DETALLE DE MOVIMIENTO
     function openTxDetail(idTx) {
       const t = STATE.transacciones.find(x => x.ID_Tx === idTx);
       if (!t) return;
@@ -809,7 +794,6 @@
       document.getElementById('txDetailModal').classList.remove('flex');
     }
 
-    // GESTIÓN DE REGLAS GMAIL (AÑADIR Y ELIMINAR)
     function renderBudgetAndRules() {
       const period = document.getElementById('globalPeriodFilter').value;
       const txs = period === 'ALL' ? STATE.transacciones : STATE.transacciones.filter(t => String(t.Periodo) === period);
