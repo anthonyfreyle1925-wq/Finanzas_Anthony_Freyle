@@ -56,7 +56,7 @@
     .touch-target { min-height: 44px; min-width: 44px; }
   </style>
 </head>
-<body class="pb-28 md:pb-10 selection:bg-cyan-400 selection:text-black">
+<body class="pb-32 md:pb-10 selection:bg-cyan-400 selection:text-black">
 
   <!-- Pantalla de Bloqueo PIN (993008) -->
   <div id="pinLockModal" class="fixed inset-0 z-50 flex items-center justify-center bg-[#04060c]/95 backdrop-blur-2xl p-4">
@@ -90,7 +90,7 @@
     </div>
   </div>
 
-  <!-- Header Pulso -->
+  <!-- Header Pulso (Con Tuerca Visible en Celular y PC) -->
   <header class="sticky top-0 z-30 glass border-b border-white/10 px-4 lg:px-8 py-3">
     <div class="max-w-7xl mx-auto flex flex-wrap items-center justify-between gap-3">
       <div class="flex items-center gap-3">
@@ -99,30 +99,36 @@
         </div>
         <div>
           <div class="flex items-center gap-2">
-            <h1 class="font-extrabold text-lg text-white tracking-tight">PULSO</h1>
-            <span class="text-[11px] px-2.5 py-0.5 rounded-full bg-emerald-500/20 text-emerald-300 border border-emerald-500/30 font-medium">
-              Activo 2026
+            <h1 class="font-extrabold text-base sm:text-lg text-white tracking-tight">PULSO</h1>
+            <span class="text-[10px] px-2 py-0.5 rounded-full bg-emerald-500/20 text-emerald-300 border border-emerald-500/30 font-medium">
+              Activo
             </span>
           </div>
-          <p class="text-xs text-slate-400">Anthony Freyle • FARMCORP & Autonomy</p>
+          <p class="text-[11px] text-slate-400">Anthony Freyle • FARMCORP</p>
         </div>
       </div>
 
       <div class="flex items-center gap-2">
         <select id="globalPeriodFilter" onchange="renderAll()"
-          class="bg-slate-900/90 border border-slate-700 text-xs sm:text-sm rounded-xl px-3 py-2 text-cyan-300 font-semibold focus:outline-none focus:border-cyan-400">
-          <option value="2026-11" selected>Noviembre 2026</option>
-          <option value="2026-10">Octubre 2026</option>
-          <option value="2026-09">Septiembre 2026</option>
-          <option value="ALL">Consolidado 2026</option>
+          class="bg-slate-900/90 border border-slate-700 text-xs rounded-xl px-2.5 py-2 text-cyan-300 font-semibold focus:outline-none">
+          <option value="2026-11" selected>Nov 2026</option>
+          <option value="2026-10">Oct 2026</option>
+          <option value="2026-09">Sep 2026</option>
+          <option value="ALL">Todo 2026</option>
         </select>
 
-        <button onclick="triggerGmailSync()" class="touch-target flex items-center gap-1.5 px-3 py-2 rounded-xl glass-cyan hover:bg-cyan-500/20 text-cyan-300 text-xs font-semibold transition">
+        <!-- Botón Sync -->
+        <button onclick="triggerGmailSync()" class="touch-target p-2 rounded-xl glass-cyan text-cyan-300 flex items-center justify-center" title="Sincronizar Gmail">
           <i data-lucide="refresh-cw" id="syncIcon" class="w-4 h-4"></i>
-          <span class="hidden sm:inline">Sync</span>
         </button>
 
-        <button onclick="lockApp()" class="touch-target p-2 rounded-xl glass hover:bg-rose-950/60 text-rose-400" title="Bloquear">
+        <!-- Botón Tuerca (Configuración API) Visible siempre -->
+        <button onclick="openApiModal()" class="touch-target p-2 rounded-xl glass text-cyan-300 flex items-center justify-center bg-cyan-500/20 border border-cyan-500/30" title="Configurar URL Google Apps Script">
+          <i data-lucide="settings" class="w-4 h-4"></i>
+        </button>
+
+        <!-- Botón Bloquear -->
+        <button onclick="lockApp()" class="touch-target p-2 rounded-xl glass text-rose-400 flex items-center justify-center" title="Bloquear">
           <i data-lucide="lock" class="w-4 h-4"></i>
         </button>
       </div>
@@ -450,13 +456,13 @@
 
   </main>
 
-  <!-- BARRA DE NAVEGACIÓN MÓVIL CORREGIDA Y ELEVADA -->
-  <nav class="md:hidden fixed bottom-0 inset-x-0 z-40 glass border-t border-white/10 grid grid-cols-5 py-2.5 px-1 text-[10px] bg-[#070913]/95 backdrop-blur-xl shadow-2xl">
-    <button onclick="switchTab('dashboard')" class="flex flex-col items-center gap-1 text-cyan-400 font-semibold touch-target"><i data-lucide="layout-dashboard" class="w-4 h-4"></i><span>Pulso</span></button>
-    <button onclick="switchTab('reclassify')" class="flex flex-col items-center gap-1 text-rose-400 touch-target"><i data-lucide="sparkles" class="w-4 h-4"></i><span>"Otros"</span></button>
-    <button onclick="switchTab('transactions')" class="flex flex-col items-center gap-1 text-slate-400 touch-target"><i data-lucide="arrow-left-right" class="w-4 h-4"></i><span>Movim.</span></button>
-    <button onclick="switchTab('payroll')" class="flex flex-col items-center gap-1 text-slate-400 touch-target"><i data-lucide="file-spreadsheet" class="w-4 h-4"></i><span>Roles</span></button>
-    <button onclick="switchTab('planning')" class="flex flex-col items-center gap-1 text-slate-400 touch-target"><i data-lucide="target" class="w-4 h-4"></i><span>Presup.</span></button>
+  <!-- BARRA MÓVIL FIJA -->
+  <nav class="md:hidden fixed bottom-0 inset-x-0 z-40 glass border-t border-white/10 grid grid-cols-5 py-3 px-1 text-[11px] bg-[#070913]/95 backdrop-blur-2xl shadow-2xl">
+    <button onclick="switchTab('dashboard')" class="flex flex-col items-center gap-1 text-cyan-400 font-semibold touch-target"><i data-lucide="layout-dashboard" class="w-5 h-5"></i><span>Pulso</span></button>
+    <button onclick="switchTab('reclassify')" class="flex flex-col items-center gap-1 text-rose-400 touch-target"><i data-lucide="sparkles" class="w-5 h-5"></i><span>"Otros"</span></button>
+    <button onclick="switchTab('transactions')" class="flex flex-col items-center gap-1 text-slate-300 touch-target"><i data-lucide="arrow-left-right" class="w-5 h-5"></i><span>Movim.</span></button>
+    <button onclick="switchTab('payroll')" class="flex flex-col items-center gap-1 text-slate-300 touch-target"><i data-lucide="file-spreadsheet" class="w-5 h-5"></i><span>Roles</span></button>
+    <button onclick="switchTab('planning')" class="flex flex-col items-center gap-1 text-slate-300 touch-target"><i data-lucide="target" class="w-5 h-5"></i><span>Presup.</span></button>
   </nav>
 
   <!-- MODAL DETALLE -->
@@ -520,9 +526,26 @@
     </div>
   </div>
 
-  <div id="toast" class="fixed bottom-20 left-1/2 -translate-x-1/2 z-50 hidden px-4 py-2.5 rounded-2xl glass-cyan text-xs font-semibold text-white shadow-2xl"></div>
+  <!-- MODAL CONFIGURACIÓN API -->
+  <div id="apiConfigModal" class="fixed inset-0 z-50 hidden items-center justify-center bg-black/80 backdrop-blur-md p-4">
+    <div class="glass max-w-lg w-full rounded-3xl p-6 border border-cyan-500/30 space-y-3">
+      <div class="flex items-center justify-between">
+        <h3 class="text-base font-bold text-white">Configurar URL de Google Apps Script</h3>
+        <button onclick="closeApiModal()" class="text-slate-400 hover:text-white"><i data-lucide="x" class="w-5 h-5"></i></button>
+      </div>
+      <p class="text-xs text-slate-300">Pega tu URL que termina en <span class="mono text-cyan-300">/exec</span>:</p>
+      <input id="apiUrlInput" type="url" placeholder="https://script.google.com/macros/s/.../exec"
+        class="w-full bg-slate-900 border border-slate-700 rounded-xl px-3 py-2.5 text-xs mono text-cyan-300" />
+      <div class="flex justify-end gap-2 pt-2">
+        <button onclick="closeApiModal()" class="px-4 py-2 rounded-xl glass text-xs">Cerrar</button>
+        <button onclick="saveApiUrl()" class="px-4 py-2 rounded-xl bg-cyan-400 text-slate-950 font-bold text-xs">Guardar y Sincronizar</button>
+      </div>
+    </div>
+  </div>
 
-  <!-- Motor -->
+  <div id="toast" class="fixed bottom-24 left-1/2 -translate-x-1/2 z-50 hidden px-4 py-2.5 rounded-2xl glass-cyan text-xs font-semibold text-white shadow-2xl"></div>
+
+  <!-- Motor de Pulso -->
   <script>
     const PIN_REQUIRED = '993008';
     let payrollChartInstance = null;
@@ -580,6 +603,49 @@
       ]
     };
 
+    function getApiUrl() { return localStorage.getItem('pulso_gas_url') || ''; }
+    function openApiModal() { document.getElementById('apiUrlInput').value = getApiUrl(); document.getElementById('apiConfigModal').classList.remove('hidden'); document.getElementById('apiConfigModal').classList.add('flex'); }
+    function closeApiModal() { document.getElementById('apiConfigModal').classList.add('hidden'); document.getElementById('apiConfigModal').classList.remove('flex'); }
+    async function saveApiUrl() {
+      const u = document.getElementById('apiUrlInput').value.trim();
+      localStorage.setItem('pulso_gas_url', u);
+      closeApiModal();
+      await fetchFromBackend();
+      showToast('✅ URL guardada');
+    }
+
+    async function fetchFromBackend() {
+      const url = getApiUrl();
+      if (!url) return;
+      try {
+        const res = await fetch(`${url}?action=getDashboardData&pin=${PIN_REQUIRED}`);
+        const json = await res.json();
+        if (json.ok && json.data) {
+          if (json.data.transacciones && json.data.transacciones.length > 0) STATE.transacciones = json.data.transacciones;
+          if (json.data.reglasGmail && json.data.reglasGmail.length > 0) STATE.reglasGmail = json.data.reglasGmail;
+          renderAll();
+          showToast('✅ Sincronizado con Google Sheets');
+        }
+      } catch (e) { console.warn(e); }
+    }
+
+    async function triggerGmailSync() {
+      const url = getApiUrl();
+      if (!url) { openApiModal(); showToast('Configura primero la URL de tu Apps Script'); return; }
+      document.getElementById('syncIcon').classList.add('animate-spin');
+      showToast('Sincronizando Gmail...');
+      try {
+        const res = await fetch(`${url}?action=syncGmail&pin=${PIN_REQUIRED}`);
+        const json = await res.json();
+        if (json.ok) {
+          if (json.data.transacciones) STATE.transacciones = json.data.transacciones;
+          renderAll();
+          showToast(`✅ Gmail sincronizado (${json.syncResult.importedCount} nuevos)`);
+        }
+      } catch (e) { showToast('Error al sincronizar'); }
+      finally { document.getElementById('syncIcon').classList.remove('animate-spin'); }
+    }
+
     function appendPin(d) {
       const inp = document.getElementById('pinInput');
       if (inp.value.length < 6) inp.value += d;
@@ -591,12 +657,13 @@
         sessionStorage.setItem('pulso_unlocked', 'true');
         document.getElementById('pinLockModal').classList.add('hidden');
         renderAll();
+        fetchFromBackend();
       } else {
         document.getElementById('pinError').classList.remove('hidden');
         document.getElementById('pinInput').value = '';
       }
     }
-    function lockApp() { sessionStorage.removeItem('pulso_unlocked'); document.getElementById('pinLockModal').classList.add('hidden'); }
+    function lockApp() { sessionStorage.removeItem('pulso_unlocked'); document.getElementById('pinLockModal').classList.remove('hidden'); }
 
     function renderAll() {
       renderAccountCards();
@@ -738,11 +805,20 @@
         const kw = tx.Comercio_Concepto.split('(')[0].trim().toUpperCase();
         if (kw.length >= 3) {
           STATE.reglasGmail.push({ ID: 'R-' + Date.now(), Palabra_Clave: kw, Categoria_Asignada: nuevaCat, Nota: motivo || 'Creado en Pulso' });
+          const url = getApiUrl();
+          if (url) {
+            fetch(url, { method: 'POST', body: JSON.stringify({ pin: PIN_REQUIRED, action: 'saveRule', rule: { keyword: kw, categoria: nuevaCat, nota: motivo } }) });
+          }
         }
       }
 
       renderAll();
       showToast(`✅ Movimiento asignado a "${nuevaCat}"`);
+
+      const url = getApiUrl();
+      if (url) {
+        fetch(url, { method: 'POST', body: JSON.stringify({ pin: PIN_REQUIRED, action: 'reclassifyTransaction', idTx, categoria: nuevaCat, tipo: tx.Tipo, motivoNota: motivo }) });
+      }
     }
 
     function renderTransactionsTable() {
@@ -832,16 +908,27 @@
       const kw = document.getElementById('ruleKeyword').value.trim().toUpperCase();
       const cat = document.getElementById('ruleCategory').value;
       if (!kw) return;
-      STATE.reglasGmail.push({ ID: 'R-' + Date.now(), Palabra_Clave: kw, Categoria_Asignada: cat, Nota: 'Regla manual' });
+      const ruleObj = { ID: 'R-' + Date.now(), Palabra_Clave: kw, Categoria_Asignada: cat, Nota: 'Regla manual' };
+      STATE.reglasGmail.push(ruleObj);
       document.getElementById('ruleKeyword').value = '';
       renderAll();
       showToast(`✅ Regla "${kw}" agregada`);
+
+      const url = getApiUrl();
+      if (url) {
+        fetch(url, { method: 'POST', body: JSON.stringify({ pin: PIN_REQUIRED, action: 'saveRule', rule: { keyword: kw, categoria: cat, nota: 'Regla manual' } }) });
+      }
     }
 
     function deleteGmailRule(idRule) {
       STATE.reglasGmail = STATE.reglasGmail.filter(r => r.ID !== idRule);
       renderAll();
       showToast('🗑️ Regla eliminada correctamente');
+
+      const url = getApiUrl();
+      if (url) {
+        fetch(url, { method: 'POST', body: JSON.stringify({ pin: PIN_REQUIRED, action: 'deleteRule', ruleId: idRule }) });
+      }
     }
 
     function renderPayrollHistory() {
@@ -879,14 +966,20 @@
       const categoria = document.getElementById('qCategoria').value;
       if (!monto || monto <= 0) { showToast('Ingresa un monto válido'); return; }
 
-      STATE.transacciones.unshift({
+      const tx = {
         ID_Tx: 'TX-MAN-' + Date.now(), Fecha: fecha, Hora: '12:00', Periodo: fecha.substring(0, 7),
         Tipo: tipo, Canal_Salida: 'Manual', Cuenta_Origen: 'BG-AHO', Categoria: categoria,
         Comercio_Concepto: comercio, Motivo_Transferencia: motivo, Monto: monto, Origen_Dato: 'Manual'
-      });
+      };
+      STATE.transacciones.unshift(tx);
       closeQuickModal();
       renderAll();
       showToast('✅ Movimiento guardado');
+
+      const url = getApiUrl();
+      if (url) {
+        fetch(url, { method: 'POST', body: JSON.stringify({ pin: PIN_REQUIRED, action: 'addTransaction', transaction: { tipo, monto, fecha, cuentaOrigen: 'BG-AHO', canalSalida: 'Manual', categoria, comercioConcepto: comercio, motivo } }) });
+      }
     }
 
     function switchTab(tab) {
@@ -903,6 +996,7 @@
       if (sessionStorage.getItem('pulso_unlocked') === 'true') {
         document.getElementById('pinLockModal').classList.add('hidden');
         renderAll();
+        fetchFromBackend();
       }
     });
   </script>
