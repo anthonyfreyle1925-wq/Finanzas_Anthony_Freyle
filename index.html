@@ -90,7 +90,7 @@
     </div>
   </div>
 
-  <!-- Header Pulso (Con Tuerca Visible en Celular y PC) -->
+  <!-- Header Pulso -->
   <header class="sticky top-0 z-30 glass border-b border-white/10 px-4 lg:px-8 py-3">
     <div class="max-w-7xl mx-auto flex flex-wrap items-center justify-between gap-3">
       <div class="flex items-center gap-3">
@@ -100,8 +100,8 @@
         <div>
           <div class="flex items-center gap-2">
             <h1 class="font-extrabold text-base sm:text-lg text-white tracking-tight">PULSO</h1>
-            <span class="text-[10px] px-2 py-0.5 rounded-full bg-emerald-500/20 text-emerald-300 border border-emerald-500/30 font-medium">
-              Activo
+            <span id="connectionBadge" class="text-[10px] px-2 py-0.5 rounded-full bg-emerald-500/20 text-emerald-300 border border-emerald-500/30 font-medium">
+              Conectado
             </span>
           </div>
           <p class="text-[11px] text-slate-400">Anthony Freyle • FARMCORP</p>
@@ -111,23 +111,20 @@
       <div class="flex items-center gap-2">
         <select id="globalPeriodFilter" onchange="renderAll()"
           class="bg-slate-900/90 border border-slate-700 text-xs rounded-xl px-2.5 py-2 text-cyan-300 font-semibold focus:outline-none">
-          <option value="2026-11" selected>Nov 2026</option>
-          <option value="2026-10">Oct 2026</option>
-          <option value="2026-09">Sep 2026</option>
-          <option value="ALL">Todo 2026</option>
+          <option value="ALL" selected>Todos los Meses 2026</option>
+          <option value="2026-11">Noviembre 2026</option>
+          <option value="2026-10">Octubre 2026</option>
+          <option value="2026-09">Septiembre 2026</option>
         </select>
 
-        <!-- Botón Sync -->
         <button onclick="triggerGmailSync()" class="touch-target p-2 rounded-xl glass-cyan text-cyan-300 flex items-center justify-center" title="Sincronizar Gmail">
           <i data-lucide="refresh-cw" id="syncIcon" class="w-4 h-4"></i>
         </button>
 
-        <!-- Botón Tuerca (Configuración API) Visible siempre -->
-        <button onclick="openApiModal()" class="touch-target p-2 rounded-xl glass text-cyan-300 flex items-center justify-center bg-cyan-500/20 border border-cyan-500/30" title="Configurar URL Google Apps Script">
+        <button onclick="openApiModal()" class="touch-target p-2 rounded-xl glass text-cyan-300 flex items-center justify-center bg-cyan-500/20 border border-cyan-500/30" title="URL Apps Script">
           <i data-lucide="settings" class="w-4 h-4"></i>
         </button>
 
-        <!-- Botón Bloquear -->
         <button onclick="lockApp()" class="touch-target p-2 rounded-xl glass text-rose-400 flex items-center justify-center" title="Bloquear">
           <i data-lucide="lock" class="w-4 h-4"></i>
         </button>
@@ -262,27 +259,27 @@
         <div class="glass rounded-2xl p-4">
           <p class="text-xs text-slate-400">Gasto Bancario vs Meta ($1,100)</p>
           <p id="kpiGastoBancario" class="text-xl font-extrabold mono text-white mt-1">$614.70</p>
-          <p id="kpiDisponibleMeta" class="text-[11px] text-emerald-400 mt-1">Disponible: $485.30 (55.9%)</p>
+          <p id="kpiDisponibleMeta" class="text-[11px] text-emerald-400 mt-1">Disponible: $485.30</p>
         </div>
         <div class="glass rounded-2xl p-4">
-          <p class="text-xs text-slate-400">Proyección Cierre (Burn Rate)</p>
-          <p id="kpiBurnRateProy" class="text-xl font-extrabold mono text-cyan-300 mt-1">$1,024.50</p>
-          <p id="kpiTicketPromedio" class="text-[11px] text-slate-400 mt-1">Ticket Prom.: $27.45</p>
+          <p class="text-xs text-slate-400">Total Registros Cargados</p>
+          <p id="kpiTotalTxCount" class="text-xl font-extrabold mono text-cyan-300 mt-1">0</p>
+          <p class="text-[11px] text-slate-400 mt-1">Sincronizado con Sheets</p>
         </div>
         <div class="glass rounded-2xl p-4">
           <p class="text-xs text-slate-400">Gasto Hormiga (&le; $10.00)</p>
           <p id="kpiGastoHormiga" class="text-xl font-extrabold mono text-amber-300 mt-1">$45.69</p>
-          <p id="kpiHormigaCount" class="text-[11px] text-slate-400 mt-1">9 micro-compras</p>
+          <p id="kpiHormigaCount" class="text-[11px] text-slate-400 mt-1">0 micro-compras</p>
         </div>
         <div class="glass rounded-2xl p-4">
           <p class="text-xs text-slate-400">Canales de Salida</p>
-          <p id="kpiCanalesResumen" class="text-xs font-bold mono text-white mt-1.5">Tarjetas: $241.49</p>
-          <p id="kpiCanalesTransf" class="text-[11px] text-cyan-300 mt-1">Transf. BG/Interb: $417.21</p>
+          <p id="kpiCanalesResumen" class="text-xs font-bold mono text-white mt-1.5">Tarjetas: $0.00</p>
+          <p id="kpiCanalesTransf" class="text-[11px] text-cyan-300 mt-1">Transf: $0.00</p>
         </div>
         <div class="glass rounded-2xl p-4 col-span-2 lg:col-span-1 flex flex-col justify-between">
           <div>
             <p class="text-xs text-rose-300 font-semibold">En "Otros" (Pendientes)</p>
-            <p id="kpiOtrosMonto" class="text-xl font-extrabold mono text-rose-400 mt-1">$159.05</p>
+            <p id="kpiOtrosMonto" class="text-xl font-extrabold mono text-rose-400 mt-1">$0.00</p>
           </div>
           <button onclick="switchTab('reclassify')" class="mt-2 w-full py-1.5 rounded-xl bg-rose-500/25 hover:bg-rose-500/40 text-rose-200 text-[11px] font-bold">
             Clasificar Ahora →
@@ -293,13 +290,13 @@
       <!-- Gráficos -->
       <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
         <div class="glass rounded-2xl p-5 lg:col-span-2">
-          <h3 class="text-sm font-bold text-white">Evolución Salarial FARMCORP 2026 + Presupuesto Noviembre</h3>
-          <p class="text-xs text-slate-400 mb-4">Liquidez en Banco Guayaquil vs. Descuentos de Rol</p>
+          <h3 class="text-sm font-bold text-white">Evolución Salarial FARMCORP 2026</h3>
+          <p class="text-xs text-slate-400 mb-4">Liquidez en Banco Guayaquil ($448 Quincena + Neto Fin de Mes)</p>
           <div class="h-72"><canvas id="payrollChart"></canvas></div>
         </div>
         <div class="glass rounded-2xl p-5">
           <h3 class="text-sm font-bold text-white">Distribución de Gastos por Categoría</h3>
-          <p class="text-xs text-slate-400 mb-4">Con licencias y cruces reclasificados</p>
+          <p class="text-xs text-slate-400 mb-4">Movimientos del periodo</p>
           <div class="h-64"><canvas id="expensesDonutChart"></canvas></div>
         </div>
       </div>
@@ -311,7 +308,7 @@
         <span class="text-[11px] px-2.5 py-0.5 rounded-full bg-rose-500/30 text-rose-200 font-bold uppercase">Limpieza de Presupuesto</span>
         <h2 class="text-lg font-bold text-white mt-1">Bandeja de Consumos y Transferencias en "Otros"</h2>
         <p class="text-xs text-slate-300 mb-4">
-          Asigna la categoría correcta. Por seguridad, la opción de crear regla automática viene <strong>desactivada por defecto</strong>.
+          Asigna la categoría correcta. La opción de crear regla automática viene <strong>desactivada por defecto</strong>.
         </p>
         <div id="otrosTriageContainer" class="grid grid-cols-1 md:grid-cols-2 gap-4"></div>
       </div>
@@ -330,8 +327,8 @@
           </button>
         </div>
 
-        <div class="grid grid-cols-1 sm:grid-cols-4 gap-3 mb-4">
-          <input id="txSearchInput" oninput="renderTransactionsTable()" type="text" placeholder="Buscar comercio o motivo..."
+        <div class="grid grid-cols-1 sm:grid-cols-3 gap-3 mb-4">
+          <input id="txSearchInput" oninput="renderTransactionsTable()" type="text" placeholder="Buscar comercio, categoría o motivo..."
             class="bg-slate-900/90 border border-slate-700 rounded-xl px-3 py-2 text-xs text-white focus:outline-none focus:border-cyan-400" />
           <select id="txCategoryFilter" onchange="renderTransactionsTable()"
             class="bg-slate-900/90 border border-slate-700 rounded-xl px-3 py-2 text-xs text-slate-200">
@@ -353,20 +350,13 @@
             <option value="Transferencia Interna BG">Transferencia Interna BG</option>
             <option value="Transferencia Interbancaria">Transferencia Interbancaria</option>
           </select>
-          <select id="txAccountFilter" onchange="renderTransactionsTable()"
-            class="bg-slate-900/90 border border-slate-700 rounded-xl px-3 py-2 text-xs text-slate-200">
-            <option value="ALL">Todas las Cuentas</option>
-            <option value="BG-AHO">Banco Guayaquil</option>
-            <option value="BP-AHO">Banco Pichincha</option>
-            <option value="TC-DINERS">Diners Club</option>
-          </select>
         </div>
 
         <div class="overflow-x-auto">
           <table class="w-full text-left border-collapse text-xs">
             <thead>
               <tr class="border-b border-white/10 text-[11px] text-slate-400 uppercase">
-                <th class="py-2.5 px-3">Fecha / Hora</th>
+                <th class="py-2.5 px-3">Fecha</th>
                 <th class="py-2.5 px-3">Comercio / Beneficiario</th>
                 <th class="py-2.5 px-3">Motivo / Nota</th>
                 <th class="py-2.5 px-3">Categoría</th>
@@ -423,7 +413,7 @@
     <div id="view-planning" class="hidden space-y-6">
       <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
         <div class="glass rounded-2xl p-5 lg:col-span-2">
-          <h2 class="text-base font-bold text-white">Presupuesto Base vs. Ejecución Real Mensual</h2>
+          <h2 class="text-base font-bold text-white">Presupuesto Base vs. Ejecución Real</h2>
           <p class="text-xs text-slate-400 mb-4">Control de tus categorías principales</p>
           <div id="budgetBarsContainer" class="space-y-3.5"></div>
         </div>
@@ -530,11 +520,10 @@
   <div id="apiConfigModal" class="fixed inset-0 z-50 hidden items-center justify-center bg-black/80 backdrop-blur-md p-4">
     <div class="glass max-w-lg w-full rounded-3xl p-6 border border-cyan-500/30 space-y-3">
       <div class="flex items-center justify-between">
-        <h3 class="text-base font-bold text-white">Configurar URL de Google Apps Script</h3>
+        <h3 class="text-base font-bold text-white">URL de Google Apps Script</h3>
         <button onclick="closeApiModal()" class="text-slate-400 hover:text-white"><i data-lucide="x" class="w-5 h-5"></i></button>
       </div>
-      <p class="text-xs text-slate-300">Pega tu URL que termina en <span class="mono text-cyan-300">/exec</span>:</p>
-      <input id="apiUrlInput" type="url" placeholder="https://script.google.com/macros/s/.../exec"
+      <input id="apiUrlInput" type="url"
         class="w-full bg-slate-900 border border-slate-700 rounded-xl px-3 py-2.5 text-xs mono text-cyan-300" />
       <div class="flex justify-end gap-2 pt-2">
         <button onclick="closeApiModal()" class="px-4 py-2 rounded-xl glass text-xs">Cerrar</button>
@@ -548,6 +537,9 @@
   <!-- Motor de Pulso -->
   <script>
     const PIN_REQUIRED = '993008';
+    // TU URL OFICIAL DE APPS SCRIPT YA CONFIGURADA POR DEFECTO
+    const DEFAULT_API_URL = 'https://script.google.com/macros/s/AKfycbxmVPG0VOyPRFW1FEgjmjL1UI_TRdFdUtmu_i5UdXR4tG68JKXpNGNTRZeFdy0fcLr0/exec';
+
     let payrollChartInstance = null;
     let donutChartInstance = null;
 
@@ -565,13 +557,13 @@
     ];
 
     const LEGACY_GASTOS_BG = [
-      { ID_Tx: 'TX-NOV-01', Fecha: '2026-11-16', Hora: '19:40', Periodo: '2026-11', Tipo: 'Gasto', Canal_Salida: 'Transferencia Interna BG', Cuenta_Origen: 'BG-AHO', Categoria: 'Entretenimiento', Comercio_Concepto: 'Alban Tola Dara Noemi (BANCO GUAYAQUIL)', Motivo_Transferencia: 'Salidas Dara', Monto: 172.31, Origen_Dato: 'Gmail', Estado_Revision: 'Confirmado' },
-      { ID_Tx: 'TX-NOV-02', Fecha: '2026-11-15', Hora: '14:20', Periodo: '2026-11', Tipo: 'Gasto', Canal_Salida: 'Transferencia Interbancaria', Cuenta_Origen: 'BG-AHO', Categoria: 'Entretenimiento', Comercio_Concepto: 'Alban Dara (BANCO INTERNACIONAL)', Motivo_Transferencia: 'Dara Interbancario', Monto: 145.00, Origen_Dato: 'Gmail', Estado_Revision: 'Confirmado' },
-      { ID_Tx: 'TX-NOV-03', Fecha: '2026-11-14', Hora: '18:10', Periodo: '2026-11', Tipo: 'Gasto', Canal_Salida: 'Consumo Tarjeta', Cuenta_Origen: 'BG-AHO', Categoria: 'Supermercado', Comercio_Concepto: 'SUPERMAXI BATAN', Motivo_Transferencia: 'Supermercado', Monto: 55.08, Origen_Dato: 'Gmail', Estado_Revision: 'Confirmado' },
-      { ID_Tx: 'TX-NOV-04', Fecha: '2026-11-12', Hora: '13:15', Periodo: '2026-11', Tipo: 'Cruce_Valores', Canal_Salida: 'Transferencia Interna BG', Cuenta_Origen: 'BG-AHO', Categoria: 'Préstamos y Cruces', Comercio_Concepto: 'Ardila Barrios Antony Johnnson (BANCO GUAYAQUIL)', Motivo_Transferencia: 'Préstamo', Monto: 44.00, Origen_Dato: 'Gmail', Estado_Revision: 'Confirmado' },
-      { ID_Tx: 'TX-NOV-05', Fecha: '2026-11-10', Hora: '20:45', Periodo: '2026-11', Tipo: 'Gasto', Canal_Salida: 'Consumo Tarjeta', Cuenta_Origen: 'BG-AHO', Categoria: 'Restaurantes', Comercio_Concepto: 'LA PATA GORDA', Motivo_Transferencia: 'Comida', Monto: 36.52, Origen_Dato: 'Gmail', Estado_Revision: 'Confirmado' },
-      { ID_Tx: 'TX-NOV-06', Fecha: '2026-11-08', Hora: '21:00', Periodo: '2026-11', Tipo: 'Gasto', Canal_Salida: 'Consumo Tarjeta', Cuenta_Origen: 'BG-AHO', Categoria: 'Restaurantes', Comercio_Concepto: 'PEDIDOSYA RESTAURANTES', Motivo_Transferencia: 'Delivery', Monto: 28.99, Origen_Dato: 'Gmail', Estado_Revision: 'Confirmado' },
-      { ID_Tx: 'TX-NOV-07', Fecha: '2026-11-05', Hora: '17:05', Periodo: '2026-11', Tipo: 'Gasto', Canal_Salida: 'Transferencia Interna BG', Cuenta_Origen: 'BG-AHO', Categoria: 'Otros', Comercio_Concepto: 'Transferencia Varios Sin Motivo', Motivo_Transferencia: '', Monto: 116.59, Origen_Dato: 'Gmail', Estado_Revision: 'Pendiente_Categoria' }
+      { ID_Tx: 'TX-NOV-01', Fecha: '2026-11-16', Hora: '19:40', Periodo: '2026-11', Tipo: 'Gasto', Canal_Salida: 'Transferencia Interna BG', Cuenta_Origen: 'BG-AHO', Categoria: 'Entretenimiento', Comercio_Concepto: 'Alban Tola Dara Noemi (BANCO GUAYAQUIL)', Motivo_Transferencia: 'Salidas Dara', Monto: 172.31, Origen_Dato: 'Gmail' },
+      { ID_Tx: 'TX-NOV-02', Fecha: '2026-11-15', Hora: '14:20', Periodo: '2026-11', Tipo: 'Gasto', Canal_Salida: 'Transferencia Interbancaria', Cuenta_Origen: 'BG-AHO', Categoria: 'Entretenimiento', Comercio_Concepto: 'Alban Dara (BANCO INTERNACIONAL)', Motivo_Transferencia: 'Dara Interbancario', Monto: 145.00, Origen_Dato: 'Gmail' },
+      { ID_Tx: 'TX-NOV-03', Fecha: '2026-11-14', Hora: '18:10', Periodo: '2026-11', Tipo: 'Gasto', Canal_Salida: 'Consumo Tarjeta', Cuenta_Origen: 'BG-AHO', Categoria: 'Supermercado', Comercio_Concepto: 'SUPERMAXI BATAN', Motivo_Transferencia: 'Supermercado', Monto: 55.08, Origen_Dato: 'Gmail' },
+      { ID_Tx: 'TX-NOV-04', Fecha: '2026-11-12', Hora: '13:15', Periodo: '2026-11', Tipo: 'Cruce_Valores', Canal_Salida: 'Transferencia Interna BG', Cuenta_Origen: 'BG-AHO', Categoria: 'Préstamos y Cruces', Comercio_Concepto: 'Ardila Barrios Antony Johnnson (BANCO GUAYAQUIL)', Motivo_Transferencia: 'Préstamo', Monto: 44.00, Origen_Dato: 'Gmail' },
+      { ID_Tx: 'TX-NOV-05', Fecha: '2026-11-10', Hora: '20:45', Periodo: '2026-11', Tipo: 'Gasto', Canal_Salida: 'Consumo Tarjeta', Cuenta_Origen: 'BG-AHO', Categoria: 'Restaurantes', Comercio_Concepto: 'LA PATA GORDA', Motivo_Transferencia: 'Comida', Monto: 36.52, Origen_Dato: 'Gmail' },
+      { ID_Tx: 'TX-NOV-06', Fecha: '2026-11-08', Hora: '21:00', Periodo: '2026-11', Tipo: 'Gasto', Canal_Salida: 'Consumo Tarjeta', Cuenta_Origen: 'BG-AHO', Categoria: 'Restaurantes', Comercio_Concepto: 'PEDIDOSYA RESTAURANTES', Motivo_Transferencia: 'Delivery', Monto: 28.99, Origen_Dato: 'Gmail' },
+      { ID_Tx: 'TX-NOV-07', Fecha: '2026-11-05', Hora: '17:05', Periodo: '2026-11', Tipo: 'Gasto', Canal_Salida: 'Transferencia Interna BG', Cuenta_Origen: 'BG-AHO', Categoria: 'Otros', Comercio_Concepto: 'Transferencia Varios Sin Motivo', Motivo_Transferencia: '', Monto: 116.59, Origen_Dato: 'Gmail' }
     ];
 
     let STATE = {
@@ -597,13 +589,42 @@
         { Categoria: 'Otros', Limite_Mensual: 50.00 }
       ],
       reglasGmail: [
-        { ID: 'R1', Palabra_Clave: 'PRIMAX', Categoria_Asignada: 'Transporte', Nota: 'Gasolina' },
-        { ID: 'R2', Palabra_Clave: 'SUPERMAXI', Categoria_Asignada: 'Supermercado', Nota: 'Super' },
-        { ID: 'R3', Palabra_Clave: 'ALBAN TOLA DARA', Categoria_Asignada: 'Entretenimiento', Nota: 'Dara' }
+        { ID_Regla: 'R1', Palabra_Clave: 'PRIMAX', Categoria_Asignada: 'Transporte', Nota_Referencia: 'Gasolina' },
+        { ID_Regla: 'R2', Palabra_Clave: 'SUPERMAXI', Categoria_Asignada: 'Supermercado', Nota_Referencia: 'Super' },
+        { ID_Regla: 'R3', Palabra_Clave: 'ALBAN TOLA DARA', Categoria_Asignada: 'Entretenimiento', Nota_Referencia: 'Dara' }
       ]
     };
 
-    function getApiUrl() { return localStorage.getItem('pulso_gas_url') || ''; }
+    // Normaliza fechas ISO o Date de Google Sheets (ej. "2026-11-16T05:00:00.000Z" -> "2026-11-16")
+    function cleanSheetDate(raw) {
+      if (!raw) return '2026-11-01';
+      const s = String(raw).trim();
+      if (s.includes('T')) return s.split('T')[0];
+      return s.substring(0, 10);
+    }
+
+    function normalizeTransactionsFromBackend(rawList) {
+      return rawList.map((t, idx) => {
+        const fechaLimpia = cleanSheetDate(t.Fecha);
+        const periodoLimpio = fechaLimpia.substring(0, 7);
+        return {
+          ID_Tx: t.ID_Tx || ('TX-' + idx),
+          Fecha: fechaLimpia,
+          Hora: t.Hora ? String(t.Hora).substring(0, 5) : '',
+          Periodo: periodoLimpio,
+          Tipo: t.Tipo || 'Gasto',
+          Canal_Salida: t.Canal_Salida || t.Origen_Dato || 'Banco',
+          Cuenta_Origen: t.Cuenta_Origen || 'BG-AHO',
+          Categoria: t.Categoria || 'Otros',
+          Comercio_Concepto: t.Comercio_Concepto || 'Movimiento',
+          Motivo_Transferencia: t.Motivo_Transferencia || '',
+          Monto: Number(t.Monto || 0),
+          Origen_Dato: t.Origen_Dato || 'Sheets'
+        };
+      });
+    }
+
+    function getApiUrl() { return localStorage.getItem('pulso_gas_url') || DEFAULT_API_URL; }
     function openApiModal() { document.getElementById('apiUrlInput').value = getApiUrl(); document.getElementById('apiConfigModal').classList.remove('hidden'); document.getElementById('apiConfigModal').classList.add('flex'); }
     function closeApiModal() { document.getElementById('apiConfigModal').classList.add('hidden'); document.getElementById('apiConfigModal').classList.remove('flex'); }
     async function saveApiUrl() {
@@ -611,38 +632,48 @@
       localStorage.setItem('pulso_gas_url', u);
       closeApiModal();
       await fetchFromBackend();
-      showToast('✅ URL guardada');
     }
 
     async function fetchFromBackend() {
       const url = getApiUrl();
       if (!url) return;
       try {
+        document.getElementById('connectionBadge').textContent = 'Sincronizando...';
         const res = await fetch(`${url}?action=getDashboardData&pin=${PIN_REQUIRED}`);
         const json = await res.json();
         if (json.ok && json.data) {
-          if (json.data.transacciones && json.data.transacciones.length > 0) STATE.transacciones = json.data.transacciones;
-          if (json.data.reglasGmail && json.data.reglasGmail.length > 0) STATE.reglasGmail = json.data.reglasGmail;
+          if (json.data.transacciones && json.data.transacciones.length > 0) {
+            STATE.transacciones = normalizeTransactionsFromBackend(json.data.transacciones);
+          }
+          if (json.data.reglasGmail && json.data.reglasGmail.length > 0) {
+            STATE.reglasGmail = json.data.reglasGmail;
+          }
+          document.getElementById('connectionBadge').textContent = 'Sheets Activo';
           renderAll();
-          showToast('✅ Sincronizado con Google Sheets');
+          showToast(`✅ ${STATE.transacciones.length} movimientos cargados desde Sheets`);
         }
-      } catch (e) { console.warn(e); }
+      } catch (e) {
+        document.getElementById('connectionBadge').textContent = 'Modo Local';
+        console.warn(e);
+      }
     }
 
     async function triggerGmailSync() {
       const url = getApiUrl();
-      if (!url) { openApiModal(); showToast('Configura primero la URL de tu Apps Script'); return; }
+      if (!url) { openApiModal(); return; }
       document.getElementById('syncIcon').classList.add('animate-spin');
-      showToast('Sincronizando Gmail...');
+      showToast('Buscando nuevos correos bancarios en Gmail...');
       try {
         const res = await fetch(`${url}?action=syncGmail&pin=${PIN_REQUIRED}`);
         const json = await res.json();
         if (json.ok) {
-          if (json.data.transacciones) STATE.transacciones = json.data.transacciones;
+          if (json.data && json.data.transacciones) {
+            STATE.transacciones = normalizeTransactionsFromBackend(json.data.transacciones);
+          }
           renderAll();
           showToast(`✅ Gmail sincronizado (${json.syncResult.importedCount} nuevos)`);
         }
-      } catch (e) { showToast('Error al sincronizar'); }
+      } catch (e) { showToast('Error al sincronizar Gmail'); }
       finally { document.getElementById('syncIcon').classList.remove('animate-spin'); }
     }
 
@@ -695,13 +726,19 @@
 
       document.getElementById('kpiGastoBancario').textContent = formatUSD(totalBancario);
       document.getElementById('kpiDisponibleMeta').textContent = `Disponible: ${formatUSD(1100 - totalBancario)}`;
+      document.getElementById('kpiTotalTxCount').textContent = txs.length;
 
       const hormigas = gastosBancarios.filter(t => Number(t.Monto) <= 10.00);
       document.getElementById('kpiGastoHormiga').textContent = formatUSD(hormigas.reduce((a, t) => a + Number(t.Monto), 0));
       document.getElementById('kpiHormigaCount').textContent = `${hormigas.length} micro-compras`;
 
-      const otrosList = STATE.transacciones.filter(t => t.Categoria === 'Otros');
-      const otrosMes = txs.filter(t => t.Categoria === 'Otros').reduce((a, t) => a + Number(t.Monto), 0);
+      const sumTarj = gastosBancarios.filter(t => String(t.Canal_Salida).includes('Tarjeta')).reduce((a, t) => a + Number(t.Monto), 0);
+      const sumTransf = gastosBancarios.filter(t => String(t.Canal_Salida).includes('Transferencia')).reduce((a, t) => a + Number(t.Monto), 0);
+      document.getElementById('kpiCanalesResumen').textContent = `Tarjetas: ${formatUSD(sumTarj)}`;
+      document.getElementById('kpiCanalesTransf').textContent = `Transf: ${formatUSD(sumTransf)}`;
+
+      const otrosList = STATE.transacciones.filter(t => t.Categoria === 'Otros' && t.Origen_Dato !== 'Rol_Pago');
+      const otrosMes = txs.filter(t => t.Categoria === 'Otros' && t.Origen_Dato !== 'Rol_Pago').reduce((a, t) => a + Number(t.Monto), 0);
       document.getElementById('kpiOtrosMonto').textContent = formatUSD(otrosMes);
       document.getElementById('navOtrosBadge').textContent = otrosList.length;
 
@@ -752,7 +789,7 @@
 
     function renderOtrosReclassifyCenter() {
       const container = document.getElementById('otrosTriageContainer');
-      const otros = STATE.transacciones.filter(t => t.Categoria === 'Otros');
+      const otros = STATE.transacciones.filter(t => t.Categoria === 'Otros' && t.Origen_Dato !== 'Rol_Pago');
 
       if (otros.length === 0) {
         container.innerHTML = `<div class="col-span-2 glass rounded-2xl p-6 text-center text-emerald-300 font-semibold">🎉 ¡Todo limpio! No hay consumos en "Otros".</div>`;
@@ -799,12 +836,11 @@
 
       tx.Categoria = nuevaCat;
       if (motivo) tx.Motivo_Transferencia = motivo;
-      tx.Estado_Revision = 'Confirmado';
 
       if (learn) {
         const kw = tx.Comercio_Concepto.split('(')[0].trim().toUpperCase();
         if (kw.length >= 3) {
-          STATE.reglasGmail.push({ ID: 'R-' + Date.now(), Palabra_Clave: kw, Categoria_Asignada: nuevaCat, Nota: motivo || 'Creado en Pulso' });
+          STATE.reglasGmail.push({ ID_Regla: 'R-' + Date.now(), Palabra_Clave: kw, Categoria_Asignada: nuevaCat, Nota_Referencia: motivo || 'Creado en Pulso' });
           const url = getApiUrl();
           if (url) {
             fetch(url, { method: 'POST', body: JSON.stringify({ pin: PIN_REQUIRED, action: 'saveRule', rule: { keyword: kw, categoria: nuevaCat, nota: motivo } }) });
@@ -826,25 +862,31 @@
       const q = (document.getElementById('txSearchInput').value || '').toLowerCase();
       const cat = document.getElementById('txCategoryFilter').value;
       const canal = document.getElementById('txCanalFilter').value;
-      const acc = document.getElementById('txAccountFilter').value;
 
       const list = STATE.transacciones.filter(t => {
         if (period !== 'ALL' && String(t.Periodo) !== period) return false;
         if (cat !== 'ALL' && t.Categoria !== cat) return false;
-        if (canal !== 'ALL' && t.Canal_Salida !== canal) return false;
-        if (acc !== 'ALL' && t.Cuenta_Origen !== acc) return false;
+        if (canal !== 'ALL' && !String(t.Canal_Salida).includes(canal)) return false;
         if (q && !(`${t.Comercio_Concepto} ${t.Categoria} ${t.Motivo_Transferencia || ''}`).toLowerCase().includes(q)) return false;
         return true;
       }).sort((a, b) => String(b.Fecha).localeCompare(String(a.Fecha)));
 
-      document.getElementById('txTableBody').innerHTML = list.map(t => `
+      const tbody = document.getElementById('txTableBody');
+      if (list.length === 0) {
+        tbody.innerHTML = `<tr><td colspan="6" class="py-6 text-center text-slate-400">No hay movimientos para el filtro seleccionado. Prueba cambiar el filtro superior a "Todos los Meses 2026".</td></tr>`;
+        return;
+      }
+
+      tbody.innerHTML = list.map(t => `
         <tr onclick="openTxDetail('${t.ID_Tx}')" class="hover:bg-white/5 cursor-pointer transition">
-          <td class="py-2.5 px-3 mono text-slate-300">${t.Fecha} <span class="text-[10px] text-slate-500">${t.Hora || ''}</span></td>
+          <td class="py-2.5 px-3 mono text-slate-300">${t.Fecha}</td>
           <td class="py-2.5 px-3 font-semibold text-white">${t.Comercio_Concepto}</td>
           <td class="py-2.5 px-3 text-slate-300">${t.Motivo_Transferencia || '—'}</td>
           <td class="py-2.5 px-3"><span class="px-2.5 py-0.5 rounded-full bg-slate-800 text-cyan-300 text-[11px] font-semibold">${t.Categoria}</span></td>
-          <td class="py-2.5 px-3 text-slate-400">${t.Canal_Salida || t.Origen_Dato}</td>
-          <td class="py-2.5 px-3 text-right mono font-bold text-rose-400">-${formatUSD(t.Monto)}</td>
+          <td class="py-2.5 px-3 text-slate-400">${t.Canal_Salida}</td>
+          <td class="py-2.5 px-3 text-right mono font-bold ${t.Tipo.includes('Ingreso') ? 'text-emerald-400' : 'text-rose-400'}">
+            ${t.Tipo.includes('Ingreso') ? '+' : '-'}${formatUSD(t.Monto)}
+          </td>
         </tr>
       `).join('');
     }
@@ -854,12 +896,11 @@
       if (!t) return;
       document.getElementById('txDetailContent').innerHTML = `
         <p><strong class="text-slate-400">ID:</strong> ${t.ID_Tx}</p>
-        <p><strong class="text-slate-400">Fecha y Hora:</strong> ${t.Fecha} ${t.Hora || ''}</p>
+        <p><strong class="text-slate-400">Fecha:</strong> ${t.Fecha} ${t.Hora || ''}</p>
         <p><strong class="text-slate-400">Comercio / Beneficiario:</strong> ${t.Comercio_Concepto}</p>
         <p><strong class="text-slate-400">Motivo / Nota:</strong> ${t.Motivo_Transferencia || 'Ninguno'}</p>
         <p><strong class="text-slate-400">Categoría:</strong> ${t.Categoria}</p>
-        <p><strong class="text-slate-400">Canal de Salida:</strong> ${t.Canal_Salida || t.Origen_Dato}</p>
-        <p><strong class="text-slate-400">Cuenta Origen:</strong> ${t.Cuenta_Origen}</p>
+        <p><strong class="text-slate-400">Canal:</strong> ${t.Canal_Salida}</p>
         <p><strong class="text-slate-400">Monto:</strong> <span class="text-cyan-300 font-bold">${formatUSD(t.Monto)}</span></p>
       `;
       document.getElementById('txDetailModal').classList.remove('hidden');
@@ -891,24 +932,27 @@
         `;
       }).join('');
 
-      document.getElementById('gmailRulesList').innerHTML = STATE.reglasGmail.map(r => `
-        <div class="glass rounded-xl p-2.5 flex items-center justify-between text-xs">
-          <div>
-            <span class="mono font-bold text-cyan-300">${r.Palabra_Clave}</span>
-            <p class="text-[11px] text-slate-400">→ ${r.Categoria_Asignada} (${r.Nota || ''})</p>
+      document.getElementById('gmailRulesList').innerHTML = STATE.reglasGmail.map(r => {
+        const idR = r.ID_Regla || r.ID;
+        return `
+          <div class="glass rounded-xl p-2.5 flex items-center justify-between text-xs">
+            <div>
+              <span class="mono font-bold text-cyan-300">${r.Palabra_Clave}</span>
+              <p class="text-[11px] text-slate-400">→ ${r.Categoria_Asignada}</p>
+            </div>
+            <button onclick="deleteGmailRule('${idR}')" class="touch-target px-2.5 py-1 rounded-lg bg-rose-500/20 hover:bg-rose-500/40 text-rose-300 font-bold text-[11px]">
+              Eliminar
+            </button>
           </div>
-          <button onclick="deleteGmailRule('${r.ID}')" class="touch-target px-2.5 py-1 rounded-lg bg-rose-500/20 hover:bg-rose-500/40 text-rose-300 font-bold text-[11px]" title="Eliminar regla">
-            Eliminar
-          </button>
-        </div>
-      `).join('');
+        `;
+      }).join('');
     }
 
     function addNewGmailRule() {
       const kw = document.getElementById('ruleKeyword').value.trim().toUpperCase();
       const cat = document.getElementById('ruleCategory').value;
       if (!kw) return;
-      const ruleObj = { ID: 'R-' + Date.now(), Palabra_Clave: kw, Categoria_Asignada: cat, Nota: 'Regla manual' };
+      const ruleObj = { ID_Regla: 'R-' + Date.now(), Palabra_Clave: kw, Categoria_Asignada: cat, Nota_Referencia: 'Regla manual' };
       STATE.reglasGmail.push(ruleObj);
       document.getElementById('ruleKeyword').value = '';
       renderAll();
@@ -921,7 +965,7 @@
     }
 
     function deleteGmailRule(idRule) {
-      STATE.reglasGmail = STATE.reglasGmail.filter(r => r.ID !== idRule);
+      STATE.reglasGmail = STATE.reglasGmail.filter(r => (r.ID_Regla || r.ID) !== idRule);
       renderAll();
       showToast('🗑️ Regla eliminada correctamente');
 
